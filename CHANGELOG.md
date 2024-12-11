@@ -1,5 +1,29 @@
 # CHANGELOG
 
++ 2024.12.04.mr46620 / 99ed8940-eb65-42e7-80a6-b77b76ebccf3.uterm_manifest.release
+
+[Dish] A new disablement code `UNSUPPORTED_VERSION` was added.
+
+```golang
+// Enum value maps for UtDisablementCode.
+var (
+	UtDisablementCode_name = map[int32]string{
+		0:  "UNKNOWN_STATE",
+		1:  "OKAY",
+		2:  "NO_ACTIVE_ACCOUNT",
+		3:  "TOO_FAR_FROM_SERVICE_ADDRESS",
+		4:  "IN_OCEAN",
+		5:  "INVALID_COUNTRY",
+		6:  "BLOCKED_COUNTRY",
+		7:  "DATA_OVERAGE_SANDBOX_POLICY",
+		8:  "CELL_IS_DISABLED",
+		10: "ROAM_RESTRICTED",
+		11: "UNKNOWN_LOCATION",
+		12: "ACCOUNT_DISABLED",
+		13: "UNSUPPORTED_VERSION",
+    }
+```
+
 + 2024.11.25.mr46348.1 / abebf685-9154-4f4b-8fbf-19471ac93420.uterm_manifest.release
 
 [Dish] Add `Stowed` status to `get_diagnostics`.
