@@ -1,5 +1,36 @@
 # CHANGELOG
 
++ 2024.12.12.mr46969.2 / 28279e47-2013-4102-8b09-3541b2000cfa.uterm_manifest.release
+
+[Dish] A `PLCPortStats` and related structures are added.
+
+```golang
+type PLCPortStats_PortStatus int32
+
+const (
+	PLCPortStats_INACTIVE          PLCPortStats_PortStatus = 0
+	PLCPortStats_CHARGING          PLCPortStats_PortStatus = 1
+	PLCPortStats_DISCHARGING       PLCPortStats_PortStatus = 2
+	PLCPortStats_MOISTURE_DETECTED PLCPortStats_PortStatus = 3
+)
+
+// Enum value maps for PLCPortStats_PortStatus.
+var (
+	PLCPortStats_PortStatus_name = map[int32]string{
+		0: "INACTIVE",
+		1: "CHARGING",
+		2: "DISCHARGING",
+		3: "MOISTURE_DETECTED",
+	}
+	PLCPortStats_PortStatus_value = map[string]int32{
+		"INACTIVE":          0,
+		"CHARGING":          1,
+		"DISCHARGING":       2,
+		"MOISTURE_DETECTED": 3,
+	}
+)
+```
+
 + 2024.12.04.mr46620 / 99ed8940-eb65-42e7-80a6-b77b76ebccf3.uterm_manifest.release
 
 [Dish] A new disablement code `UNSUPPORTED_VERSION` was added.
