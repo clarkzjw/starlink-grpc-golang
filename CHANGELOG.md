@@ -1,5 +1,65 @@
 # CHANGELOG
 
++ 2024.12.17.mr47156.1 / 3b5ef5f2-dd64-4e29-a33b-3f6e46d060e3.uterm_manifest.release
+
+[Dish] A `gpsTimeS` field is added to the output of `get_diagnostics`.
+
+```
+grpcurl -plaintext -d {\"get_diagnostics\":{}} 192.168.100.1:9200 SpaceX.API.Device.Device/Handle
+
+{
+  "apiVersion": "28",
+  "dishGetDiagnostics": {
+    "id": "ut01000000-00000000-xxxx",
+    "hardwareVersion": "rev3_proto2",
+    "softwareVersion": "2024.12.17.mr47156.1",
+    "utcOffsetS": -28799,
+    "alerts": {
+
+    },
+    "disablementCode": "OKAY",
+    "hardwareSelfTest": "PASSED",
+    "location": {
+      "enabled": true,
+      "latitude": xxxx,
+      "longitude": xxxx,
+      "altitudeMeters": xxxx,
+      "uncertaintyMetersValid": true,
+      "uncertaintyMeters": 5,
+      "gpsTimeS": 1.4191529686605e+09
+    },
+    "alignmentStats": {
+
+    }
+  }
+}
+```
+
+[Dish] Two additional optional values in the output of `get_status`.
+
+```
+IsMovingFastPersisted              bool                                   `protobuf:"varint,1042,opt,name=is_moving_fast_persisted,json=isMovingFastPersisted,proto3" json:"is_moving_fast_persisted,omitempty"`
+UpsuStats                          *DishUpsuStats                         `protobuf:"bytes,1043,opt,name=upsu_stats,json=upsuStats,proto3" json:"upsu_stats,omitempty"`
+```
+
+where `DishUpsuStats` is defined as
+
+```
+type DishUpsuStats struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	AppVersion  uint64  `protobuf:"varint,2,opt,name=app_version,json=appVersion,proto3" json:"app_version,omitempty"`
+	BootVersion uint64  `protobuf:"varint,3,opt,name=boot_version,json=bootVersion,proto3" json:"boot_version,omitempty"`
+	RomVersion  uint64  `protobuf:"varint,4,opt,name=rom_version,json=romVersion,proto3" json:"rom_version,omitempty"`
+	Uptime      int64   `protobuf:"varint,5,opt,name=uptime,proto3" json:"uptime,omitempty"`
+	DishPower   float32 `protobuf:"fixed32,6,opt,name=dish_power,json=dishPower,proto3" json:"dish_power,omitempty"`
+	RouterPower float32 `protobuf:"fixed32,7,opt,name=router_power,json=routerPower,proto3" json:"router_power,omitempty"`
+}
+```
+
+
 + 2024.12.12.mr46969.2 / 28279e47-2013-4102-8b09-3541b2000cfa.uterm_manifest.release
 
 [Dish] A `PLCPortStats` and related structures are added.
