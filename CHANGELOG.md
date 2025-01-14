@@ -1,5 +1,33 @@
 # CHANGELOG
 
++ 2024.12.28.mr47554.3 / 729bfb05-8e38-4857-9092-cb2d6955b5d7.uterm_manifest.release
+
+[Dish] `INVALID_COUNTRY` was removed from dish Disablement Code
+
+[WiFi] `SecsSinceLastPublicIpv4Change` is added to `WifiGetStatusResponse`.
+
+[WiFi] `PopIpv4PingDropRateLast_15S`, `PopIpv6PingDropRateLast_15S`, `GoogleIpv4PingDropRateLast_15S`, `GoogleIpv6PingDropRateLast_15S`, `CloudflareIpv4PingDropRateLast_15S`, `CloudflareIpv6PingDropRateLast_15S`, `DnsResolverDropRate` in `WifiGetHistoryResponse`.
+
+```
+type WifiGetHistoryResponse struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Current                            uint64                                                `protobuf:"varint,1,opt,name=current,proto3" json:"current,omitempty"`
+	PingDropRate                       []float32                                             `protobuf:"fixed32,1001,rep,packed,name=ping_drop_rate,json=pingDropRate,proto3" json:"ping_drop_rate,omitempty"`
+	PingLatencyMs                      []float32                                             `protobuf:"fixed32,1002,rep,packed,name=ping_latency_ms,json=pingLatencyMs,proto3" json:"ping_latency_ms,omitempty"`
+	CurrentIndex_15S                   uint64                                                `protobuf:"varint,2,opt,name=current_index_15s,json=currentIndex15s,proto3" json:"current_index_15s,omitempty"`
+	PopIpv4PingDropRateLast_15S        []float32                                             `protobuf:"fixed32,1003,rep,packed,name=pop_ipv4_ping_drop_rate_last_15s,json=popIpv4PingDropRateLast15s,proto3" json:"pop_ipv4_ping_drop_rate_last_15s,omitempty"`
+	PopIpv6PingDropRateLast_15S        []float32                                             `protobuf:"fixed32,1004,rep,packed,name=pop_ipv6_ping_drop_rate_last_15s,json=popIpv6PingDropRateLast15s,proto3" json:"pop_ipv6_ping_drop_rate_last_15s,omitempty"`
+	GoogleIpv4PingDropRateLast_15S     []float32                                             `protobuf:"fixed32,1005,rep,packed,name=google_ipv4_ping_drop_rate_last_15s,json=googleIpv4PingDropRateLast15s,proto3" json:"google_ipv4_ping_drop_rate_last_15s,omitempty"`
+	GoogleIpv6PingDropRateLast_15S     []float32                                             `protobuf:"fixed32,1006,rep,packed,name=google_ipv6_ping_drop_rate_last_15s,json=googleIpv6PingDropRateLast15s,proto3" json:"google_ipv6_ping_drop_rate_last_15s,omitempty"`
+	CloudflareIpv4PingDropRateLast_15S []float32                                             `protobuf:"fixed32,1007,rep,packed,name=cloudflare_ipv4_ping_drop_rate_last_15s,json=cloudflareIpv4PingDropRateLast15s,proto3" json:"cloudflare_ipv4_ping_drop_rate_last_15s,omitempty"`
+	CloudflareIpv6PingDropRateLast_15S []float32                                             `protobuf:"fixed32,1008,rep,packed,name=cloudflare_ipv6_ping_drop_rate_last_15s,json=cloudflareIpv6PingDropRateLast15s,proto3" json:"cloudflare_ipv6_ping_drop_rate_last_15s,omitempty"`
+	DnsResolverDropRate                map[string]*WifiGetHistoryResponse_DnsResolverHistory `protobuf:"bytes,1009,rep,name=dns_resolver_drop_rate,json=dnsResolverDropRate,proto3" json:"dns_resolver_drop_rate,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
+}
+```
+
 + 2024.12.17.mr47156.1 / 3b5ef5f2-dd64-4e29-a33b-3f6e46d060e3.uterm_manifest.release
 
 [Dish] A `gpsTimeS` field is added to the output of `get_diagnostics`.
