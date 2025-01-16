@@ -1,5 +1,9 @@
 # CHANGELOG
 
++ 2025.01.10.cr47961.1 / 92220b6b-7815-4477-ac69-22e3a0b02e20.uterm_manifest.release
+
+[WiFi] (`ConfigHttpsContentHostingEnabled`](https://github.com/clarkzjw/starlink-grpc-golang/commit/0bc26348e4db54b8785dd5dd189d258d927fff8f)
+
 + 2024.12.28.mr47554.3 / 729bfb05-8e38-4857-9092-cb2d6955b5d7.uterm_manifest.release
 
 [Dish] `INVALID_COUNTRY` was removed from dish Disablement Code
