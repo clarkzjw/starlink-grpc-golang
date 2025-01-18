@@ -1,5 +1,9 @@
 # CHANGELOG
 
++ 2025.01.10.mr47961.1 / 7046351c-be8d-4f57-a475-7c0485a04ee8.uterm_manifest.release
+
+[Wi-Fi] `UnixTimestampNs` in `WifiClientSandboxRequest`
+
 + 2025.01.10.cr47961.1 / 92220b6b-7815-4477-ac69-22e3a0b02e20.uterm_manifest.release
 
 [WiFi] (`ConfigHttpsContentHostingEnabled`](https://github.com/clarkzjw/starlink-grpc-golang/commit/0bc26348e4db54b8785dd5dd189d258d927fff8f)
