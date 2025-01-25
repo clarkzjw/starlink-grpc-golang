@@ -1,5 +1,9 @@
 # CHANGELOG
 
++ 2025.01.14.mr48087.1 / 461310f4-7bb6-43e5-8607-15f480713604.uterm_manifest.release
+
+[Wi-Fi] `UnbridgedEthPorts` and `ApplyUnbridgedEthPorts` in `WifiConfig`. https://github.com/clarkzjw/starlink-grpc-golang/commit/a1eb95e2820bae11893e211321e0b303fcc59de3
+
 + 2025.01.10.mr47961.1 / 7046351c-be8d-4f57-a475-7c0485a04ee8.uterm_manifest.release
 
 [Wi-Fi] `UnixTimestampNs` in `WifiClientSandboxRequest`
