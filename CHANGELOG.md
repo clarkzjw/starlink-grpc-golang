@@ -1,5 +1,9 @@
 # CHANGELOG
 
++ 2025.01.22.mr48363 / 79a168dc-3961-4b23-9697-b6eda232af4d.uterm_manifest.release
+
+[Wi-Fi] Minor WiFi updates: https://github.com/clarkzjw/starlink-grpc-golang/commit/ff01422593efcbcbbc0c8739169a3e9f812a83a4
+
 + 2025.01.14.mr48087.1 / 461310f4-7bb6-43e5-8607-15f480713604.uterm_manifest.release
 
 [Wi-Fi] `UnbridgedEthPorts` and `ApplyUnbridgedEthPorts` in `WifiConfig`. https://github.com/clarkzjw/starlink-grpc-golang/commit/a1eb95e2820bae11893e211321e0b303fcc59de3
