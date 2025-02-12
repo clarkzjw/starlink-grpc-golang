@@ -1,5 +1,9 @@
 # CHANGELOG
 
++ 2025.02.05.mr49087 / d1223ab6-7fb9-490d-affc-dea80a6be413.uterm_manifest.release
+
+[Wi-Fi] `DishDisablementCode` in `WifiGetStatusResponse`.
+
 + 2025.01.22.mr48363 / 79a168dc-3961-4b23-9697-b6eda232af4d.uterm_manifest.release
 
 [Wi-Fi] Minor WiFi updates: https://github.com/clarkzjw/starlink-grpc-golang/commit/ff01422593efcbcbbc0c8739169a3e9f812a83a4
@@ -14,17 +18,17 @@
 
 + 2025.01.10.cr47961.1 / 92220b6b-7815-4477-ac69-22e3a0b02e20.uterm_manifest.release
 
-[WiFi] (`ConfigHttpsContentHostingEnabled`](https://github.com/clarkzjw/starlink-grpc-golang/commit/0bc26348e4db54b8785dd5dd189d258d927fff8f)
+[Wi-Fi] [`ConfigHttpsContentHostingEnabled`](https://github.com/clarkzjw/starlink-grpc-golang/commit/0bc26348e4db54b8785dd5dd189d258d927fff8f)
 
 + 2024.12.28.mr47554.3 / 729bfb05-8e38-4857-9092-cb2d6955b5d7.uterm_manifest.release
 
 [Dish] `INVALID_COUNTRY` was removed from dish Disablement Code
 
-[WiFi] `SecsSinceLastPublicIpv4Change` is added to `WifiGetStatusResponse`.
+[Wi-Fi] `SecsSinceLastPublicIpv4Change` is added to `WifiGetStatusResponse`.
 
-[WiFi] `PopIpv4PingDropRateLast_15S`, `PopIpv6PingDropRateLast_15S`, `GoogleIpv4PingDropRateLast_15S`, `GoogleIpv6PingDropRateLast_15S`, `CloudflareIpv4PingDropRateLast_15S`, `CloudflareIpv6PingDropRateLast_15S`, `DnsResolverDropRate` in `WifiGetHistoryResponse`.
+[Wi-Fi] `PopIpv4PingDropRateLast_15S`, `PopIpv6PingDropRateLast_15S`, `GoogleIpv4PingDropRateLast_15S`, `GoogleIpv6PingDropRateLast_15S`, `CloudflareIpv4PingDropRateLast_15S`, `CloudflareIpv6PingDropRateLast_15S`, `DnsResolverDropRate` in `WifiGetHistoryResponse`.
 
-```
+```golang
 type WifiGetHistoryResponse struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -81,14 +85,14 @@ grpcurl -plaintext -d {\"get_diagnostics\":{}} 192.168.100.1:9200 SpaceX.API.Dev
 
 [Dish] Two additional optional values in the output of `get_status`.
 
-```
+```golang
 IsMovingFastPersisted              bool                                   `protobuf:"varint,1042,opt,name=is_moving_fast_persisted,json=isMovingFastPersisted,proto3" json:"is_moving_fast_persisted,omitempty"`
 UpsuStats                          *DishUpsuStats                         `protobuf:"bytes,1043,opt,name=upsu_stats,json=upsuStats,proto3" json:"upsu_stats,omitempty"`
 ```
 
 where `DishUpsuStats` is defined as
 
-```
+```golang
 type DishUpsuStats struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -169,6 +173,7 @@ var (
 
 ```
 grpcurl -plaintext -d {\"get_diagnostics\":{}} 192.168.100.1:9200 SpaceX.API.Device.Device/Handle
+
 {
   "apiVersion": "28",
   "dishGetDiagnostics": {
@@ -227,7 +232,7 @@ Looks almost the same as `2024.10.13.mr44429`.
 https://github.com/clarkzjw/starlink-grpc-golang/commit/75ec2a3115cdde9c91441578c79cc3783370f659
 
 ```
-[Wifi]
+[Wi-Fi]
 
 1. `VsnsVin` in `PoeStats`
 2. `Alerts` in `WifiClient`
