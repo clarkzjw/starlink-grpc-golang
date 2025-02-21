@@ -1,5 +1,9 @@
 # CHANGELOG
 
++ 2025.02.18.mr49904 / b1a8e2de-0c8b-42fd-a607-77492f3ddff7.uterm_manifest.release
+
+[Dish] Added `Request_GetGoroutineStackTraces`, but it seems it is internal or unimplemented, https://github.com/clarkzjw/starlink-grpc-golang/commit/5d47e368685b19a9fbc83656e8bf606b7d4632c7
+
 + 2025.02.05.mr49087 / d1223ab6-7fb9-490d-affc-dea80a6be413.uterm_manifest.release
 
 [Wi-Fi] `DishDisablementCode` in `WifiGetStatusResponse`.
