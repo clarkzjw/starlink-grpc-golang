@@ -1,5 +1,33 @@
 # CHANGELOG
 
++ 2025.03.02.mr50739 / a19b04ea-de59-4809-acd1-d8cd40e9a2e5.uterm_manifest.release
+
+[Dish] Possible `DlBandwidthRestrictedReason` and `UlBandwidthRestrictedReason` values in `get_status` response.
+
+```golang
+// Enum value maps for RateLimitReason.
+var (
+	RateLimitReason_name = map[int32]string{
+		0: "UNKNOWN",
+		1: "NO_LIMIT",
+		2: "POLICY_LIMIT",
+		3: "USER_CUSTOM_LIMIT",
+		5: "OVERAGE_LIMIT",
+	}
+	RateLimitReason_value = map[string]int32{
+		"UNKNOWN":           0,
+		"NO_LIMIT":          1,
+		"POLICY_LIMIT":      2,
+		"USER_CUSTOM_LIMIT": 3,
+		"OVERAGE_LIMIT":     5,
+	}
+)
+```
+
+[Wi-Fi] `OnlyOverflightBlocked` and `OfflineNetworksDisabled` in `WifiAlerts`.
+
+[Wi-Fi] New `DisableWhenOffline` option for `WifiConfig_Network`.
+
 + 2025.02.09.cr49354.1.18167 / 2bea9726-0752-4b7b-98d5-f5edeaecbce8.uterm_manifest.release
 
 [Dish] `Request_GetGoroutineStackTraces` is removed, as well as `RebootScheduledUtcTime`.
