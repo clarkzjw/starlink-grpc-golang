@@ -1,5 +1,9 @@
 # CHANGELOG
 
++ 2025.03.09.mr51189 / bb84b35f-5718-4348-a5f7-06df03048731.uterm_manifest.release
+
+[Wi-Fi] Added `WifiConfig_StaticRoute`.
+
 + 2025.03.02.mr50739 / a19b04ea-de59-4809-acd1-d8cd40e9a2e5.uterm_manifest.release
 
 [Dish] Possible `DlBandwidthRestrictedReason` and `UlBandwidthRestrictedReason` values in `get_status` response.
