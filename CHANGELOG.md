@@ -1,5 +1,9 @@
 # CHANGELOG
 
++ 2025.03.20.mr51925.1 / edc8b999-05f4-4dd2-99d6-53e0fbb6c3f0.uterm_manifest.release
+
+[Dish] New `DisablementCode`: `MOVING_TOO_FAST_FOR_POLICY`.
+
 + 2025.03.09.mr51189 / bb84b35f-5718-4348-a5f7-06df03048731.uterm_manifest.release
 
 [Wi-Fi] Added `WifiConfig_StaticRoute`.
