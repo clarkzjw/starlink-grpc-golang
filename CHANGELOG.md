@@ -1,5 +1,36 @@
 # CHANGELOG
 
++ 2025.03.25.mr52256.1 / b555d5d1-8198-451e-a546-8e732b39a52b.uterm_manifest.release
+
+[Dish] New `HardwareSelfTestCodes` in `DishGetDiagnostics` Response, https://github.com/clarkzjw/starlink-grpc-golang/blob/master/pkg/spacex.com/api/device/device.pb.go#L356-L427
+
+```golang
+type DishGetDiagnosticsResponse_TestResultCode int32
+
+const (
+	DishGetDiagnosticsResponse_GENERAL           DishGetDiagnosticsResponse_TestResultCode = 0
+	DishGetDiagnosticsResponse_BOOT_UP           DishGetDiagnosticsResponse_TestResultCode = 1
+	DishGetDiagnosticsResponse_CPU_VOLTAGE       DishGetDiagnosticsResponse_TestResultCode = 2
+	DishGetDiagnosticsResponse_DBF_AAP_CS        DishGetDiagnosticsResponse_TestResultCode = 3
+	DishGetDiagnosticsResponse_DBF_NUM_FEMS      DishGetDiagnosticsResponse_TestResultCode = 4
+	DishGetDiagnosticsResponse_DBF_READ_ERRORS   DishGetDiagnosticsResponse_TestResultCode = 5
+	DishGetDiagnosticsResponse_DBF_T_DIE_0       DishGetDiagnosticsResponse_TestResultCode = 6
+	DishGetDiagnosticsResponse_DBF_T_DIE_1       DishGetDiagnosticsResponse_TestResultCode = 7
+	DishGetDiagnosticsResponse_DBF_T_DIE_0_VALID DishGetDiagnosticsResponse_TestResultCode = 8
+	DishGetDiagnosticsResponse_DBF_T_DIE_1_VALID DishGetDiagnosticsResponse_TestResultCode = 9
+	DishGetDiagnosticsResponse_ETH_PRIME         DishGetDiagnosticsResponse_TestResultCode = 10
+	DishGetDiagnosticsResponse_EIRP              DishGetDiagnosticsResponse_TestResultCode = 11
+	DishGetDiagnosticsResponse_FEM_CUT           DishGetDiagnosticsResponse_TestResultCode = 12
+	DishGetDiagnosticsResponse_FUSE_AVS          DishGetDiagnosticsResponse_TestResultCode = 13
+	DishGetDiagnosticsResponse_GPS               DishGetDiagnosticsResponse_TestResultCode = 14
+	DishGetDiagnosticsResponse_IMU               DishGetDiagnosticsResponse_TestResultCode = 15
+	DishGetDiagnosticsResponse_PHY               DishGetDiagnosticsResponse_TestResultCode = 16
+	DishGetDiagnosticsResponse_SCP_ERROR         DishGetDiagnosticsResponse_TestResultCode = 17
+	DishGetDiagnosticsResponse_TEMPERATURE       DishGetDiagnosticsResponse_TestResultCode = 18
+	DishGetDiagnosticsResponse_VTSENS            DishGetDiagnosticsResponse_TestResultCode = 19
+)
+```
+
 + 2025.03.20.mr51925.1 / edc8b999-05f4-4dd2-99d6-53e0fbb6c3f0.uterm_manifest.release
 
 [Dish] New `DisablementCode`: `MOVING_TOO_FAST_FOR_POLICY`.
