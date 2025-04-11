@@ -1,5 +1,9 @@
 # CHANGELOG
 
++ 2025.04.08.cr53207 / 05de8289-7bcc-476b-ad62-8cf8cc2a73fe.uterm_manifest.release
+
+[Dish] New `phyRxBeamSnrAvg` and `tCenter` in `get_status` response
+
 + 2025.03.25.mr52256.1 / b555d5d1-8198-451e-a546-8e732b39a52b.uterm_manifest.release
 
 [Dish] New `HardwareSelfTestCodes` in `DishGetDiagnostics` Response, https://github.com/clarkzjw/starlink-grpc-golang/blob/master/pkg/spacex.com/api/device/device.pb.go#L356-L427
