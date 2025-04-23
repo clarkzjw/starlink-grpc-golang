@@ -1,5 +1,9 @@
 # CHANGELOG
 
++ 2025.04.08.mr53207.1 / 9e5d61d9-e441-43a4-907a-46577dbea7ce.uterm_manifest.release
+
+[Dish] `Response_SetPerVehicleConfig`, related to dishes with mobility?
+
 + 2025.04.08.cr53207 / 05de8289-7bcc-476b-ad62-8cf8cc2a73fe.uterm_manifest.release
 
 [Dish] New `phyRxBeamSnrAvg` and `tCenter` in `get_status` response
