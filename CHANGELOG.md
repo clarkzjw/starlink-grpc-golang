@@ -1,5 +1,28 @@
 # CHANGELOG
 
++ 2025.04.20.mr54040 / adee186d-0c2f-4dc7-a3bd-db1e7ae17766.uterm_manifest.release
+
+[Dish] `DlBandwidthRestrictedReason` and `UlBandwidthRestrictedReason` in `get_status` response.
+
+[Dish] New `DishApsStats`:
+
+```golang
+type DishApsStats struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	AppVersion            uint64  `protobuf:"varint,2,opt,name=app_version,json=appVersion,proto3" json:"app_version,omitempty"`
+	BootVersion           uint64  `protobuf:"varint,3,opt,name=boot_version,json=bootVersion,proto3" json:"boot_version,omitempty"`
+	RomVersion            uint64  `protobuf:"varint,4,opt,name=rom_version,json=romVersion,proto3" json:"rom_version,omitempty"`
+	Uptime                int64   `protobuf:"varint,5,opt,name=uptime,proto3" json:"uptime,omitempty"`
+	DishPower             float32 `protobuf:"fixed32,6,opt,name=dish_power,json=dishPower,proto3" json:"dish_power,omitempty"`
+	ForceDevSignedAllowed bool    `protobuf:"varint,7,opt,name=force_dev_signed_allowed,json=forceDevSignedAllowed,proto3" json:"force_dev_signed_allowed,omitempty"`
+	DebugPortLocked       bool    `protobuf:"varint,8,opt,name=debug_port_locked,json=debugPortLocked,proto3" json:"debug_port_locked,omitempty"`
+	BoardRev              int32   `protobuf:"varint,9,opt,name=board_rev,json=boardRev,proto3" json:"board_rev,omitempty"`
+}
+```
+
 + 2025.04.08.mr53207.1 / 9e5d61d9-e441-43a4-907a-46577dbea7ce.uterm_manifest.release
 
 [Dish] `Response_SetPerVehicleConfig`, related to dishes with mobility?
