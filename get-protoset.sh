@@ -3,6 +3,7 @@
 # requires https://github.com/fullstorydev/grpcurl
 
 grpc_endpoint="192.168.100.1:9200"
+#grpc_endpoint="127.0.0.1:1234"
 
 dish_version=$(grpcurl -plaintext -d {\"get_status\":{}} $grpc_endpoint SpaceX.API.Device.Device/Handle | grep softwareVersion | awk '{print $2}' | awk -F',' '{print $1}' | awk -F'\"' '{print $2}')
 echo "$dish_version" > VERSION

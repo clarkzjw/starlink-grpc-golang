@@ -1,5 +1,9 @@
 # CHANGELOG
 
++ 2025.04.29.mr54648.2 / 022173f2-f284-4b31-a438-47718a77e227.uterm_manifest.release
+
+[Dish] New `ScheduleReboot` in `UpdateRequest`.
+
 + 2025.04.20.mr54040 / adee186d-0c2f-4dc7-a3bd-db1e7ae17766.uterm_manifest.release
 
 [Dish] `DlBandwidthRestrictedReason` and `UlBandwidthRestrictedReason` in `get_status` response.
