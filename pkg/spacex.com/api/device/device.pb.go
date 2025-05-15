@@ -4340,6 +4340,8 @@ type GetStatusRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
+
+	RouterRole RouterRole `protobuf:"varint,1,opt,name=router_role,json=routerRole,proto3,enum=SpaceX.API.Device.RouterRole" json:"router_role,omitempty"`
 }
 
 func (x *GetStatusRequest) Reset() {
@@ -4372,6 +4374,13 @@ func (x *GetStatusRequest) ProtoReflect() protoreflect.Message {
 // Deprecated: Use GetStatusRequest.ProtoReflect.Descriptor instead.
 func (*GetStatusRequest) Descriptor() ([]byte, []int) {
 	return file_spacex_api_device_device_proto_rawDescGZIP(), []int{26}
+}
+
+func (x *GetStatusRequest) GetRouterRole() RouterRole {
+	if x != nil {
+		return x.RouterRole
+	}
+	return RouterRole_UNSPECIFIED
 }
 
 type RebootRequest struct {
@@ -9376,8 +9385,12 @@ var file_spacex_api_device_device_proto_rawDesc = []byte{
 	0x65, 0x73, 0x75, 0x6c, 0x74, 0x18, 0x01, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x1d, 0x2e, 0x53, 0x70,
 	0x61, 0x63, 0x65, 0x58, 0x2e, 0x41, 0x50, 0x49, 0x2e, 0x44, 0x65, 0x76, 0x69, 0x63, 0x65, 0x2e,
 	0x50, 0x69, 0x6e, 0x67, 0x52, 0x65, 0x73, 0x75, 0x6c, 0x74, 0x52, 0x06, 0x72, 0x65, 0x73, 0x75,
-	0x6c, 0x74, 0x22, 0x12, 0x0a, 0x10, 0x47, 0x65, 0x74, 0x53, 0x74, 0x61, 0x74, 0x75, 0x73, 0x52,
-	0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x22, 0x0f, 0x0a, 0x0d, 0x52, 0x65, 0x62, 0x6f, 0x6f, 0x74,
+	0x6c, 0x74, 0x22, 0x52, 0x0a, 0x10, 0x47, 0x65, 0x74, 0x53, 0x74, 0x61, 0x74, 0x75, 0x73, 0x52,
+	0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x3e, 0x0a, 0x0b, 0x72, 0x6f, 0x75, 0x74, 0x65, 0x72,
+	0x5f, 0x72, 0x6f, 0x6c, 0x65, 0x18, 0x01, 0x20, 0x01, 0x28, 0x0e, 0x32, 0x1d, 0x2e, 0x53, 0x70,
+	0x61, 0x63, 0x65, 0x58, 0x2e, 0x41, 0x50, 0x49, 0x2e, 0x44, 0x65, 0x76, 0x69, 0x63, 0x65, 0x2e,
+	0x52, 0x6f, 0x75, 0x74, 0x65, 0x72, 0x52, 0x6f, 0x6c, 0x65, 0x52, 0x0a, 0x72, 0x6f, 0x75, 0x74,
+	0x65, 0x72, 0x52, 0x6f, 0x6c, 0x65, 0x22, 0x0f, 0x0a, 0x0d, 0x52, 0x65, 0x62, 0x6f, 0x6f, 0x74,
 	0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x22, 0x10, 0x0a, 0x0e, 0x52, 0x65, 0x62, 0x6f, 0x6f,
 	0x74, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22, 0x8f, 0x03, 0x0a, 0x0e, 0x53, 0x70,
 	0x65, 0x65, 0x64, 0x54, 0x65, 0x73, 0x74, 0x53, 0x74, 0x61, 0x74, 0x73, 0x12, 0x21, 0x0a, 0x0a,
@@ -10379,12 +10392,13 @@ var file_spacex_api_device_device_proto_goTypes = []any{
 	(*WifiAccountBondingEvent)(nil),                   // 188: SpaceX.API.Device.WifiAccountBondingEvent
 	(*WifiNewPeerEvent)(nil),                          // 189: SpaceX.API.Device.WifiNewPeerEvent
 	(*PingResult)(nil),                                // 190: SpaceX.API.Device.PingResult
-	(*DeviceInfo)(nil),                                // 191: SpaceX.API.Device.DeviceInfo
-	(*PublicKey)(nil),                                 // 192: SpaceX.API.Device.PublicKey
-	(*NetworkInterface)(nil),                          // 193: SpaceX.API.Device.NetworkInterface
-	(*RadioStats)(nil),                                // 194: SpaceX.API.Device.RadioStats
-	(*LLAPosition)(nil),                               // 195: SpaceX.API.Device.LLAPosition
-	(utpoplink.RateLimitReason)(0),                    // 196: SpaceX.API.Telemetron.Public.Integrations.RateLimitReason
+	(RouterRole)(0),                                   // 191: SpaceX.API.Device.RouterRole
+	(*DeviceInfo)(nil),                                // 192: SpaceX.API.Device.DeviceInfo
+	(*PublicKey)(nil),                                 // 193: SpaceX.API.Device.PublicKey
+	(*NetworkInterface)(nil),                          // 194: SpaceX.API.Device.NetworkInterface
+	(*RadioStats)(nil),                                // 195: SpaceX.API.Device.RadioStats
+	(*LLAPosition)(nil),                               // 196: SpaceX.API.Device.LLAPosition
+	(utpoplink.RateLimitReason)(0),                    // 197: SpaceX.API.Telemetron.Public.Integrations.RateLimitReason
 }
 var file_spacex_api_device_device_proto_depIdxs = []int32{
 	13,  // 0: SpaceX.API.Device.ToDevice.request:type_name -> SpaceX.API.Device.Request
@@ -10563,47 +10577,48 @@ var file_spacex_api_device_device_proto_depIdxs = []int32{
 	88,  // 173: SpaceX.API.Device.GetLogResponse.saved:type_name -> SpaceX.API.Device.GetLogResponse.Logs
 	89,  // 174: SpaceX.API.Device.GetPingResponse.results:type_name -> SpaceX.API.Device.GetPingResponse.ResultsEntry
 	190, // 175: SpaceX.API.Device.PingHostResponse.result:type_name -> SpaceX.API.Device.PingResult
-	3,   // 176: SpaceX.API.Device.SpeedTestStats.target:type_name -> SpaceX.API.Device.SpeedTestStats.Target
-	4,   // 177: SpaceX.API.Device.ClientPlatform.platform:type_name -> SpaceX.API.Device.ClientPlatform.Platform
-	38,  // 178: SpaceX.API.Device.SpeedTestRequest.client_speedtest:type_name -> SpaceX.API.Device.SpeedTestStats
-	39,  // 179: SpaceX.API.Device.SpeedTestRequest.client_platform:type_name -> SpaceX.API.Device.ClientPlatform
-	38,  // 180: SpaceX.API.Device.SpeedTestResponse.router_speedtest:type_name -> SpaceX.API.Device.SpeedTestStats
-	91,  // 181: SpaceX.API.Device.GetConnectionsResponse.services:type_name -> SpaceX.API.Device.GetConnectionsResponse.ServicesEntry
-	191, // 182: SpaceX.API.Device.GetDeviceInfoResponse.device_info:type_name -> SpaceX.API.Device.DeviceInfo
-	192, // 183: SpaceX.API.Device.SetTrustedKeysRequest.keys:type_name -> SpaceX.API.Device.PublicKey
-	193, // 184: SpaceX.API.Device.GetNetworkInterfacesResponse.network_interfaces:type_name -> SpaceX.API.Device.NetworkInterface
-	194, // 185: SpaceX.API.Device.GetRadioStatsResponse.radio_stats:type_name -> SpaceX.API.Device.RadioStats
-	1,   // 186: SpaceX.API.Device.GetLocationRequest.source:type_name -> SpaceX.API.Device.PositionSource
-	195, // 187: SpaceX.API.Device.GetLocationResponse.lla:type_name -> SpaceX.API.Device.LLAPosition
-	1,   // 188: SpaceX.API.Device.GetLocationResponse.source:type_name -> SpaceX.API.Device.PositionSource
-	92,  // 189: SpaceX.API.Device.SpeedtestStatus.up:type_name -> SpaceX.API.Device.SpeedtestStatus.Direction
-	92,  // 190: SpaceX.API.Device.SpeedtestStatus.down:type_name -> SpaceX.API.Device.SpeedtestStatus.Direction
-	73,  // 191: SpaceX.API.Device.GetSpeedtestStatusResponse.status:type_name -> SpaceX.API.Device.SpeedtestStatus
-	38,  // 192: SpaceX.API.Device.ReportClientSpeedtestRequest.client_speedtest:type_name -> SpaceX.API.Device.SpeedTestStats
-	38,  // 193: SpaceX.API.Device.ReportClientSpeedtestRequest.wifi_speedtest:type_name -> SpaceX.API.Device.SpeedTestStats
-	39,  // 194: SpaceX.API.Device.ReportClientSpeedtestRequest.client_platform:type_name -> SpaceX.API.Device.ClientPlatform
-	93,  // 195: SpaceX.API.Device.WifiGetDiagnosticsResponse.networks:type_name -> SpaceX.API.Device.WifiGetDiagnosticsResponse.Network
-	5,   // 196: SpaceX.API.Device.DishGetDiagnosticsResponse.hardware_self_test:type_name -> SpaceX.API.Device.DishGetDiagnosticsResponse.TestResult
-	6,   // 197: SpaceX.API.Device.DishGetDiagnosticsResponse.hardware_self_test_codes:type_name -> SpaceX.API.Device.DishGetDiagnosticsResponse.TestResultCode
-	94,  // 198: SpaceX.API.Device.DishGetDiagnosticsResponse.alerts:type_name -> SpaceX.API.Device.DishGetDiagnosticsResponse.Alerts
-	7,   // 199: SpaceX.API.Device.DishGetDiagnosticsResponse.disablement_code:type_name -> SpaceX.API.Device.DishGetDiagnosticsResponse.DisablementCode
-	95,  // 200: SpaceX.API.Device.DishGetDiagnosticsResponse.location:type_name -> SpaceX.API.Device.DishGetDiagnosticsResponse.Location
-	96,  // 201: SpaceX.API.Device.DishGetDiagnosticsResponse.alignment_stats:type_name -> SpaceX.API.Device.DishGetDiagnosticsResponse.AlignmentStats
-	196, // 202: SpaceX.API.Device.DishGetDiagnosticsResponse.dl_bandwidth_restricted_reason:type_name -> SpaceX.API.Telemetron.Public.Integrations.RateLimitReason
-	196, // 203: SpaceX.API.Device.DishGetDiagnosticsResponse.ul_bandwidth_restricted_reason:type_name -> SpaceX.API.Telemetron.Public.Integrations.RateLimitReason
-	8,   // 204: SpaceX.API.Device.UdpConnectivityTestRequest.probe_data:type_name -> SpaceX.API.Device.UdpConnectivityTestRequest.UDPProbeDataType
-	190, // 205: SpaceX.API.Device.GetPingResponse.ResultsEntry.value:type_name -> SpaceX.API.Device.PingResult
-	90,  // 206: SpaceX.API.Device.GetConnectionsResponse.ServicesEntry.value:type_name -> SpaceX.API.Device.GetConnectionsResponse.ServiceConnection
-	2,   // 207: SpaceX.API.Device.SpeedtestStatus.Direction.err:type_name -> SpaceX.API.Device.SpeedtestError
-	9,   // 208: SpaceX.API.Device.Device.Stream:input_type -> SpaceX.API.Device.ToDevice
-	13,  // 209: SpaceX.API.Device.Device.Handle:input_type -> SpaceX.API.Device.Request
-	10,  // 210: SpaceX.API.Device.Device.Stream:output_type -> SpaceX.API.Device.FromDevice
-	14,  // 211: SpaceX.API.Device.Device.Handle:output_type -> SpaceX.API.Device.Response
-	210, // [210:212] is the sub-list for method output_type
-	208, // [208:210] is the sub-list for method input_type
-	208, // [208:208] is the sub-list for extension type_name
-	208, // [208:208] is the sub-list for extension extendee
-	0,   // [0:208] is the sub-list for field type_name
+	191, // 176: SpaceX.API.Device.GetStatusRequest.router_role:type_name -> SpaceX.API.Device.RouterRole
+	3,   // 177: SpaceX.API.Device.SpeedTestStats.target:type_name -> SpaceX.API.Device.SpeedTestStats.Target
+	4,   // 178: SpaceX.API.Device.ClientPlatform.platform:type_name -> SpaceX.API.Device.ClientPlatform.Platform
+	38,  // 179: SpaceX.API.Device.SpeedTestRequest.client_speedtest:type_name -> SpaceX.API.Device.SpeedTestStats
+	39,  // 180: SpaceX.API.Device.SpeedTestRequest.client_platform:type_name -> SpaceX.API.Device.ClientPlatform
+	38,  // 181: SpaceX.API.Device.SpeedTestResponse.router_speedtest:type_name -> SpaceX.API.Device.SpeedTestStats
+	91,  // 182: SpaceX.API.Device.GetConnectionsResponse.services:type_name -> SpaceX.API.Device.GetConnectionsResponse.ServicesEntry
+	192, // 183: SpaceX.API.Device.GetDeviceInfoResponse.device_info:type_name -> SpaceX.API.Device.DeviceInfo
+	193, // 184: SpaceX.API.Device.SetTrustedKeysRequest.keys:type_name -> SpaceX.API.Device.PublicKey
+	194, // 185: SpaceX.API.Device.GetNetworkInterfacesResponse.network_interfaces:type_name -> SpaceX.API.Device.NetworkInterface
+	195, // 186: SpaceX.API.Device.GetRadioStatsResponse.radio_stats:type_name -> SpaceX.API.Device.RadioStats
+	1,   // 187: SpaceX.API.Device.GetLocationRequest.source:type_name -> SpaceX.API.Device.PositionSource
+	196, // 188: SpaceX.API.Device.GetLocationResponse.lla:type_name -> SpaceX.API.Device.LLAPosition
+	1,   // 189: SpaceX.API.Device.GetLocationResponse.source:type_name -> SpaceX.API.Device.PositionSource
+	92,  // 190: SpaceX.API.Device.SpeedtestStatus.up:type_name -> SpaceX.API.Device.SpeedtestStatus.Direction
+	92,  // 191: SpaceX.API.Device.SpeedtestStatus.down:type_name -> SpaceX.API.Device.SpeedtestStatus.Direction
+	73,  // 192: SpaceX.API.Device.GetSpeedtestStatusResponse.status:type_name -> SpaceX.API.Device.SpeedtestStatus
+	38,  // 193: SpaceX.API.Device.ReportClientSpeedtestRequest.client_speedtest:type_name -> SpaceX.API.Device.SpeedTestStats
+	38,  // 194: SpaceX.API.Device.ReportClientSpeedtestRequest.wifi_speedtest:type_name -> SpaceX.API.Device.SpeedTestStats
+	39,  // 195: SpaceX.API.Device.ReportClientSpeedtestRequest.client_platform:type_name -> SpaceX.API.Device.ClientPlatform
+	93,  // 196: SpaceX.API.Device.WifiGetDiagnosticsResponse.networks:type_name -> SpaceX.API.Device.WifiGetDiagnosticsResponse.Network
+	5,   // 197: SpaceX.API.Device.DishGetDiagnosticsResponse.hardware_self_test:type_name -> SpaceX.API.Device.DishGetDiagnosticsResponse.TestResult
+	6,   // 198: SpaceX.API.Device.DishGetDiagnosticsResponse.hardware_self_test_codes:type_name -> SpaceX.API.Device.DishGetDiagnosticsResponse.TestResultCode
+	94,  // 199: SpaceX.API.Device.DishGetDiagnosticsResponse.alerts:type_name -> SpaceX.API.Device.DishGetDiagnosticsResponse.Alerts
+	7,   // 200: SpaceX.API.Device.DishGetDiagnosticsResponse.disablement_code:type_name -> SpaceX.API.Device.DishGetDiagnosticsResponse.DisablementCode
+	95,  // 201: SpaceX.API.Device.DishGetDiagnosticsResponse.location:type_name -> SpaceX.API.Device.DishGetDiagnosticsResponse.Location
+	96,  // 202: SpaceX.API.Device.DishGetDiagnosticsResponse.alignment_stats:type_name -> SpaceX.API.Device.DishGetDiagnosticsResponse.AlignmentStats
+	197, // 203: SpaceX.API.Device.DishGetDiagnosticsResponse.dl_bandwidth_restricted_reason:type_name -> SpaceX.API.Telemetron.Public.Integrations.RateLimitReason
+	197, // 204: SpaceX.API.Device.DishGetDiagnosticsResponse.ul_bandwidth_restricted_reason:type_name -> SpaceX.API.Telemetron.Public.Integrations.RateLimitReason
+	8,   // 205: SpaceX.API.Device.UdpConnectivityTestRequest.probe_data:type_name -> SpaceX.API.Device.UdpConnectivityTestRequest.UDPProbeDataType
+	190, // 206: SpaceX.API.Device.GetPingResponse.ResultsEntry.value:type_name -> SpaceX.API.Device.PingResult
+	90,  // 207: SpaceX.API.Device.GetConnectionsResponse.ServicesEntry.value:type_name -> SpaceX.API.Device.GetConnectionsResponse.ServiceConnection
+	2,   // 208: SpaceX.API.Device.SpeedtestStatus.Direction.err:type_name -> SpaceX.API.Device.SpeedtestError
+	9,   // 209: SpaceX.API.Device.Device.Stream:input_type -> SpaceX.API.Device.ToDevice
+	13,  // 210: SpaceX.API.Device.Device.Handle:input_type -> SpaceX.API.Device.Request
+	10,  // 211: SpaceX.API.Device.Device.Stream:output_type -> SpaceX.API.Device.FromDevice
+	14,  // 212: SpaceX.API.Device.Device.Handle:output_type -> SpaceX.API.Device.Response
+	211, // [211:213] is the sub-list for method output_type
+	209, // [209:211] is the sub-list for method input_type
+	209, // [209:209] is the sub-list for extension type_name
+	209, // [209:209] is the sub-list for extension extendee
+	0,   // [0:209] is the sub-list for field type_name
 }
 
 func init() { file_spacex_api_device_device_proto_init() }
