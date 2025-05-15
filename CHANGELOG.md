@@ -1,5 +1,32 @@
 # CHANGELOG
 
++ 2025.05.08.mr55289 / 4aa5e4be-7b7b-42ab-ac33-993b3ef1183a.uterm_manifest.release
+
+[Dish] New `ned2dishQuaternion` in `get_status`
+
+```
+type Quaternion struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	QScalar float32 `protobuf:"fixed32,1,opt,name=q_scalar,json=qScalar,proto3" json:"q_scalar,omitempty"`
+	QX      float32 `protobuf:"fixed32,2,opt,name=q_x,json=qX,proto3" json:"q_x,omitempty"`
+	QY      float32 `protobuf:"fixed32,3,opt,name=q_y,json=qY,proto3" json:"q_y,omitempty"`
+	QZ      float32 `protobuf:"fixed32,4,opt,name=q_z,json=qZ,proto3" json:"q_z,omitempty"`
+}
+```
+
+[Dish] Possible `downstreamRouters` in `get_status`, e.g.,
+
+```
+  "downstreamRouters": {
+      "Router-0100000000000000xxxx": {
+        "lastSeen": "1747292896928698453"
+      }
+    },
+```
+
 + 2025.04.29.mr54648.2 / 022173f2-f284-4b31-a438-47718a77e227.uterm_manifest.release
 
 [Dish] New `ScheduleReboot` in `UpdateRequest`.
