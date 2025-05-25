@@ -1,5 +1,27 @@
 # CHANGELOG
 
++ 2025.05.15.cr55718 / acced5ef-ab18-4f52-98ba-d0c232895cb6.uterm_manifest.release
+
+A few proto files have been renamed from `spacex/api` to `spacex_api`.
+
+```
+spacex/api/common/status/status.proto
+spacex_api/device/command.proto
+spacex_api/device/common.proto
+spacex_api/device/device.proto
+spacex_api/device/dish_config.proto
+spacex_api/device/dish.proto
+spacex_api/device/rssi_scan.proto
+spacex_api/device/services/unlock/service.proto
+spacex_api/device/transceiver.proto
+spacex_api/device/wifi_config.proto
+spacex_api/device/wifi.proto
+spacex_api/device/wifi_util.proto
+spacex/api/satellites/network/ut_disablement_codes.proto
+spacex/api/telemetron/public/common/time.proto
+spacex/api/telemetron/public/integrations/ut_pop_link_report.proto
+```
+
 + 2025.05.08.mr55289 / 4aa5e4be-7b7b-42ab-ac33-993b3ef1183a.uterm_manifest.release
 
 [Dish] New `ned2dishQuaternion` in `get_status`

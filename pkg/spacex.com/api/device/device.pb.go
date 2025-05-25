@@ -2,7 +2,7 @@
 // versions:
 // 	protoc-gen-go v1.34.2
 // 	protoc        v3.21.12
-// source: spacex/api/device/device.proto
+// source: spacex_api/device/device.proto
 
 package device
 
@@ -1284,7 +1284,7 @@ func (x *Request) GetReportClientSpeedtest() *ReportClientSpeedtestRequest {
 	return nil
 }
 
-// Deprecated: Marked as deprecated in spacex/api/device/device.proto.
+// Deprecated: Marked as deprecated in spacex_api/device/device.proto.
 func (x *Request) GetInitiateRemoteSsh() *InitiateRemoteSshRequest {
 	if x, ok := x.GetRequest().(*Request_InitiateRemoteSsh); ok {
 		return x.InitiateRemoteSsh
@@ -1523,7 +1523,7 @@ func (x *Request) GetWifiSetMeshDeviceTrust() *WifiSetMeshDeviceTrustRequest {
 	return nil
 }
 
-// Deprecated: Marked as deprecated in spacex/api/device/device.proto.
+// Deprecated: Marked as deprecated in spacex_api/device/device.proto.
 func (x *Request) GetWifiSetMeshConfig() *WifiSetMeshConfigRequest {
 	if x, ok := x.GetRequest().(*Request_WifiSetMeshConfig); ok {
 		return x.WifiSetMeshConfig
@@ -1791,7 +1791,7 @@ type Request_ReportClientSpeedtest struct {
 }
 
 type Request_InitiateRemoteSsh struct {
-	// Deprecated: Marked as deprecated in spacex/api/device/device.proto.
+	// Deprecated: Marked as deprecated in spacex_api/device/device.proto.
 	InitiateRemoteSsh *InitiateRemoteSshRequest `protobuf:"bytes,1030,opt,name=initiate_remote_ssh,json=initiateRemoteSsh,proto3,oneof"`
 }
 
@@ -1928,7 +1928,7 @@ type Request_WifiSetMeshDeviceTrust struct {
 }
 
 type Request_WifiSetMeshConfig struct {
-	// Deprecated: Marked as deprecated in spacex/api/device/device.proto.
+	// Deprecated: Marked as deprecated in spacex_api/device/device.proto.
 	WifiSetMeshConfig *WifiSetMeshConfigRequest `protobuf:"bytes,3013,opt,name=wifi_set_mesh_config,json=wifiSetMeshConfig,proto3,oneof"`
 }
 
@@ -2476,7 +2476,7 @@ func (x *Response) GetReportClientSpeedtest() *ReportClientSpeedtestResponse {
 	return nil
 }
 
-// Deprecated: Marked as deprecated in spacex/api/device/device.proto.
+// Deprecated: Marked as deprecated in spacex_api/device/device.proto.
 func (x *Response) GetInitiateRemoteSsh() *InitiateRemoteSshResponse {
 	if x, ok := x.GetResponse().(*Response_InitiateRemoteSsh); ok {
 		return x.InitiateRemoteSsh
@@ -2729,7 +2729,7 @@ func (x *Response) GetWifiSetMeshDeviceTrust() *WifiSetMeshDeviceTrustResponse {
 	return nil
 }
 
-// Deprecated: Marked as deprecated in spacex/api/device/device.proto.
+// Deprecated: Marked as deprecated in spacex_api/device/device.proto.
 func (x *Response) GetWifiSetMeshConfig() *WifiSetMeshConfigResponse {
 	if x, ok := x.GetResponse().(*Response_WifiSetMeshConfig); ok {
 		return x.WifiSetMeshConfig
@@ -2938,7 +2938,7 @@ type Response_ReportClientSpeedtest struct {
 }
 
 type Response_InitiateRemoteSsh struct {
-	// Deprecated: Marked as deprecated in spacex/api/device/device.proto.
+	// Deprecated: Marked as deprecated in spacex_api/device/device.proto.
 	InitiateRemoteSsh *InitiateRemoteSshResponse `protobuf:"bytes,1030,opt,name=initiate_remote_ssh,json=initiateRemoteSsh,proto3,oneof"`
 }
 
@@ -3083,7 +3083,7 @@ type Response_WifiSetMeshDeviceTrust struct {
 }
 
 type Response_WifiSetMeshConfig struct {
-	// Deprecated: Marked as deprecated in spacex/api/device/device.proto.
+	// Deprecated: Marked as deprecated in spacex_api/device/device.proto.
 	WifiSetMeshConfig *WifiSetMeshConfigResponse `protobuf:"bytes,3013,opt,name=wifi_set_mesh_config,json=wifiSetMeshConfig,proto3,oneof"`
 }
 
@@ -4071,11 +4071,11 @@ type GetLogResponse struct {
 
 	Current *GetLogResponse_Logs `protobuf:"bytes,4,opt,name=current,proto3" json:"current,omitempty"`
 	Saved   *GetLogResponse_Logs `protobuf:"bytes,5,opt,name=saved,proto3" json:"saved,omitempty"`
-	// Deprecated: Marked as deprecated in spacex/api/device/device.proto.
+	// Deprecated: Marked as deprecated in spacex_api/device/device.proto.
 	Syslog string `protobuf:"bytes,1,opt,name=syslog,proto3" json:"syslog,omitempty"`
-	// Deprecated: Marked as deprecated in spacex/api/device/device.proto.
+	// Deprecated: Marked as deprecated in spacex_api/device/device.proto.
 	OfflineLog string `protobuf:"bytes,2,opt,name=offline_log,json=offlineLog,proto3" json:"offline_log,omitempty"`
-	// Deprecated: Marked as deprecated in spacex/api/device/device.proto.
+	// Deprecated: Marked as deprecated in spacex_api/device/device.proto.
 	PersistentLog string `protobuf:"bytes,3,opt,name=persistent_log,json=persistentLog,proto3" json:"persistent_log,omitempty"`
 }
 
@@ -4125,7 +4125,7 @@ func (x *GetLogResponse) GetSaved() *GetLogResponse_Logs {
 	return nil
 }
 
-// Deprecated: Marked as deprecated in spacex/api/device/device.proto.
+// Deprecated: Marked as deprecated in spacex_api/device/device.proto.
 func (x *GetLogResponse) GetSyslog() string {
 	if x != nil {
 		return x.Syslog
@@ -4133,7 +4133,7 @@ func (x *GetLogResponse) GetSyslog() string {
 	return ""
 }
 
-// Deprecated: Marked as deprecated in spacex/api/device/device.proto.
+// Deprecated: Marked as deprecated in spacex_api/device/device.proto.
 func (x *GetLogResponse) GetOfflineLog() string {
 	if x != nil {
 		return x.OfflineLog
@@ -4141,7 +4141,7 @@ func (x *GetLogResponse) GetOfflineLog() string {
 	return ""
 }
 
-// Deprecated: Marked as deprecated in spacex/api/device/device.proto.
+// Deprecated: Marked as deprecated in spacex_api/device/device.proto.
 func (x *GetLogResponse) GetPersistentLog() string {
 	if x != nil {
 		return x.PersistentLog
@@ -4464,9 +4464,9 @@ type SpeedTestStats struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// Deprecated: Marked as deprecated in spacex/api/device/device.proto.
+	// Deprecated: Marked as deprecated in spacex_api/device/device.proto.
 	LatencyMs float32 `protobuf:"fixed32,3,opt,name=latency_ms,json=latencyMs,proto3" json:"latency_ms,omitempty"`
-	// Deprecated: Marked as deprecated in spacex/api/device/device.proto.
+	// Deprecated: Marked as deprecated in spacex_api/device/device.proto.
 	StartTime         uint64                `protobuf:"varint,4,opt,name=start_time,json=startTime,proto3" json:"start_time,omitempty"`
 	UploadStartTime   int64                 `protobuf:"varint,5,opt,name=upload_start_time,json=uploadStartTime,proto3" json:"upload_start_time,omitempty"`
 	DownloadStartTime int64                 `protobuf:"varint,6,opt,name=download_start_time,json=downloadStartTime,proto3" json:"download_start_time,omitempty"`
@@ -4508,7 +4508,7 @@ func (*SpeedTestStats) Descriptor() ([]byte, []int) {
 	return file_spacex_api_device_device_proto_rawDescGZIP(), []int{29}
 }
 
-// Deprecated: Marked as deprecated in spacex/api/device/device.proto.
+// Deprecated: Marked as deprecated in spacex_api/device/device.proto.
 func (x *SpeedTestStats) GetLatencyMs() float32 {
 	if x != nil {
 		return x.LatencyMs
@@ -4516,7 +4516,7 @@ func (x *SpeedTestStats) GetLatencyMs() float32 {
 	return 0
 }
 
-// Deprecated: Marked as deprecated in spacex/api/device/device.proto.
+// Deprecated: Marked as deprecated in spacex_api/device/device.proto.
 func (x *SpeedTestStats) GetStartTime() uint64 {
 	if x != nil {
 		return x.StartTime
@@ -4705,17 +4705,17 @@ type SpeedTestResponse struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// Deprecated: Marked as deprecated in spacex/api/device/device.proto.
+	// Deprecated: Marked as deprecated in spacex_api/device/device.proto.
 	DownloadBps float32 `protobuf:"fixed32,1,opt,name=download_bps,json=downloadBps,proto3" json:"download_bps,omitempty"`
-	// Deprecated: Marked as deprecated in spacex/api/device/device.proto.
+	// Deprecated: Marked as deprecated in spacex_api/device/device.proto.
 	UploadBps float32 `protobuf:"fixed32,2,opt,name=upload_bps,json=uploadBps,proto3" json:"upload_bps,omitempty"`
-	// Deprecated: Marked as deprecated in spacex/api/device/device.proto.
+	// Deprecated: Marked as deprecated in spacex_api/device/device.proto.
 	LatencyS float32 `protobuf:"fixed32,3,opt,name=latency_s,json=latencyS,proto3" json:"latency_s,omitempty"`
-	// Deprecated: Marked as deprecated in spacex/api/device/device.proto.
+	// Deprecated: Marked as deprecated in spacex_api/device/device.proto.
 	DownloadMbps float32 `protobuf:"fixed32,4,opt,name=download_mbps,json=downloadMbps,proto3" json:"download_mbps,omitempty"`
-	// Deprecated: Marked as deprecated in spacex/api/device/device.proto.
+	// Deprecated: Marked as deprecated in spacex_api/device/device.proto.
 	UploadMbps float32 `protobuf:"fixed32,5,opt,name=upload_mbps,json=uploadMbps,proto3" json:"upload_mbps,omitempty"`
-	// Deprecated: Marked as deprecated in spacex/api/device/device.proto.
+	// Deprecated: Marked as deprecated in spacex_api/device/device.proto.
 	LatencyMs              float32         `protobuf:"fixed32,6,opt,name=latency_ms,json=latencyMs,proto3" json:"latency_ms,omitempty"`
 	RouterSpeedtest        *SpeedTestStats `protobuf:"bytes,15,opt,name=router_speedtest,json=routerSpeedtest,proto3" json:"router_speedtest,omitempty"`
 	DownloadMbps_1TcpConn  float32         `protobuf:"fixed32,7,opt,name=download_mbps_1_tcp_conn,json=downloadMbps1TcpConn,proto3" json:"download_mbps_1_tcp_conn,omitempty"`
@@ -4760,7 +4760,7 @@ func (*SpeedTestResponse) Descriptor() ([]byte, []int) {
 	return file_spacex_api_device_device_proto_rawDescGZIP(), []int{32}
 }
 
-// Deprecated: Marked as deprecated in spacex/api/device/device.proto.
+// Deprecated: Marked as deprecated in spacex_api/device/device.proto.
 func (x *SpeedTestResponse) GetDownloadBps() float32 {
 	if x != nil {
 		return x.DownloadBps
@@ -4768,7 +4768,7 @@ func (x *SpeedTestResponse) GetDownloadBps() float32 {
 	return 0
 }
 
-// Deprecated: Marked as deprecated in spacex/api/device/device.proto.
+// Deprecated: Marked as deprecated in spacex_api/device/device.proto.
 func (x *SpeedTestResponse) GetUploadBps() float32 {
 	if x != nil {
 		return x.UploadBps
@@ -4776,7 +4776,7 @@ func (x *SpeedTestResponse) GetUploadBps() float32 {
 	return 0
 }
 
-// Deprecated: Marked as deprecated in spacex/api/device/device.proto.
+// Deprecated: Marked as deprecated in spacex_api/device/device.proto.
 func (x *SpeedTestResponse) GetLatencyS() float32 {
 	if x != nil {
 		return x.LatencyS
@@ -4784,7 +4784,7 @@ func (x *SpeedTestResponse) GetLatencyS() float32 {
 	return 0
 }
 
-// Deprecated: Marked as deprecated in spacex/api/device/device.proto.
+// Deprecated: Marked as deprecated in spacex_api/device/device.proto.
 func (x *SpeedTestResponse) GetDownloadMbps() float32 {
 	if x != nil {
 		return x.DownloadMbps
@@ -4792,7 +4792,7 @@ func (x *SpeedTestResponse) GetDownloadMbps() float32 {
 	return 0
 }
 
-// Deprecated: Marked as deprecated in spacex/api/device/device.proto.
+// Deprecated: Marked as deprecated in spacex_api/device/device.proto.
 func (x *SpeedTestResponse) GetUploadMbps() float32 {
 	if x != nil {
 		return x.UploadMbps
@@ -4800,7 +4800,7 @@ func (x *SpeedTestResponse) GetUploadMbps() float32 {
 	return 0
 }
 
-// Deprecated: Marked as deprecated in spacex/api/device/device.proto.
+// Deprecated: Marked as deprecated in spacex_api/device/device.proto.
 func (x *SpeedTestResponse) GetLatencyMs() float32 {
 	if x != nil {
 		return x.LatencyMs
@@ -7724,7 +7724,7 @@ type GetLogResponse_Logs struct {
 	Syslog      string `protobuf:"bytes,1,opt,name=syslog,proto3" json:"syslog,omitempty"`
 	Dmesg       string `protobuf:"bytes,2,opt,name=dmesg,proto3" json:"dmesg,omitempty"`
 	KernelPanic string `protobuf:"bytes,3,opt,name=kernel_panic,json=kernelPanic,proto3" json:"kernel_panic,omitempty"`
-	// Deprecated: Marked as deprecated in spacex/api/device/device.proto.
+	// Deprecated: Marked as deprecated in spacex_api/device/device.proto.
 	MtkEthProcs      string `protobuf:"bytes,4,opt,name=mtk_eth_procs,json=mtkEthProcs,proto3" json:"mtk_eth_procs,omitempty"`
 	DebugNetsys_0Sec string `protobuf:"bytes,5,opt,name=debug_netsys_0sec,json=debugNetsys0sec,proto3" json:"debug_netsys_0sec,omitempty"`
 	DebugNetsys_2Sec string `protobuf:"bytes,6,opt,name=debug_netsys_2sec,json=debugNetsys2sec,proto3" json:"debug_netsys_2sec,omitempty"`
@@ -7783,7 +7783,7 @@ func (x *GetLogResponse_Logs) GetKernelPanic() string {
 	return ""
 }
 
-// Deprecated: Marked as deprecated in spacex/api/device/device.proto.
+// Deprecated: Marked as deprecated in spacex_api/device/device.proto.
 func (x *GetLogResponse_Logs) GetMtkEthProcs() string {
 	if x != nil {
 		return x.MtkEthProcs
@@ -8290,23 +8290,23 @@ func (x *DishGetDiagnosticsResponse_AlignmentStats) GetDesiredBoresightElevation
 var File_spacex_api_device_device_proto protoreflect.FileDescriptor
 
 var file_spacex_api_device_device_proto_rawDesc = []byte{
-	0x0a, 0x1e, 0x73, 0x70, 0x61, 0x63, 0x65, 0x78, 0x2f, 0x61, 0x70, 0x69, 0x2f, 0x64, 0x65, 0x76,
+	0x0a, 0x1e, 0x73, 0x70, 0x61, 0x63, 0x65, 0x78, 0x5f, 0x61, 0x70, 0x69, 0x2f, 0x64, 0x65, 0x76,
 	0x69, 0x63, 0x65, 0x2f, 0x64, 0x65, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f,
 	0x12, 0x11, 0x53, 0x70, 0x61, 0x63, 0x65, 0x58, 0x2e, 0x41, 0x50, 0x49, 0x2e, 0x44, 0x65, 0x76,
 	0x69, 0x63, 0x65, 0x1a, 0x25, 0x73, 0x70, 0x61, 0x63, 0x65, 0x78, 0x2f, 0x61, 0x70, 0x69, 0x2f,
 	0x63, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x2f, 0x73, 0x74, 0x61, 0x74, 0x75, 0x73, 0x2f, 0x73, 0x74,
 	0x61, 0x74, 0x75, 0x73, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x1a, 0x1f, 0x73, 0x70, 0x61, 0x63,
-	0x65, 0x78, 0x2f, 0x61, 0x70, 0x69, 0x2f, 0x64, 0x65, 0x76, 0x69, 0x63, 0x65, 0x2f, 0x63, 0x6f,
+	0x65, 0x78, 0x5f, 0x61, 0x70, 0x69, 0x2f, 0x64, 0x65, 0x76, 0x69, 0x63, 0x65, 0x2f, 0x63, 0x6f,
 	0x6d, 0x6d, 0x61, 0x6e, 0x64, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x1a, 0x1e, 0x73, 0x70, 0x61,
-	0x63, 0x65, 0x78, 0x2f, 0x61, 0x70, 0x69, 0x2f, 0x64, 0x65, 0x76, 0x69, 0x63, 0x65, 0x2f, 0x63,
+	0x63, 0x65, 0x78, 0x5f, 0x61, 0x70, 0x69, 0x2f, 0x64, 0x65, 0x76, 0x69, 0x63, 0x65, 0x2f, 0x63,
 	0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x1a, 0x1c, 0x73, 0x70, 0x61,
-	0x63, 0x65, 0x78, 0x2f, 0x61, 0x70, 0x69, 0x2f, 0x64, 0x65, 0x76, 0x69, 0x63, 0x65, 0x2f, 0x64,
+	0x63, 0x65, 0x78, 0x5f, 0x61, 0x70, 0x69, 0x2f, 0x64, 0x65, 0x76, 0x69, 0x63, 0x65, 0x2f, 0x64,
 	0x69, 0x73, 0x68, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x1a, 0x23, 0x73, 0x70, 0x61, 0x63, 0x65,
-	0x78, 0x2f, 0x61, 0x70, 0x69, 0x2f, 0x64, 0x65, 0x76, 0x69, 0x63, 0x65, 0x2f, 0x74, 0x72, 0x61,
+	0x78, 0x5f, 0x61, 0x70, 0x69, 0x2f, 0x64, 0x65, 0x76, 0x69, 0x63, 0x65, 0x2f, 0x74, 0x72, 0x61,
 	0x6e, 0x73, 0x63, 0x65, 0x69, 0x76, 0x65, 0x72, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x1a, 0x1c,
-	0x73, 0x70, 0x61, 0x63, 0x65, 0x78, 0x2f, 0x61, 0x70, 0x69, 0x2f, 0x64, 0x65, 0x76, 0x69, 0x63,
+	0x73, 0x70, 0x61, 0x63, 0x65, 0x78, 0x5f, 0x61, 0x70, 0x69, 0x2f, 0x64, 0x65, 0x76, 0x69, 0x63,
 	0x65, 0x2f, 0x77, 0x69, 0x66, 0x69, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x1a, 0x2f, 0x73, 0x70,
-	0x61, 0x63, 0x65, 0x78, 0x2f, 0x61, 0x70, 0x69, 0x2f, 0x64, 0x65, 0x76, 0x69, 0x63, 0x65, 0x2f,
+	0x61, 0x63, 0x65, 0x78, 0x5f, 0x61, 0x70, 0x69, 0x2f, 0x64, 0x65, 0x76, 0x69, 0x63, 0x65, 0x2f,
 	0x73, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x73, 0x2f, 0x75, 0x6e, 0x6c, 0x6f, 0x63, 0x6b, 0x2f,
 	0x73, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x1a, 0x42, 0x73,
 	0x70, 0x61, 0x63, 0x65, 0x78, 0x2f, 0x61, 0x70, 0x69, 0x2f, 0x74, 0x65, 0x6c, 0x65, 0x6d, 0x65,

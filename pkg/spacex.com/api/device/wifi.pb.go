@@ -2,7 +2,7 @@
 // versions:
 // 	protoc-gen-go v1.34.2
 // 	protoc        v3.21.12
-// source: spacex/api/device/wifi.proto
+// source: spacex_api/device/wifi.proto
 
 package device
 
@@ -1037,7 +1037,7 @@ func (x *FromController) GetWifiConfig() *WifiConfig {
 	return nil
 }
 
-// Deprecated: Marked as deprecated in spacex/api/device/wifi.proto.
+// Deprecated: Marked as deprecated in spacex_api/device/wifi.proto.
 func (x *FromController) GetSteerClientRequest() *SteerClientRequest {
 	if x, ok := x.GetMessage().(*FromController_SteerClientRequest); ok {
 		return x.SteerClientRequest
@@ -1082,7 +1082,7 @@ type FromController_WifiConfig struct {
 }
 
 type FromController_SteerClientRequest struct {
-	// Deprecated: Marked as deprecated in spacex/api/device/wifi.proto.
+	// Deprecated: Marked as deprecated in spacex_api/device/wifi.proto.
 	SteerClientRequest *SteerClientRequest `protobuf:"bytes,2,opt,name=steer_client_request,json=steerClientRequest,proto3,oneof"`
 }
 
@@ -1114,15 +1114,15 @@ func (*FromController_StartSpeedtest) isFromController_Message() {}
 
 func (*FromController_WifiBtmRequest) isFromController_Message() {}
 
-// Deprecated: Marked as deprecated in spacex/api/device/wifi.proto.
+// Deprecated: Marked as deprecated in spacex_api/device/wifi.proto.
 type SteerClientRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// Deprecated: Marked as deprecated in spacex/api/device/wifi.proto.
+	// Deprecated: Marked as deprecated in spacex_api/device/wifi.proto.
 	ClientMacAddr string `protobuf:"bytes,1,opt,name=client_mac_addr,json=clientMacAddr,proto3" json:"client_mac_addr,omitempty"`
-	// Deprecated: Marked as deprecated in spacex/api/device/wifi.proto.
+	// Deprecated: Marked as deprecated in spacex_api/device/wifi.proto.
 	Targets []*SteerClientRequest_SteerTarget `protobuf:"bytes,2,rep,name=targets,proto3" json:"targets,omitempty"`
 }
 
@@ -1158,7 +1158,7 @@ func (*SteerClientRequest) Descriptor() ([]byte, []int) {
 	return file_spacex_api_device_wifi_proto_rawDescGZIP(), []int{10}
 }
 
-// Deprecated: Marked as deprecated in spacex/api/device/wifi.proto.
+// Deprecated: Marked as deprecated in spacex_api/device/wifi.proto.
 func (x *SteerClientRequest) GetClientMacAddr() string {
 	if x != nil {
 		return x.ClientMacAddr
@@ -1166,7 +1166,7 @@ func (x *SteerClientRequest) GetClientMacAddr() string {
 	return ""
 }
 
-// Deprecated: Marked as deprecated in spacex/api/device/wifi.proto.
+// Deprecated: Marked as deprecated in spacex_api/device/wifi.proto.
 func (x *SteerClientRequest) GetTargets() []*SteerClientRequest_SteerTarget {
 	if x != nil {
 		return x.Targets
@@ -1787,7 +1787,7 @@ type WifiGetClientHistoryRequest struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// Deprecated: Marked as deprecated in spacex/api/device/wifi.proto.
+	// Deprecated: Marked as deprecated in spacex_api/device/wifi.proto.
 	MacAddress string `protobuf:"bytes,1,opt,name=mac_address,json=macAddress,proto3" json:"mac_address,omitempty"`
 	ClientId   uint32 `protobuf:"varint,2,opt,name=client_id,json=clientId,proto3" json:"client_id,omitempty"`
 }
@@ -1824,7 +1824,7 @@ func (*WifiGetClientHistoryRequest) Descriptor() ([]byte, []int) {
 	return file_spacex_api_device_wifi_proto_rawDescGZIP(), []int{23}
 }
 
-// Deprecated: Marked as deprecated in spacex/api/device/wifi.proto.
+// Deprecated: Marked as deprecated in spacex_api/device/wifi.proto.
 func (x *WifiGetClientHistoryRequest) GetMacAddress() string {
 	if x != nil {
 		return x.MacAddress
@@ -2963,7 +2963,7 @@ type WifiGetStatusResponse struct {
 
 	DeviceInfo  *DeviceInfo  `protobuf:"bytes,3,opt,name=device_info,json=deviceInfo,proto3" json:"device_info,omitempty"`
 	DeviceState *DeviceState `protobuf:"bytes,4,opt,name=device_state,json=deviceState,proto3" json:"device_state,omitempty"`
-	// Deprecated: Marked as deprecated in spacex/api/device/wifi.proto.
+	// Deprecated: Marked as deprecated in spacex_api/device/wifi.proto.
 	CaptivePortalEnabled   bool     `protobuf:"varint,1,opt,name=captive_portal_enabled,json=captivePortalEnabled,proto3" json:"captive_portal_enabled,omitempty"`
 	Ipv4WanAddress         string   `protobuf:"bytes,1003,opt,name=ipv4_wan_address,json=ipv4WanAddress,proto3" json:"ipv4_wan_address,omitempty"`
 	Ipv6WanAddresses       []string `protobuf:"bytes,1017,rep,name=ipv6_wan_addresses,json=ipv6WanAddresses,proto3" json:"ipv6_wan_addresses,omitempty"`
@@ -2979,9 +2979,9 @@ type WifiGetStatusResponse struct {
 	PopIpv6PingDropRate    float32  `protobuf:"fixed32,1027,opt,name=pop_ipv6_ping_drop_rate,json=popIpv6PingDropRate,proto3" json:"pop_ipv6_ping_drop_rate,omitempty"`
 	PopIpv6PingDropRate_5M float32  `protobuf:"fixed32,1028,opt,name=pop_ipv6_ping_drop_rate_5m,json=popIpv6PingDropRate5m,proto3" json:"pop_ipv6_ping_drop_rate_5m,omitempty"`
 	PopIpv6PingLatencyMs   float32  `protobuf:"fixed32,1029,opt,name=pop_ipv6_ping_latency_ms,json=popIpv6PingLatencyMs,proto3" json:"pop_ipv6_ping_latency_ms,omitempty"`
-	// Deprecated: Marked as deprecated in spacex/api/device/wifi.proto.
+	// Deprecated: Marked as deprecated in spacex_api/device/wifi.proto.
 	Rf_2GhzStatus *WifiBandStatus `protobuf:"bytes,1008,opt,name=rf_2ghz_status,json=rf2ghzStatus,proto3" json:"rf_2ghz_status,omitempty"`
-	// Deprecated: Marked as deprecated in spacex/api/device/wifi.proto.
+	// Deprecated: Marked as deprecated in spacex_api/device/wifi.proto.
 	Rf_5GhzStatus                 *WifiBandStatus                        `protobuf:"bytes,1009,opt,name=rf_5ghz_status,json=rf5ghzStatus,proto3" json:"rf_5ghz_status,omitempty"`
 	Alerts                        *WifiAlerts                            `protobuf:"bytes,1010,opt,name=alerts,proto3" json:"alerts,omitempty"`
 	IsAviation                    bool                                   `protobuf:"varint,1011,opt,name=is_aviation,json=isAviation,proto3" json:"is_aviation,omitempty"`
@@ -3047,7 +3047,7 @@ func (x *WifiGetStatusResponse) GetDeviceState() *DeviceState {
 	return nil
 }
 
-// Deprecated: Marked as deprecated in spacex/api/device/wifi.proto.
+// Deprecated: Marked as deprecated in spacex_api/device/wifi.proto.
 func (x *WifiGetStatusResponse) GetCaptivePortalEnabled() bool {
 	if x != nil {
 		return x.CaptivePortalEnabled
@@ -3153,7 +3153,7 @@ func (x *WifiGetStatusResponse) GetPopIpv6PingLatencyMs() float32 {
 	return 0
 }
 
-// Deprecated: Marked as deprecated in spacex/api/device/wifi.proto.
+// Deprecated: Marked as deprecated in spacex_api/device/wifi.proto.
 func (x *WifiGetStatusResponse) GetRf_2GhzStatus() *WifiBandStatus {
 	if x != nil {
 		return x.Rf_2GhzStatus
@@ -3161,7 +3161,7 @@ func (x *WifiGetStatusResponse) GetRf_2GhzStatus() *WifiBandStatus {
 	return nil
 }
 
-// Deprecated: Marked as deprecated in spacex/api/device/wifi.proto.
+// Deprecated: Marked as deprecated in spacex_api/device/wifi.proto.
 func (x *WifiGetStatusResponse) GetRf_5GhzStatus() *WifiBandStatus {
 	if x != nil {
 		return x.Rf_5GhzStatus
@@ -3502,7 +3502,7 @@ type PingMetrics struct {
 	LatencyStddevMs  float32 `protobuf:"fixed32,2,opt,name=latency_stddev_ms,json=latencyStddevMs,proto3" json:"latency_stddev_ms,omitempty"`
 	LatencyMeanMs_5M float32 `protobuf:"fixed32,3,opt,name=latency_mean_ms_5m,json=latencyMeanMs5m,proto3" json:"latency_mean_ms_5m,omitempty"`
 	LatencyMeanMs_1H float32 `protobuf:"fixed32,4,opt,name=latency_mean_ms_1h,json=latencyMeanMs1h,proto3" json:"latency_mean_ms_1h,omitempty"`
-	// Deprecated: Marked as deprecated in spacex/api/device/wifi.proto.
+	// Deprecated: Marked as deprecated in spacex_api/device/wifi.proto.
 	LatencyMeanMs_1D            float32 `protobuf:"fixed32,5,opt,name=latency_mean_ms_1d,json=latencyMeanMs1d,proto3" json:"latency_mean_ms_1d,omitempty"`
 	DropRate                    float32 `protobuf:"fixed32,6,opt,name=drop_rate,json=dropRate,proto3" json:"drop_rate,omitempty"`
 	DropRate_5M                 float32 `protobuf:"fixed32,7,opt,name=drop_rate_5m,json=dropRate5m,proto3" json:"drop_rate_5m,omitempty"`
@@ -3580,7 +3580,7 @@ func (x *PingMetrics) GetLatencyMeanMs_1H() float32 {
 	return 0
 }
 
-// Deprecated: Marked as deprecated in spacex/api/device/wifi.proto.
+// Deprecated: Marked as deprecated in spacex_api/device/wifi.proto.
 func (x *PingMetrics) GetLatencyMeanMs_1D() float32 {
 	if x != nil {
 		return x.LatencyMeanMs_1D
@@ -7199,7 +7199,7 @@ type WifiSetClientGivenNameRequest struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// Deprecated: Marked as deprecated in spacex/api/device/wifi.proto.
+	// Deprecated: Marked as deprecated in spacex_api/device/wifi.proto.
 	ClientName   *ClientName   `protobuf:"bytes,1,opt,name=client_name,json=clientName,proto3" json:"client_name,omitempty"`
 	ClientConfig *ClientConfig `protobuf:"bytes,2,opt,name=client_config,json=clientConfig,proto3" json:"client_config,omitempty"`
 }
@@ -7236,7 +7236,7 @@ func (*WifiSetClientGivenNameRequest) Descriptor() ([]byte, []int) {
 	return file_spacex_api_device_wifi_proto_rawDescGZIP(), []int{50}
 }
 
-// Deprecated: Marked as deprecated in spacex/api/device/wifi.proto.
+// Deprecated: Marked as deprecated in spacex_api/device/wifi.proto.
 func (x *WifiSetClientGivenNameRequest) GetClientName() *ClientName {
 	if x != nil {
 		return x.ClientName
@@ -7864,7 +7864,7 @@ type StarlinkRouterHourlyMetricsV2 struct {
 	ConfigApMode                        *wrapperspb.BoolValue   `protobuf:"bytes,1007,opt,name=config_ap_mode,json=configApMode,proto3" json:"config_ap_mode,omitempty"`
 	ConfigDfsEnabled                    *wrapperspb.BoolValue   `protobuf:"bytes,1008,opt,name=config_dfs_enabled,json=configDfsEnabled,proto3" json:"config_dfs_enabled,omitempty"`
 	ConfigNetworkNameIsDefault          *wrapperspb.BoolValue   `protobuf:"bytes,1009,opt,name=config_network_name_is_default,json=configNetworkNameIsDefault,proto3" json:"config_network_name_is_default,omitempty"`
-	// Deprecated: Marked as deprecated in spacex/api/device/wifi.proto.
+	// Deprecated: Marked as deprecated in spacex_api/device/wifi.proto.
 	ConfigRemoteSshEnabled *wrapperspb.BoolValue `protobuf:"bytes,1010,opt,name=config_remote_ssh_enabled,json=configRemoteSshEnabled,proto3" json:"config_remote_ssh_enabled,omitempty"`
 }
 
@@ -8831,7 +8831,7 @@ func (x *StarlinkRouterHourlyMetricsV2) GetConfigNetworkNameIsDefault() *wrapper
 	return nil
 }
 
-// Deprecated: Marked as deprecated in spacex/api/device/wifi.proto.
+// Deprecated: Marked as deprecated in spacex_api/device/wifi.proto.
 func (x *StarlinkRouterHourlyMetricsV2) GetConfigRemoteSshEnabled() *wrapperspb.BoolValue {
 	if x != nil {
 		return x.ConfigRemoteSshEnabled
@@ -9542,9 +9542,9 @@ type SteerClientRequest_SteerTarget struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// Deprecated: Marked as deprecated in spacex/api/device/wifi.proto.
+	// Deprecated: Marked as deprecated in spacex_api/device/wifi.proto.
 	Bssid string `protobuf:"bytes,1,opt,name=bssid,proto3" json:"bssid,omitempty"`
-	// Deprecated: Marked as deprecated in spacex/api/device/wifi.proto.
+	// Deprecated: Marked as deprecated in spacex_api/device/wifi.proto.
 	Channel int32 `protobuf:"varint,2,opt,name=channel,proto3" json:"channel,omitempty"`
 }
 
@@ -9580,7 +9580,7 @@ func (*SteerClientRequest_SteerTarget) Descriptor() ([]byte, []int) {
 	return file_spacex_api_device_wifi_proto_rawDescGZIP(), []int{10, 0}
 }
 
-// Deprecated: Marked as deprecated in spacex/api/device/wifi.proto.
+// Deprecated: Marked as deprecated in spacex_api/device/wifi.proto.
 func (x *SteerClientRequest_SteerTarget) GetBssid() string {
 	if x != nil {
 		return x.Bssid
@@ -9588,7 +9588,7 @@ func (x *SteerClientRequest_SteerTarget) GetBssid() string {
 	return ""
 }
 
-// Deprecated: Marked as deprecated in spacex/api/device/wifi.proto.
+// Deprecated: Marked as deprecated in spacex_api/device/wifi.proto.
 func (x *SteerClientRequest_SteerTarget) GetChannel() int32 {
 	if x != nil {
 		return x.Channel
@@ -10361,7 +10361,7 @@ type RadioStats_ThermalStatus struct {
 	unknownFields protoimpl.UnknownFields
 
 	Level uint32 `protobuf:"varint,1,opt,name=level,proto3" json:"level,omitempty"`
-	// Deprecated: Marked as deprecated in spacex/api/device/wifi.proto.
+	// Deprecated: Marked as deprecated in spacex_api/device/wifi.proto.
 	Temp           uint32  `protobuf:"varint,2,opt,name=temp,proto3" json:"temp,omitempty"`
 	Temp2          float64 `protobuf:"fixed64,3,opt,name=temp2,proto3" json:"temp2,omitempty"`
 	PowerReduction uint32  `protobuf:"varint,4,opt,name=power_reduction,json=powerReduction,proto3" json:"power_reduction,omitempty"`
@@ -10407,7 +10407,7 @@ func (x *RadioStats_ThermalStatus) GetLevel() uint32 {
 	return 0
 }
 
-// Deprecated: Marked as deprecated in spacex/api/device/wifi.proto.
+// Deprecated: Marked as deprecated in spacex_api/device/wifi.proto.
 func (x *RadioStats_ThermalStatus) GetTemp() uint32 {
 	if x != nil {
 		return x.Temp
@@ -10510,16 +10510,16 @@ func (x *RadioStats_AntennaStatus) GetRssi4() float32 {
 var File_spacex_api_device_wifi_proto protoreflect.FileDescriptor
 
 var file_spacex_api_device_wifi_proto_rawDesc = []byte{
-	0x0a, 0x1c, 0x73, 0x70, 0x61, 0x63, 0x65, 0x78, 0x2f, 0x61, 0x70, 0x69, 0x2f, 0x64, 0x65, 0x76,
+	0x0a, 0x1c, 0x73, 0x70, 0x61, 0x63, 0x65, 0x78, 0x5f, 0x61, 0x70, 0x69, 0x2f, 0x64, 0x65, 0x76,
 	0x69, 0x63, 0x65, 0x2f, 0x77, 0x69, 0x66, 0x69, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x12, 0x11,
 	0x53, 0x70, 0x61, 0x63, 0x65, 0x58, 0x2e, 0x41, 0x50, 0x49, 0x2e, 0x44, 0x65, 0x76, 0x69, 0x63,
 	0x65, 0x1a, 0x1e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2f, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62,
 	0x75, 0x66, 0x2f, 0x77, 0x72, 0x61, 0x70, 0x70, 0x65, 0x72, 0x73, 0x2e, 0x70, 0x72, 0x6f, 0x74,
-	0x6f, 0x1a, 0x1e, 0x73, 0x70, 0x61, 0x63, 0x65, 0x78, 0x2f, 0x61, 0x70, 0x69, 0x2f, 0x64, 0x65,
+	0x6f, 0x1a, 0x1e, 0x73, 0x70, 0x61, 0x63, 0x65, 0x78, 0x5f, 0x61, 0x70, 0x69, 0x2f, 0x64, 0x65,
 	0x76, 0x69, 0x63, 0x65, 0x2f, 0x63, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x2e, 0x70, 0x72, 0x6f, 0x74,
-	0x6f, 0x1a, 0x23, 0x73, 0x70, 0x61, 0x63, 0x65, 0x78, 0x2f, 0x61, 0x70, 0x69, 0x2f, 0x64, 0x65,
+	0x6f, 0x1a, 0x23, 0x73, 0x70, 0x61, 0x63, 0x65, 0x78, 0x5f, 0x61, 0x70, 0x69, 0x2f, 0x64, 0x65,
 	0x76, 0x69, 0x63, 0x65, 0x2f, 0x77, 0x69, 0x66, 0x69, 0x5f, 0x63, 0x6f, 0x6e, 0x66, 0x69, 0x67,
-	0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x1a, 0x21, 0x73, 0x70, 0x61, 0x63, 0x65, 0x78, 0x2f, 0x61,
+	0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x1a, 0x21, 0x73, 0x70, 0x61, 0x63, 0x65, 0x78, 0x5f, 0x61,
 	0x70, 0x69, 0x2f, 0x64, 0x65, 0x76, 0x69, 0x63, 0x65, 0x2f, 0x77, 0x69, 0x66, 0x69, 0x5f, 0x75,
 	0x74, 0x69, 0x6c, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x1a, 0x2e, 0x73, 0x70, 0x61, 0x63, 0x65,
 	0x78, 0x2f, 0x61, 0x70, 0x69, 0x2f, 0x74, 0x65, 0x6c, 0x65, 0x6d, 0x65, 0x74, 0x72, 0x6f, 0x6e,
