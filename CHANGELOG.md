@@ -1,5 +1,68 @@
 # CHANGELOG
 
++ 2025.05.18.mr55915 / b255f9f4-3d9d-471c-a9ba-16149de5d478.uterm_manifest.release
+
+[Dish] New `Request_DishAviationTest`
+
+Request is defined as:
+
+```golang
+type DishAviationTestRequest struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	ThermalDemandFraction      float32                          `protobuf:"fixed32,1,opt,name=thermal_demand_fraction,json=thermalDemandFraction,proto3" json:"thermal_demand_fraction,omitempty"`
+	ApplyThermalDemandFraction bool                             `protobuf:"varint,2,opt,name=apply_thermal_demand_fraction,json=applyThermalDemandFraction,proto3" json:"apply_thermal_demand_fraction,omitempty"`
+	EthSpeed                   DishAviationTestRequest_EthSpeed `protobuf:"varint,3,opt,name=eth_speed,json=ethSpeed,proto3,enum=SpaceX.API.Device.DishAviationTestRequest_EthSpeed" json:"eth_speed,omitempty"`
+	ApplyEthSpeed              bool                             `protobuf:"varint,4,opt,name=apply_eth_speed,json=applyEthSpeed,proto3" json:"apply_eth_speed,omitempty"`
+	EthAmplitudeRegisters      uint32                           `protobuf:"varint,5,opt,name=eth_amplitude_registers,json=ethAmplitudeRegisters,proto3" json:"eth_amplitude_registers,omitempty"`
+	ApplyEthAmplitudeRegisters bool                             `protobuf:"varint,6,opt,name=apply_eth_amplitude_registers,json=applyEthAmplitudeRegisters,proto3" json:"apply_eth_amplitude_registers,omitempty"`
+}
+```
+
+`DishAviationTestRequest_EthSpeed` is defined as:
+
+```golang
+type DishAviationTestRequest_EthSpeed int32
+
+const (
+	DishAviationTestRequest_ETH_SPEED_100_MBPS  DishAviationTestRequest_EthSpeed = 0
+	DishAviationTestRequest_ETH_SPEED_1000_MBPS DishAviationTestRequest_EthSpeed = 1
+)
+
+// Enum value maps for DishAviationTestRequest_EthSpeed.
+var (
+	DishAviationTestRequest_EthSpeed_name = map[int32]string{
+		0: "ETH_SPEED_100_MBPS",
+		1: "ETH_SPEED_1000_MBPS",
+	}
+	DishAviationTestRequest_EthSpeed_value = map[string]int32{
+		"ETH_SPEED_100_MBPS":  0,
+		"ETH_SPEED_1000_MBPS": 1,
+	}
+)
+```
+
+Response is current empty:
+
+```golang
+type DishAviationTestResponse struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+}
+```
+
+[Dish] Two more possible alerts in `get_status` response:
+
+```golang
+DishWaterDetected          bool `protobuf:"varint,20,opt,name=dish_water_detected,json=dishWaterDetected,proto3" json:"dish_water_detected,omitempty"`
+RouterWaterDetected        bool `protobuf:"varint,21,opt,name=router_water_detected,json=routerWaterDetected,proto3" json:"router_water_detected,omitempty"`
+```
+
+
+
 + 2025.05.15.cr55718 / acced5ef-ab18-4f52-98ba-d0c232895cb6.uterm_manifest.release
 
 A few proto files have been renamed from `spacex/api` to `spacex_api`.
