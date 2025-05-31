@@ -15,23 +15,23 @@ protoc --go_out=./pkg/ --go-grpc_out=./pkg/ --descriptor_set_in="$protoset_file"
 protoc --go_out=./pkg/ --go-grpc_out=./pkg/ --descriptor_set_in="$protoset_file" spacex_api/device/common.proto
 
 protoc --go_out=./pkg/  --go-grpc_out=./pkg/ \
-       --go_opt=Mspacex/api/common/protobuf/internal.proto=spacex.com/api/common/protobuf/internal \
+       --go_opt=Mspacex_api/common/protobuf/internal.proto=spacex.com/api/common/protobuf/internal \
        --go_opt=Mspacex/api/satellites/network/ut_disablement_codes.proto=spacex.com/api/satellites/network/ut_disablement_codes \
-       --go_opt=Mspacex/api/telemetron/public/common/time.proto=spacex.com/api/telemetron/public/common/time \
+       --go_opt=Mspacex_api/telemetron/public/common/time.proto=spacex.com/api/telemetron/public/common/time \
        --go_opt=Mspacex_api/device/services/unlock/service.proto=spacex.com/api/device/services/unlock/service \
-       --go-grpc_opt=Mspacex/api/common/protobuf/internal.proto=spacex.com/api/common/protobuf/internal \
+       --go-grpc_opt=Mspacex_api/common/protobuf/internal.proto=spacex.com/api/common/protobuf/internal \
        --go-grpc_opt=Mspacex/api/satellites/network/ut_disablement_codes.proto=spacex.com/api/satellites/network/ut_disablement_codes \
-       --go-grpc_opt=Mspacex/api/telemetron/public/common/time.proto=spacex.com/api/telemetron/public/common/time \
+       --go-grpc_opt=Mspacex_api/telemetron/public/common/time.proto=spacex.com/api/telemetron/public/common/time \
        --go-grpc_opt=Mspacex_api/device/services/unlock/service.proto=spacex.com/api/device/services/unlock/service \
        --descriptor_set_in="$protoset_file" \
        spacex_api/device/device.proto
 
 protoc --go_out=./pkg/  --go-grpc_out=./pkg/ \
-       --go_opt=Mspacex/api/telemetron/public/common/time.proto=spacex.com/api/telemetron/public/common/time \
-       --go-grpc_opt=Mspacex/api/telemetron/public/common/time.proto=spacex.com/api/telemetron/public/common/time \
-       --go_opt=Mspacex/api/common/protobuf/internal.proto=spacex.com/api/common/protobuf/internal \
+       --go_opt=Mspacex_api/telemetron/public/common/time.proto=spacex.com/api/telemetron/public/common/time \
+       --go-grpc_opt=Mspacex_api/telemetron/public/common/time.proto=spacex.com/api/telemetron/public/common/time \
+       --go_opt=Mspacex_api/common/protobuf/internal.proto=spacex.com/api/common/protobuf/internal \
        --go_opt=Mspacex/api/satellites/network/ut_disablement_codes.proto=spacex.com/api/satellites/network/ut_disablement_codes \
-       --go-grpc_opt=Mspacex/api/common/protobuf/internal.proto=spacex.com/api/common/protobuf/internal \
+       --go-grpc_opt=Mspacex_api/common/protobuf/internal.proto=spacex.com/api/common/protobuf/internal \
        --go-grpc_opt=Mspacex/api/satellites/network/ut_disablement_codes.proto=spacex.com/api/satellites/network/ut_disablement_codes \
        --descriptor_set_in="$protoset_file" \
        spacex_api/device/dish.proto
@@ -46,38 +46,38 @@ protoc --go_out=./pkg/ --go-grpc_out=./pkg/ \
        spacex_api/device/services/unlock/service.proto
 
 protoc --go_out=./pkg/  --go-grpc_out=./pkg/ \
-       --go_opt=Mspacex/api/telemetron/public/common/time.proto=spacex.com/api/telemetron/public/common/time \
-       --go-grpc_opt=Mspacex/api/telemetron/public/common/time.proto=spacex.com/api/telemetron/public/common/time \
-       --go_opt=Mspacex/api/common/protobuf/internal.proto=spacex.com/api/common/protobuf/internal \
+       --go_opt=Mspacex_api/telemetron/public/common/time.proto=spacex.com/api/telemetron/public/common/time \
+       --go-grpc_opt=Mspacex_api/telemetron/public/common/time.proto=spacex.com/api/telemetron/public/common/time \
+       --go_opt=Mspacex_api/common/protobuf/internal.proto=spacex.com/api/common/protobuf/internal \
        --go_opt=Mspacex/api/satellites/network/ut_disablement_codes.proto=spacex.com/api/satellites/network/ut_disablement_codes \
-       --go-grpc_opt=Mspacex/api/common/protobuf/internal.proto=spacex.com/api/common/protobuf/internal \
+       --go-grpc_opt=Mspacex_api/common/protobuf/internal.proto=spacex.com/api/common/protobuf/internal \
        --go-grpc_opt=Mspacex/api/satellites/network/ut_disablement_codes.proto=spacex.com/api/satellites/network/ut_disablement_codes \
        --descriptor_set_in="$protoset_file" \
        spacex_api/device/transceiver.proto
 
 protoc --go_out=./pkg/  --go-grpc_out=./pkg/ \
-       --go_opt=Mspacex/api/common/protobuf/internal.proto=spacex.com/api/common/protobuf/internal \
+       --go_opt=Mspacex_api/common/protobuf/internal.proto=spacex.com/api/common/protobuf/internal \
        --go_opt=Mspacex/api/satellites/network/ut_disablement_codes.proto=spacex.com/api/satellites/network/ut_disablement_codes \
-       --go-grpc_opt=Mspacex/api/common/protobuf/internal.proto=spacex.com/api/common/protobuf/internal \
+       --go-grpc_opt=Mspacex_api/common/protobuf/internal.proto=spacex.com/api/common/protobuf/internal \
        --go-grpc_opt=Mspacex/api/satellites/network/ut_disablement_codes.proto=spacex.com/api/satellites/network/ut_disablement_codes \
        --descriptor_set_in="$protoset_file" \
        spacex/api/satellites/network/ut_disablement_codes.proto
 
 protoc --go_out=./pkg/  --go-grpc_out=./pkg/ \
-       --go_opt=Mspacex/api/telemetron/public/common/time.proto=spacex.com/api/telemetron/public/common/time \
-       --go-grpc_opt=Mspacex/api/telemetron/public/common/time.proto=spacex.com/api/telemetron/public/common/time \
+       --go_opt=Mspacex_api/telemetron/public/common/time.proto=spacex.com/api/telemetron/public/common/time \
+       --go-grpc_opt=Mspacex_api/telemetron/public/common/time.proto=spacex.com/api/telemetron/public/common/time \
        --descriptor_set_in="$protoset_file" \
-       spacex/api/telemetron/public/integrations/ut_pop_link_report.proto
+       spacex_api/telemetron/public/integrations/ut_pop_link_report.proto
 
 protoc --go_out=./pkg/  --go-grpc_out=./pkg/ \
-       --go_opt=Mspacex/api/telemetron/public/common/time.proto=spacex.com/api/telemetron/public/common/time \
-       --go-grpc_opt=Mspacex/api/telemetron/public/common/time.proto=spacex.com/api/telemetron/public/common/time \
+       --go_opt=Mspacex_api/telemetron/public/common/time.proto=spacex.com/api/telemetron/public/common/time \
+       --go-grpc_opt=Mspacex_api/telemetron/public/common/time.proto=spacex.com/api/telemetron/public/common/time \
        --descriptor_set_in="$protoset_file" \
-       spacex/api/telemetron/public/common/time.proto
+       spacex_api/telemetron/public/common/time.proto
 
 protoc --go_out=./pkg/  --go-grpc_out=./pkg/ \
-       --go_opt=Mspacex/api/telemetron/public/common/time.proto=spacex.com/api/telemetron/public/common/time \
-       --go-grpc_opt=Mspacex/api/telemetron/public/common/time.proto=spacex.com/api/telemetron/public/common/time \
+       --go_opt=Mspacex_api/telemetron/public/common/time.proto=spacex.com/api/telemetron/public/common/time \
+       --go-grpc_opt=Mspacex_api/telemetron/public/common/time.proto=spacex.com/api/telemetron/public/common/time \
        --go_opt=Mspacex/api/satellites/network/ut_disablement_codes.proto=spacex.com/api/satellites/network/ut_disablement_codes \
        --go-grpc_opt=Mspacex/api/satellites/network/ut_disablement_codes.proto=spacex.com/api/satellites/network/ut_disablement_codes \
        --descriptor_set_in="$protoset_file" \
