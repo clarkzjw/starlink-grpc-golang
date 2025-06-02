@@ -35,6 +35,10 @@ grpcurl -plaintext -d {\"dish_get_obstruction_map\":{}} 192.168.100.1:9200 Space
 ```
 
 ```bash
+grpcurl -plaintext -d {\"dish_clear_obstruction_map\":{}} 192.168.100.1:9200 SpaceX.API.Device.Device/Handle
+```
+
+```bash
 grpcurl -plaintext -d {\"get_diagnostics\":{}} 192.168.100.1:9200 SpaceX.API.Device.Device/Handle
 ```
 
