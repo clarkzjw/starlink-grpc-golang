@@ -10,7 +10,7 @@ protoset_file=protoset/"$dish_version"/dish.protoset
 
 protoc --go_out=./pkg/ --go-grpc_out=./pkg/ --descriptor_set_in="$protoset_file" spacex_api/device/rssi_scan.proto
 
-protoc --go_out=./pkg/ --go-grpc_out=./pkg/ --descriptor_set_in="$protoset_file" spacex/api/common/status/status.proto
+protoc --go_out=./pkg/ --go-grpc_out=./pkg/ --descriptor_set_in="$protoset_file" spacex_api/common/status/status.proto
 protoc --go_out=./pkg/ --go-grpc_out=./pkg/ --descriptor_set_in="$protoset_file" spacex_api/device/command.proto
 protoc --go_out=./pkg/ --go-grpc_out=./pkg/ --descriptor_set_in="$protoset_file" spacex_api/device/common.proto
 
