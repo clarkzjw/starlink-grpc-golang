@@ -1,5 +1,9 @@
 # CHANGELOG
 
++ 2025.06.03.mr56985 / 89c80a37-97db-4b91-a4f8-ba05369fd3d1.uterm_manifest.release
+
+[WiFi] `WiredMeshNotUsingWanIface`, `ClientVlanFirst` in `WanStarlinkRouterPair`.
+
 + 2025.05.18.mr55915 / b255f9f4-3d9d-471c-a9ba-16149de5d478.uterm_manifest.release
 
 [Dish] New `Request_DishAviationTest`
