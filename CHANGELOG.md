@@ -1,5 +1,9 @@
 # CHANGELOG
 
++ 2025.06.10.cr57444.1 / 113b54db-3eba-402c-9464-2ac40f08bab4.uterm_manifest.release
+
+[Dish] New `BLOCKED_AREA` disablement code, and `REPEATER_UNTRUSTED_FDIR` boot reason.
+
 + 2025.06.03.mr56985 / 89c80a37-97db-4b91-a4f8-ba05369fd3d1.uterm_manifest.release
 
 [WiFi] `WiredMeshNotUsingWanIface`, `ClientVlanFirst` in `WanStarlinkRouterPair`.
