@@ -1,5 +1,68 @@
 # CHANGELOG
 
++  2025.06.10.mr57444.1/ a0bf4f01-56d9-4b65-9af4-ba44d9017d65.uterm_manifest.release
+
+[Dish] `EventSeverity`, `EventReason`, `EventLog` in `get_history`
+
+```golang
+const (Add commentMore actions
+	EventSeverity_EVENT_SEVERITY_UNKNOWN  EventSeverity = 0
+	EventSeverity_EVENT_SEVERITY_WARNING  EventSeverity = 1
+	EventSeverity_EVENT_SEVERITY_CAUTION  EventSeverity = 2
+	EventSeverity_EVENT_SEVERITY_ADVISORY EventSeverity = 3
+)
+
+const (
+	EventReason_EVENT_REASON_UNKNOWN                         EventReason = 0
+	EventReason_EVENT_REASON_OUTAGE_UNKNOWN                  EventReason = 1
+	EventReason_EVENT_REASON_OUTAGE_BOOTING                  EventReason = 2
+	EventReason_EVENT_REASON_OUTAGE_STOWED                   EventReason = 3
+	EventReason_EVENT_REASON_OUTAGE_THERMAL_SHUTDOWN         EventReason = 4
+	EventReason_EVENT_REASON_OUTAGE_NO_SCHEDULE              EventReason = 5
+	EventReason_EVENT_REASON_OUTAGE_NO_SATS                  EventReason = 6
+	EventReason_EVENT_REASON_OUTAGE_OBSTRUCTED               EventReason = 7
+	EventReason_EVENT_REASON_OUTAGE_NO_DOWNLINK              EventReason = 8
+	EventReason_EVENT_REASON_OUTAGE_NO_PINGS                 EventReason = 9
+	EventReason_EVENT_REASON_OUTAGE_SLEEPING                 EventReason = 10
+	EventReason_EVENT_REASON_OUTAGE_MOVING_WHILE_NOT_ALLOWED EventReason = 11
+)
+```
+
+example `get_history` response
+
+```json
+"eventLog": {
+      "events": [
+        {
+          "severity": "EVENT_SEVERITY_WARNING",
+          "reason": "EVENT_REASON_OUTAGE_BOOTING",
+          "startTimestampNs": "1750418127869017684",
+          "durationNs": "35311427707"
+        },
+        {
+          "severity": "EVENT_SEVERITY_WARNING",
+          "reason": "EVENT_REASON_OUTAGE_NO_SCHEDULE",
+          "startTimestampNs": "1750418163240453980",
+          "durationNs": "21519966328"
+        },
+        {
+          "severity": "EVENT_SEVERITY_WARNING",
+          "reason": "EVENT_REASON_OUTAGE_NO_PINGS",
+          "startTimestampNs": "1750418184800459377",
+          "durationNs": "8220083775"
+        },
+        {
+          "severity": "EVENT_SEVERITY_WARNING",
+          "reason": "EVENT_REASON_OUTAGE_NO_PINGS",
+          "startTimestampNs": "1750427113300454549",
+          "durationNs": "840028204"
+        }
+      ],
+      "startTimestampNs": "1750418150269492992"
+    }
+  }
+```
+
 + 2025.06.10.cr57444.1 / 113b54db-3eba-402c-9464-2ac40f08bab4.uterm_manifest.release
 
 [Dish] New `BLOCKED_AREA` disablement code, and `REPEATER_UNTRUSTED_FDIR` boot reason.
