@@ -1,5 +1,9 @@
 # CHANGELOG
 
++ 2025.06.21.cr58170 / cbd69107-7c08-4b7a-8bac-7f23b554ce72.uterm_manifest.release
+
+[WiFi] `DisableSandboxFailOpen`, `ApplyDisableSandboxFailOpen`.
+
 +  2025.06.10.mr57444.1/ a0bf4f01-56d9-4b65-9af4-ba44d9017d65.uterm_manifest.release
 
 [Dish] `EventSeverity`, `EventReason`, `EventLog` in `get_history`
