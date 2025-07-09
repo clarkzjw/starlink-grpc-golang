@@ -1,5 +1,26 @@
 # CHANGELOG
 
++ 2025.06.24.mr58346 / 0cc8587b-a219-43f6-8cad-25595b9f8c42.uterm_manifest.release
+
+[Dish] `HorizontalSpeedMps`, `VerticalSpeedMps` in `get_location` response, https://github.com/clarkzjw/starlink-grpc-golang/blob/e703318740d295d40b9edd616adc9bc8b4ec9f1e/pkg/spacex.com/api/device/device.pb.go#L5834-L5844
+
+```json
+{
+  "status": {},
+  "apiVersion": "37",
+  "getLocation": {
+    "lla": {
+      "lat": xxx,
+      "lon": xxx,
+      "alt": 69.0700000000409
+    },
+    "source": "GPS",
+    "horizontalSpeedMps": 0.09999944380382213,
+    "verticalSpeedMps": 0.00033352500089441436
+  }
+}
+```
+
 + 2025.06.21.cr58170 / cbd69107-7c08-4b7a-8bac-7f23b554ce72.uterm_manifest.release
 
 [WiFi] `DisableSandboxFailOpen`, `ApplyDisableSandboxFailOpen`.
