@@ -1,5 +1,9 @@
 # CHANGELOG
 
++ 2025.07.06.mr59126 / cf9dd3a3-86fe-49a9-bc7f-f0d79fd7943b.uterm_manifest.release
+
+[Dish] `EventLog` has `CurrentTimestampNs`, and more detailed event log reasons.
+
 + 2025.06.24.mr58346 / 0cc8587b-a219-43f6-8cad-25595b9f8c42.uterm_manifest.release
 
 [Dish] `HorizontalSpeedMps`, `VerticalSpeedMps` in `get_location` response, https://github.com/clarkzjw/starlink-grpc-golang/blob/e703318740d295d40b9edd616adc9bc8b4ec9f1e/pkg/spacex.com/api/device/device.pb.go#L5834-L5844
