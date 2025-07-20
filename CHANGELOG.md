@@ -1,5 +1,9 @@
 # CHANGELOG
 
++ 2025.07.13.mr59602 / a412d633-acff-403b-b6b4-f302afd7d8ed.uterm_catapult_manifest.release
+
+[Dish] `PositionSource_name` is updated.
+
 + 2025.07.06.mr59126 / cf9dd3a3-86fe-49a9-bc7f-f0d79fd7943b.uterm_manifest.release
 
 [Dish] `EventLog` has `CurrentTimestampNs`, and more detailed event log reasons.
