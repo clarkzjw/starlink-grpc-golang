@@ -67,7 +67,7 @@ protoc --go_out=./pkg/  --go-grpc_out=./pkg/ \
        --go_opt=Mspacex_api/telemetron/public/common/time.proto=spacex.com/api/telemetron/public/common/time \
        --go-grpc_opt=Mspacex_api/telemetron/public/common/time.proto=spacex.com/api/telemetron/public/common/time \
        --descriptor_set_in="$protoset_file" \
-       spacex_api/telemetron/public/integrations/ut_pop_link_report.proto
+       spacex_api/telemetron/public/integrations/rate_limit_reason.proto
 
 protoc --go_out=./pkg/  --go-grpc_out=./pkg/ \
        --go_opt=Mspacex_api/telemetron/public/common/time.proto=spacex.com/api/telemetron/public/common/time \
