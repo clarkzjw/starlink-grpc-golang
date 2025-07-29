@@ -1,5 +1,9 @@
 # CHANGELOG
 
++ 2025.07.15.mr59754 /abb9b5cd-1119-4a59-8ac1-a33329f24f25.uterm_catapult_manifest.release
+
+[Dish] `ut_pop_link_report.proto` is renamed to `rate_limit_reason.proto`.
+
 + 2025.07.13.mr59602 / a412d633-acff-403b-b6b4-f302afd7d8ed.uterm_catapult_manifest.release
 
 [Dish] `PositionSource_name` is updated.
