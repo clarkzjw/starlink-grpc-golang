@@ -1,5 +1,9 @@
 # CHANGELOG
 
++ 2025.08.04.mr61059.1 / d5155a2c-6294-4bef-a2dc-f654525e1139.uterm_manifest.release
+
+[Dish] `NoEthernetLink` in `get_status` response.
+
 + 2025.07.15.mr59754 /abb9b5cd-1119-4a59-8ac1-a33329f24f25.uterm_catapult_manifest.release
 
 [Dish] `ut_pop_link_report.proto` is renamed to `rate_limit_reason.proto`.
