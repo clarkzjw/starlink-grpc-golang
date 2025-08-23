@@ -1,5 +1,9 @@
 # CHANGELOG
 
++ 2025.08.11.mr61518 / 437e1900-55a8-4735-8e83-cc4c35f47913.uterm_manifest.release
+
+[Dish] New outage reason: `EVENT_REASON_OUTAGE_SKY_SEARCH`
+
 + 2025.08.04.mr61059.1 / d5155a2c-6294-4bef-a2dc-f654525e1139.uterm_manifest.release
 
 [Dish] `NoEthernetLink` in `get_status` response.
