@@ -1,5 +1,11 @@
 # CHANGELOG
 
++ 2025.08.20.mr62034 / 0e9ddc8e-632e-4a4f-b401-f9ee99b5886b.uterm_manifest.release 
+
+[Dish] New user type `CLOUD_INDIA`.
+
+[Dish] New event type `EventReason_EVENT_REASON_ROUTER_REBOOT_CONFIG_UPDATE`.
+
 + 2025.08.11.mr61518 / 437e1900-55a8-4735-8e83-cc4c35f47913.uterm_manifest.release
 
 [Dish] New outage reason: `EVENT_REASON_OUTAGE_SKY_SEARCH`
