@@ -1,5 +1,9 @@
 # CHANGELOG
 
++ 2025.08.27.mr62507 / 71adf5d6-b673-4331-a1c8-7391da391553.uterm_manifest.release
+
+[WiFi] New `ConfigNetworksUser`, `CustomDnsDisabled`.
+
 + 2025.08.20.mr62034 / 0e9ddc8e-632e-4a4f-b401-f9ee99b5886b.uterm_manifest.release 
 
 [Dish] New user type `CLOUD_INDIA`.
