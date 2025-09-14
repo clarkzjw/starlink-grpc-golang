@@ -13,6 +13,7 @@ protoc --go_out=./pkg/ --go-grpc_out=./pkg/ --descriptor_set_in="$protoset_file"
 protoc --go_out=./pkg/ --go-grpc_out=./pkg/ --descriptor_set_in="$protoset_file" spacex_api/common/status/status.proto
 protoc --go_out=./pkg/ --go-grpc_out=./pkg/ --descriptor_set_in="$protoset_file" spacex_api/device/command.proto
 protoc --go_out=./pkg/ --go-grpc_out=./pkg/ --descriptor_set_in="$protoset_file" spacex_api/device/common.proto
+protoc --go_out=./pkg/ --go-grpc_out=./pkg/ --descriptor_set_in="$protoset_file" spacex_api/device/account_shard.proto
 
 protoc --go_out=./pkg/  --go-grpc_out=./pkg/ \
        --go_opt=Mspacex_api/common/protobuf/internal.proto=spacex.com/api/common/protobuf/internal \
