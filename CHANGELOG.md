@@ -1,5 +1,27 @@
 # CHANGELOG
 
++ 2025.09.06.cr63138 / 8fe5ec2a-213c-4f87-9c9d-48c1eef2515e.uterm_catapult_manifest.release
+
+[Dish] 'AccountShard'
+
+```golang
+var (
+	AccountShard_name = map[int32]string{
+		0: "ACCOUNT_SHARD_UNKNOWN",
+		1: "ACCOUNT_SHARD_DEFAULT",
+		2: "ACCOUNT_SHARD_INDIA",
+	}
+
+	AccountShard_value = map[string]int32{
+		"ACCOUNT_SHARD_UNKNOWN": 0,
+		"ACCOUNT_SHARD_DEFAULT": 1,
+		"ACCOUNT_SHARD_INDIA":   2,
+	}
+)
+```
+
+[Dish] New event type: `EVENT_REASON_UT_ALERT_RAIN_SNR_PERSISTENTLY_LOW`, `EVENT_REASON_UT_ALERT_ETH_NO_LINK`, `EVENT_REASON_UT_ALERT_ETH_SLOW_LINK`, `EVENT_REASON_UT_ALERT_ETH_SLOW_LINK_100`, `EVENT_REASON_ROUTER_PUBLIC_IPV4_CHANGE`.
+
 + 2025.08.27.mr62507 / 71adf5d6-b673-4331-a1c8-7391da391553.uterm_manifest.release
 
 [WiFi] New `ConfigNetworksUser`, `CustomDnsDisabled`.
