@@ -1,5 +1,9 @@
 # CHANGELOG
 
++ 2025.09.11.mr63477 / 59d10f2f-c6d8-4288-8967-2177f6393bfb.uterm_manifest.release
+
+[Dish] New event type for routers: `EventReason_EVENT_REASON_ROUTER_POP_IPV4_PING_DROP`, `EventReason_EVENT_REASON_ROUTER_POP_IPV6_PING_DROP`, `EventReason_EVENT_REASON_ROUTER_LAN_ETH_HIGH_PACKET_LOSS`, `EventReason_EVENT_REASON_ROUTER_WAN_ETH_HIGH_PACKET_LOSS`.
+
 + 2025.09.06.cr63138 / 8fe5ec2a-213c-4f87-9c9d-48c1eef2515e.uterm_catapult_manifest.release
 
 [Dish] 'AccountShard'
