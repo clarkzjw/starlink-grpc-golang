@@ -163,36 +163,40 @@ func (EventSeverity) EnumDescriptor() ([]byte, []int) {
 type EventReason int32
 
 const (
-	EventReason_EVENT_REASON_UNKNOWN                            EventReason = 0
-	EventReason_EVENT_REASON_OUTAGE_UNKNOWN                     EventReason = 1
-	EventReason_EVENT_REASON_OUTAGE_BOOTING                     EventReason = 2
-	EventReason_EVENT_REASON_OUTAGE_STOWED                      EventReason = 3
-	EventReason_EVENT_REASON_OUTAGE_THERMAL_SHUTDOWN            EventReason = 4
-	EventReason_EVENT_REASON_OUTAGE_NO_SCHEDULE                 EventReason = 5
-	EventReason_EVENT_REASON_OUTAGE_NO_SATS                     EventReason = 6
-	EventReason_EVENT_REASON_OUTAGE_OBSTRUCTED                  EventReason = 7
-	EventReason_EVENT_REASON_OUTAGE_NO_DOWNLINK                 EventReason = 8
-	EventReason_EVENT_REASON_OUTAGE_NO_PINGS                    EventReason = 9
-	EventReason_EVENT_REASON_OUTAGE_SLEEPING                    EventReason = 10
-	EventReason_EVENT_REASON_OUTAGE_MOVING_WHILE_NOT_ALLOWED    EventReason = 11
-	EventReason_EVENT_REASON_OUTAGE_SKY_SEARCH                  EventReason = 19
-	EventReason_EVENT_REASON_UT_ALERT_RAIN_SNR_PERSISTENTLY_LOW EventReason = 22
-	EventReason_EVENT_REASON_UT_ALERT_ETH_NO_LINK               EventReason = 23
-	EventReason_EVENT_REASON_UT_ALERT_ETH_SLOW_LINK             EventReason = 24
-	EventReason_EVENT_REASON_UT_ALERT_ETH_SLOW_LINK_100         EventReason = 25
-	EventReason_EVENT_REASON_HIGH_DOWNLINK_PACKET_LOSS          EventReason = 12
-	EventReason_EVENT_REASON_ROUTER_FACTORY_RESET               EventReason = 13
-	EventReason_EVENT_REASON_ROUTER_REBOOT                      EventReason = 14
-	EventReason_EVENT_REASON_ROUTER_POWER_CYCLE                 EventReason = 15
-	EventReason_EVENT_REASON_ROUTER_CONFIG_UPDATE               EventReason = 16
-	EventReason_EVENT_REASON_ROUTER_SOFTWARE_UPDATE             EventReason = 17
-	EventReason_EVENT_REASON_ROUTER_THERMAL_THROTTLED           EventReason = 18
-	EventReason_EVENT_REASON_ROUTER_REBOOT_CONFIG_UPDATE        EventReason = 20
-	EventReason_EVENT_REASON_ROUTER_PUBLIC_IPV4_CHANGE          EventReason = 21
-	EventReason_EVENT_REASON_ROUTER_POP_IPV4_PING_DROP          EventReason = 26
-	EventReason_EVENT_REASON_ROUTER_POP_IPV6_PING_DROP          EventReason = 27
-	EventReason_EVENT_REASON_ROUTER_LAN_ETH_HIGH_PACKET_LOSS    EventReason = 28
-	EventReason_EVENT_REASON_ROUTER_WAN_ETH_HIGH_PACKET_LOSS    EventReason = 29
+	EventReason_EVENT_REASON_UNKNOWN                              EventReason = 0
+	EventReason_EVENT_REASON_OUTAGE_UNKNOWN                       EventReason = 1
+	EventReason_EVENT_REASON_OUTAGE_BOOTING                       EventReason = 2
+	EventReason_EVENT_REASON_OUTAGE_STOWED                        EventReason = 3
+	EventReason_EVENT_REASON_OUTAGE_THERMAL_SHUTDOWN              EventReason = 4
+	EventReason_EVENT_REASON_OUTAGE_NO_SCHEDULE                   EventReason = 5
+	EventReason_EVENT_REASON_OUTAGE_NO_SATS                       EventReason = 6
+	EventReason_EVENT_REASON_OUTAGE_OBSTRUCTED                    EventReason = 7
+	EventReason_EVENT_REASON_OUTAGE_NO_DOWNLINK                   EventReason = 8
+	EventReason_EVENT_REASON_OUTAGE_NO_PINGS                      EventReason = 9
+	EventReason_EVENT_REASON_OUTAGE_SLEEPING                      EventReason = 10
+	EventReason_EVENT_REASON_OUTAGE_MOVING_WHILE_NOT_ALLOWED      EventReason = 11
+	EventReason_EVENT_REASON_OUTAGE_SKY_SEARCH                    EventReason = 19
+	EventReason_EVENT_REASON_UT_ALERT_RAIN_SNR_PERSISTENTLY_LOW   EventReason = 22
+	EventReason_EVENT_REASON_UT_ALERT_ETH_NO_LINK                 EventReason = 23
+	EventReason_EVENT_REASON_UT_ALERT_ETH_SLOW_LINK               EventReason = 24
+	EventReason_EVENT_REASON_UT_ALERT_ETH_SLOW_LINK_100           EventReason = 25
+	EventReason_EVENT_REASON_HIGH_DOWNLINK_PACKET_LOSS            EventReason = 12
+	EventReason_EVENT_REASON_ROUTER_FACTORY_RESET                 EventReason = 13
+	EventReason_EVENT_REASON_ROUTER_REBOOT                        EventReason = 14
+	EventReason_EVENT_REASON_ROUTER_POWER_CYCLE                   EventReason = 15
+	EventReason_EVENT_REASON_ROUTER_CONFIG_UPDATE                 EventReason = 16
+	EventReason_EVENT_REASON_ROUTER_SOFTWARE_UPDATE               EventReason = 17
+	EventReason_EVENT_REASON_ROUTER_THERMAL_THROTTLED             EventReason = 18
+	EventReason_EVENT_REASON_ROUTER_REBOOT_CONFIG_UPDATE          EventReason = 20
+	EventReason_EVENT_REASON_ROUTER_PUBLIC_IPV4_CHANGE            EventReason = 21
+	EventReason_EVENT_REASON_ROUTER_POP_IPV4_PING_DROP            EventReason = 26
+	EventReason_EVENT_REASON_ROUTER_POP_IPV6_PING_DROP            EventReason = 27
+	EventReason_EVENT_REASON_ROUTER_LAN_ETH_HIGH_PACKET_LOSS      EventReason = 28
+	EventReason_EVENT_REASON_ROUTER_WAN_ETH_HIGH_PACKET_LOSS      EventReason = 29
+	EventReason_EVENT_REASON_ROUTER_DHCP_SERVER_FAIL_TO_START     EventReason = 30
+	EventReason_EVENT_REASON_ROUTER_DHCP_SERVER_EXHAUSTED         EventReason = 31
+	EventReason_EVENT_REASON_ROUTER_DNS_IPV4_SERVER_FAIL_TO_START EventReason = 32
+	EventReason_EVENT_REASON_ROUTER_DNS_IPV6_SERVER_FAIL_TO_START EventReason = 33
 )
 
 // Enum value maps for EventReason.
@@ -228,38 +232,46 @@ var (
 		27: "EVENT_REASON_ROUTER_POP_IPV6_PING_DROP",
 		28: "EVENT_REASON_ROUTER_LAN_ETH_HIGH_PACKET_LOSS",
 		29: "EVENT_REASON_ROUTER_WAN_ETH_HIGH_PACKET_LOSS",
+		30: "EVENT_REASON_ROUTER_DHCP_SERVER_FAIL_TO_START",
+		31: "EVENT_REASON_ROUTER_DHCP_SERVER_EXHAUSTED",
+		32: "EVENT_REASON_ROUTER_DNS_IPV4_SERVER_FAIL_TO_START",
+		33: "EVENT_REASON_ROUTER_DNS_IPV6_SERVER_FAIL_TO_START",
 	}
 	EventReason_value = map[string]int32{
-		"EVENT_REASON_UNKNOWN":                            0,
-		"EVENT_REASON_OUTAGE_UNKNOWN":                     1,
-		"EVENT_REASON_OUTAGE_BOOTING":                     2,
-		"EVENT_REASON_OUTAGE_STOWED":                      3,
-		"EVENT_REASON_OUTAGE_THERMAL_SHUTDOWN":            4,
-		"EVENT_REASON_OUTAGE_NO_SCHEDULE":                 5,
-		"EVENT_REASON_OUTAGE_NO_SATS":                     6,
-		"EVENT_REASON_OUTAGE_OBSTRUCTED":                  7,
-		"EVENT_REASON_OUTAGE_NO_DOWNLINK":                 8,
-		"EVENT_REASON_OUTAGE_NO_PINGS":                    9,
-		"EVENT_REASON_OUTAGE_SLEEPING":                    10,
-		"EVENT_REASON_OUTAGE_MOVING_WHILE_NOT_ALLOWED":    11,
-		"EVENT_REASON_OUTAGE_SKY_SEARCH":                  19,
-		"EVENT_REASON_UT_ALERT_RAIN_SNR_PERSISTENTLY_LOW": 22,
-		"EVENT_REASON_UT_ALERT_ETH_NO_LINK":               23,
-		"EVENT_REASON_UT_ALERT_ETH_SLOW_LINK":             24,
-		"EVENT_REASON_UT_ALERT_ETH_SLOW_LINK_100":         25,
-		"EVENT_REASON_HIGH_DOWNLINK_PACKET_LOSS":          12,
-		"EVENT_REASON_ROUTER_FACTORY_RESET":               13,
-		"EVENT_REASON_ROUTER_REBOOT":                      14,
-		"EVENT_REASON_ROUTER_POWER_CYCLE":                 15,
-		"EVENT_REASON_ROUTER_CONFIG_UPDATE":               16,
-		"EVENT_REASON_ROUTER_SOFTWARE_UPDATE":             17,
-		"EVENT_REASON_ROUTER_THERMAL_THROTTLED":           18,
-		"EVENT_REASON_ROUTER_REBOOT_CONFIG_UPDATE":        20,
-		"EVENT_REASON_ROUTER_PUBLIC_IPV4_CHANGE":          21,
-		"EVENT_REASON_ROUTER_POP_IPV4_PING_DROP":          26,
-		"EVENT_REASON_ROUTER_POP_IPV6_PING_DROP":          27,
-		"EVENT_REASON_ROUTER_LAN_ETH_HIGH_PACKET_LOSS":    28,
-		"EVENT_REASON_ROUTER_WAN_ETH_HIGH_PACKET_LOSS":    29,
+		"EVENT_REASON_UNKNOWN":                              0,
+		"EVENT_REASON_OUTAGE_UNKNOWN":                       1,
+		"EVENT_REASON_OUTAGE_BOOTING":                       2,
+		"EVENT_REASON_OUTAGE_STOWED":                        3,
+		"EVENT_REASON_OUTAGE_THERMAL_SHUTDOWN":              4,
+		"EVENT_REASON_OUTAGE_NO_SCHEDULE":                   5,
+		"EVENT_REASON_OUTAGE_NO_SATS":                       6,
+		"EVENT_REASON_OUTAGE_OBSTRUCTED":                    7,
+		"EVENT_REASON_OUTAGE_NO_DOWNLINK":                   8,
+		"EVENT_REASON_OUTAGE_NO_PINGS":                      9,
+		"EVENT_REASON_OUTAGE_SLEEPING":                      10,
+		"EVENT_REASON_OUTAGE_MOVING_WHILE_NOT_ALLOWED":      11,
+		"EVENT_REASON_OUTAGE_SKY_SEARCH":                    19,
+		"EVENT_REASON_UT_ALERT_RAIN_SNR_PERSISTENTLY_LOW":   22,
+		"EVENT_REASON_UT_ALERT_ETH_NO_LINK":                 23,
+		"EVENT_REASON_UT_ALERT_ETH_SLOW_LINK":               24,
+		"EVENT_REASON_UT_ALERT_ETH_SLOW_LINK_100":           25,
+		"EVENT_REASON_HIGH_DOWNLINK_PACKET_LOSS":            12,
+		"EVENT_REASON_ROUTER_FACTORY_RESET":                 13,
+		"EVENT_REASON_ROUTER_REBOOT":                        14,
+		"EVENT_REASON_ROUTER_POWER_CYCLE":                   15,
+		"EVENT_REASON_ROUTER_CONFIG_UPDATE":                 16,
+		"EVENT_REASON_ROUTER_SOFTWARE_UPDATE":               17,
+		"EVENT_REASON_ROUTER_THERMAL_THROTTLED":             18,
+		"EVENT_REASON_ROUTER_REBOOT_CONFIG_UPDATE":          20,
+		"EVENT_REASON_ROUTER_PUBLIC_IPV4_CHANGE":            21,
+		"EVENT_REASON_ROUTER_POP_IPV4_PING_DROP":            26,
+		"EVENT_REASON_ROUTER_POP_IPV6_PING_DROP":            27,
+		"EVENT_REASON_ROUTER_LAN_ETH_HIGH_PACKET_LOSS":      28,
+		"EVENT_REASON_ROUTER_WAN_ETH_HIGH_PACKET_LOSS":      29,
+		"EVENT_REASON_ROUTER_DHCP_SERVER_FAIL_TO_START":     30,
+		"EVENT_REASON_ROUTER_DHCP_SERVER_EXHAUSTED":         31,
+		"EVENT_REASON_ROUTER_DNS_IPV4_SERVER_FAIL_TO_START": 32,
+		"EVENT_REASON_ROUTER_DNS_IPV6_SERVER_FAIL_TO_START": 33,
 	}
 )
 
@@ -2524,7 +2536,7 @@ var file_spacex_api_device_common_proto_rawDesc = []byte{
 	0x12, 0x1a, 0x0a, 0x16, 0x45, 0x56, 0x45, 0x4e, 0x54, 0x5f, 0x53, 0x45, 0x56, 0x45, 0x52, 0x49,
 	0x54, 0x59, 0x5f, 0x43, 0x41, 0x55, 0x54, 0x49, 0x4f, 0x4e, 0x10, 0x02, 0x12, 0x1b, 0x0a, 0x17,
 	0x45, 0x56, 0x45, 0x4e, 0x54, 0x5f, 0x53, 0x45, 0x56, 0x45, 0x52, 0x49, 0x54, 0x59, 0x5f, 0x41,
-	0x44, 0x56, 0x49, 0x53, 0x4f, 0x52, 0x59, 0x10, 0x03, 0x2a, 0xb7, 0x09, 0x0a, 0x0b, 0x45, 0x76,
+	0x44, 0x56, 0x49, 0x53, 0x4f, 0x52, 0x59, 0x10, 0x03, 0x2a, 0x87, 0x0b, 0x0a, 0x0b, 0x45, 0x76,
 	0x65, 0x6e, 0x74, 0x52, 0x65, 0x61, 0x73, 0x6f, 0x6e, 0x12, 0x18, 0x0a, 0x14, 0x45, 0x56, 0x45,
 	0x4e, 0x54, 0x5f, 0x52, 0x45, 0x41, 0x53, 0x4f, 0x4e, 0x5f, 0x55, 0x4e, 0x4b, 0x4e, 0x4f, 0x57,
 	0x4e, 0x10, 0x00, 0x12, 0x1f, 0x0a, 0x1b, 0x45, 0x56, 0x45, 0x4e, 0x54, 0x5f, 0x52, 0x45, 0x41,
@@ -2600,7 +2612,20 @@ var file_spacex_api_device_common_proto_rawDesc = []byte{
 	0x1c, 0x12, 0x30, 0x0a, 0x2c, 0x45, 0x56, 0x45, 0x4e, 0x54, 0x5f, 0x52, 0x45, 0x41, 0x53, 0x4f,
 	0x4e, 0x5f, 0x52, 0x4f, 0x55, 0x54, 0x45, 0x52, 0x5f, 0x57, 0x41, 0x4e, 0x5f, 0x45, 0x54, 0x48,
 	0x5f, 0x48, 0x49, 0x47, 0x48, 0x5f, 0x50, 0x41, 0x43, 0x4b, 0x45, 0x54, 0x5f, 0x4c, 0x4f, 0x53,
-	0x53, 0x10, 0x1d, 0x42, 0x17, 0x5a, 0x15, 0x73, 0x70, 0x61, 0x63, 0x65, 0x78, 0x2e, 0x63, 0x6f,
+	0x53, 0x10, 0x1d, 0x12, 0x31, 0x0a, 0x2d, 0x45, 0x56, 0x45, 0x4e, 0x54, 0x5f, 0x52, 0x45, 0x41,
+	0x53, 0x4f, 0x4e, 0x5f, 0x52, 0x4f, 0x55, 0x54, 0x45, 0x52, 0x5f, 0x44, 0x48, 0x43, 0x50, 0x5f,
+	0x53, 0x45, 0x52, 0x56, 0x45, 0x52, 0x5f, 0x46, 0x41, 0x49, 0x4c, 0x5f, 0x54, 0x4f, 0x5f, 0x53,
+	0x54, 0x41, 0x52, 0x54, 0x10, 0x1e, 0x12, 0x2d, 0x0a, 0x29, 0x45, 0x56, 0x45, 0x4e, 0x54, 0x5f,
+	0x52, 0x45, 0x41, 0x53, 0x4f, 0x4e, 0x5f, 0x52, 0x4f, 0x55, 0x54, 0x45, 0x52, 0x5f, 0x44, 0x48,
+	0x43, 0x50, 0x5f, 0x53, 0x45, 0x52, 0x56, 0x45, 0x52, 0x5f, 0x45, 0x58, 0x48, 0x41, 0x55, 0x53,
+	0x54, 0x45, 0x44, 0x10, 0x1f, 0x12, 0x35, 0x0a, 0x31, 0x45, 0x56, 0x45, 0x4e, 0x54, 0x5f, 0x52,
+	0x45, 0x41, 0x53, 0x4f, 0x4e, 0x5f, 0x52, 0x4f, 0x55, 0x54, 0x45, 0x52, 0x5f, 0x44, 0x4e, 0x53,
+	0x5f, 0x49, 0x50, 0x56, 0x34, 0x5f, 0x53, 0x45, 0x52, 0x56, 0x45, 0x52, 0x5f, 0x46, 0x41, 0x49,
+	0x4c, 0x5f, 0x54, 0x4f, 0x5f, 0x53, 0x54, 0x41, 0x52, 0x54, 0x10, 0x20, 0x12, 0x35, 0x0a, 0x31,
+	0x45, 0x56, 0x45, 0x4e, 0x54, 0x5f, 0x52, 0x45, 0x41, 0x53, 0x4f, 0x4e, 0x5f, 0x52, 0x4f, 0x55,
+	0x54, 0x45, 0x52, 0x5f, 0x44, 0x4e, 0x53, 0x5f, 0x49, 0x50, 0x56, 0x36, 0x5f, 0x53, 0x45, 0x52,
+	0x56, 0x45, 0x52, 0x5f, 0x46, 0x41, 0x49, 0x4c, 0x5f, 0x54, 0x4f, 0x5f, 0x53, 0x54, 0x41, 0x52,
+	0x54, 0x10, 0x21, 0x42, 0x17, 0x5a, 0x15, 0x73, 0x70, 0x61, 0x63, 0x65, 0x78, 0x2e, 0x63, 0x6f,
 	0x6d, 0x2f, 0x61, 0x70, 0x69, 0x2f, 0x64, 0x65, 0x76, 0x69, 0x63, 0x65, 0x62, 0x06, 0x70, 0x72,
 	0x6f, 0x74, 0x6f, 0x33,
 }
