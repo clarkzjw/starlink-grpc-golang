@@ -1,5 +1,19 @@
 # CHANGELOG
 
++ 2025.09.27.mr64561.1 / 684ce06d-f645-468c-987c-cb403ede63d6.uterm_manifest.release
+
+[Router] New event types:
+
+```
+EventReason_EVENT_REASON_ROUTER_SET_CUSTOM_DNS_DISALLOWED     EventReason = 34
+EventReason_EVENT_REASON_ROUTER_SET_CUSTOM_DNS_ALLOWED        EventReason = 35
+EventReason_EVENT_REASON_ROUTER_MAX_WIRELESS_CLIENTS          EventReason = 36
+EventReason_EVENT_REASON_ROUTER_MAX_5GHIGH_WIRELESS_CLIENTS   EventReason = 37
+EventReason_EVENT_REASON_ROUTER_MESH_TOPOLOGY_CHANGING_OFTEN  EventReason = 38
+```
+
+[Dish] New `Request_DishInhibitRf`.
+
 + 2025.09.18.mr63904
 
 [Router] New event related to router:
