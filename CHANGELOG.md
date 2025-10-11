@@ -1,5 +1,27 @@
 # CHANGELOG
 
++ 2025.10.02.mr64889 / f7622e71-ae9f-4da3-a8d8-11578503cfc4.uterm_manifest.release
+
+[Router] New event types:
+
+```
+EventReason_EVENT_REASON_ROUTER_CONNTRACK_FULL                EventReason = 39
+```
+
+[WiFi] `CalibrationPartitionsState`
+
+```golang
+type CalibrationPartitionsState int32
+
+const (
+	CalibrationPartitionsState_CALIBRATION_PARTITIONS_STATE_UNSPECIFIED        CalibrationPartitionsState = 0
+	CalibrationPartitionsState_CALIBRATION_PARTITIONS_STATE_ABSENT_BOTH_SIDES  CalibrationPartitionsState = 1
+	CalibrationPartitionsState_CALIBRATION_PARTITIONS_STATE_CONTENTS_EQUAL     CalibrationPartitionsState = 2
+	CalibrationPartitionsState_CALIBRATION_PARTITIONS_STATE_CONTENTS_NOT_EQUAL CalibrationPartitionsState = 3
+	CalibrationPartitionsState_CALIBRATION_PARTITIONS_STATE_COMPARISON_FAILED  CalibrationPartitionsState = 4
+)
+```
+
 + 2025.09.27.mr64561.1 / 684ce06d-f645-468c-987c-cb403ede63d6.uterm_manifest.release
 
 [Router] New event types:
