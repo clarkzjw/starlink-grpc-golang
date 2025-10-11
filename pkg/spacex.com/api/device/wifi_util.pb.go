@@ -569,6 +569,61 @@ func (WifiSetupRequirementState) EnumDescriptor() ([]byte, []int) {
 	return file_spacex_api_device_wifi_util_proto_rawDescGZIP(), []int{8}
 }
 
+type CalibrationPartitionsState int32
+
+const (
+	CalibrationPartitionsState_CALIBRATION_PARTITIONS_STATE_UNSPECIFIED        CalibrationPartitionsState = 0
+	CalibrationPartitionsState_CALIBRATION_PARTITIONS_STATE_ABSENT_BOTH_SIDES  CalibrationPartitionsState = 1
+	CalibrationPartitionsState_CALIBRATION_PARTITIONS_STATE_CONTENTS_EQUAL     CalibrationPartitionsState = 2
+	CalibrationPartitionsState_CALIBRATION_PARTITIONS_STATE_CONTENTS_NOT_EQUAL CalibrationPartitionsState = 3
+	CalibrationPartitionsState_CALIBRATION_PARTITIONS_STATE_COMPARISON_FAILED  CalibrationPartitionsState = 4
+)
+
+// Enum value maps for CalibrationPartitionsState.
+var (
+	CalibrationPartitionsState_name = map[int32]string{
+		0: "CALIBRATION_PARTITIONS_STATE_UNSPECIFIED",
+		1: "CALIBRATION_PARTITIONS_STATE_ABSENT_BOTH_SIDES",
+		2: "CALIBRATION_PARTITIONS_STATE_CONTENTS_EQUAL",
+		3: "CALIBRATION_PARTITIONS_STATE_CONTENTS_NOT_EQUAL",
+		4: "CALIBRATION_PARTITIONS_STATE_COMPARISON_FAILED",
+	}
+	CalibrationPartitionsState_value = map[string]int32{
+		"CALIBRATION_PARTITIONS_STATE_UNSPECIFIED":        0,
+		"CALIBRATION_PARTITIONS_STATE_ABSENT_BOTH_SIDES":  1,
+		"CALIBRATION_PARTITIONS_STATE_CONTENTS_EQUAL":     2,
+		"CALIBRATION_PARTITIONS_STATE_CONTENTS_NOT_EQUAL": 3,
+		"CALIBRATION_PARTITIONS_STATE_COMPARISON_FAILED":  4,
+	}
+)
+
+func (x CalibrationPartitionsState) Enum() *CalibrationPartitionsState {
+	p := new(CalibrationPartitionsState)
+	*p = x
+	return p
+}
+
+func (x CalibrationPartitionsState) String() string {
+	return protoimpl.X.EnumStringOf(x.Descriptor(), protoreflect.EnumNumber(x))
+}
+
+func (CalibrationPartitionsState) Descriptor() protoreflect.EnumDescriptor {
+	return file_spacex_api_device_wifi_util_proto_enumTypes[9].Descriptor()
+}
+
+func (CalibrationPartitionsState) Type() protoreflect.EnumType {
+	return &file_spacex_api_device_wifi_util_proto_enumTypes[9]
+}
+
+func (x CalibrationPartitionsState) Number() protoreflect.EnumNumber {
+	return protoreflect.EnumNumber(x)
+}
+
+// Deprecated: Use CalibrationPartitionsState.Descriptor instead.
+func (CalibrationPartitionsState) EnumDescriptor() ([]byte, []int) {
+	return file_spacex_api_device_wifi_util_proto_rawDescGZIP(), []int{9}
+}
+
 type InflatedBasicServiceSet struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -1438,9 +1493,27 @@ var file_spacex_api_device_wifi_util_proto_rawDesc = []byte{
 	0x45, 0x44, 0x5f, 0x43, 0x4f, 0x55, 0x4e, 0x54, 0x44, 0x4f, 0x57, 0x4e, 0x10, 0x01, 0x12, 0x13,
 	0x0a, 0x0f, 0x52, 0x45, 0x51, 0x55, 0x49, 0x52, 0x45, 0x44, 0x5f, 0x50, 0x41, 0x55, 0x53, 0x45,
 	0x44, 0x10, 0x02, 0x12, 0x15, 0x0a, 0x11, 0x52, 0x45, 0x51, 0x55, 0x49, 0x52, 0x45, 0x44, 0x5f,
-	0x43, 0x4f, 0x4d, 0x50, 0x4c, 0x45, 0x54, 0x45, 0x10, 0x03, 0x42, 0x17, 0x5a, 0x15, 0x73, 0x70,
-	0x61, 0x63, 0x65, 0x78, 0x2e, 0x63, 0x6f, 0x6d, 0x2f, 0x61, 0x70, 0x69, 0x2f, 0x64, 0x65, 0x76,
-	0x69, 0x63, 0x65, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
+	0x43, 0x4f, 0x4d, 0x50, 0x4c, 0x45, 0x54, 0x45, 0x10, 0x03, 0x2a, 0x98, 0x02, 0x0a, 0x1a, 0x43,
+	0x61, 0x6c, 0x69, 0x62, 0x72, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x50, 0x61, 0x72, 0x74, 0x69, 0x74,
+	0x69, 0x6f, 0x6e, 0x73, 0x53, 0x74, 0x61, 0x74, 0x65, 0x12, 0x2c, 0x0a, 0x28, 0x43, 0x41, 0x4c,
+	0x49, 0x42, 0x52, 0x41, 0x54, 0x49, 0x4f, 0x4e, 0x5f, 0x50, 0x41, 0x52, 0x54, 0x49, 0x54, 0x49,
+	0x4f, 0x4e, 0x53, 0x5f, 0x53, 0x54, 0x41, 0x54, 0x45, 0x5f, 0x55, 0x4e, 0x53, 0x50, 0x45, 0x43,
+	0x49, 0x46, 0x49, 0x45, 0x44, 0x10, 0x00, 0x12, 0x32, 0x0a, 0x2e, 0x43, 0x41, 0x4c, 0x49, 0x42,
+	0x52, 0x41, 0x54, 0x49, 0x4f, 0x4e, 0x5f, 0x50, 0x41, 0x52, 0x54, 0x49, 0x54, 0x49, 0x4f, 0x4e,
+	0x53, 0x5f, 0x53, 0x54, 0x41, 0x54, 0x45, 0x5f, 0x41, 0x42, 0x53, 0x45, 0x4e, 0x54, 0x5f, 0x42,
+	0x4f, 0x54, 0x48, 0x5f, 0x53, 0x49, 0x44, 0x45, 0x53, 0x10, 0x01, 0x12, 0x2f, 0x0a, 0x2b, 0x43,
+	0x41, 0x4c, 0x49, 0x42, 0x52, 0x41, 0x54, 0x49, 0x4f, 0x4e, 0x5f, 0x50, 0x41, 0x52, 0x54, 0x49,
+	0x54, 0x49, 0x4f, 0x4e, 0x53, 0x5f, 0x53, 0x54, 0x41, 0x54, 0x45, 0x5f, 0x43, 0x4f, 0x4e, 0x54,
+	0x45, 0x4e, 0x54, 0x53, 0x5f, 0x45, 0x51, 0x55, 0x41, 0x4c, 0x10, 0x02, 0x12, 0x33, 0x0a, 0x2f,
+	0x43, 0x41, 0x4c, 0x49, 0x42, 0x52, 0x41, 0x54, 0x49, 0x4f, 0x4e, 0x5f, 0x50, 0x41, 0x52, 0x54,
+	0x49, 0x54, 0x49, 0x4f, 0x4e, 0x53, 0x5f, 0x53, 0x54, 0x41, 0x54, 0x45, 0x5f, 0x43, 0x4f, 0x4e,
+	0x54, 0x45, 0x4e, 0x54, 0x53, 0x5f, 0x4e, 0x4f, 0x54, 0x5f, 0x45, 0x51, 0x55, 0x41, 0x4c, 0x10,
+	0x03, 0x12, 0x32, 0x0a, 0x2e, 0x43, 0x41, 0x4c, 0x49, 0x42, 0x52, 0x41, 0x54, 0x49, 0x4f, 0x4e,
+	0x5f, 0x50, 0x41, 0x52, 0x54, 0x49, 0x54, 0x49, 0x4f, 0x4e, 0x53, 0x5f, 0x53, 0x54, 0x41, 0x54,
+	0x45, 0x5f, 0x43, 0x4f, 0x4d, 0x50, 0x41, 0x52, 0x49, 0x53, 0x4f, 0x4e, 0x5f, 0x46, 0x41, 0x49,
+	0x4c, 0x45, 0x44, 0x10, 0x04, 0x42, 0x17, 0x5a, 0x15, 0x73, 0x70, 0x61, 0x63, 0x65, 0x78, 0x2e,
+	0x63, 0x6f, 0x6d, 0x2f, 0x61, 0x70, 0x69, 0x2f, 0x64, 0x65, 0x76, 0x69, 0x63, 0x65, 0x62, 0x06,
+	0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 }
 
 var (
@@ -1455,7 +1528,7 @@ func file_spacex_api_device_wifi_util_proto_rawDescGZIP() []byte {
 	return file_spacex_api_device_wifi_util_proto_rawDescData
 }
 
-var file_spacex_api_device_wifi_util_proto_enumTypes = make([]protoimpl.EnumInfo, 9)
+var file_spacex_api_device_wifi_util_proto_enumTypes = make([]protoimpl.EnumInfo, 10)
 var file_spacex_api_device_wifi_util_proto_msgTypes = make([]protoimpl.MessageInfo, 9)
 var file_spacex_api_device_wifi_util_proto_goTypes = []any{
 	(IfaceType)(0),                     // 0: SpaceX.API.Device.IfaceType
@@ -1467,24 +1540,25 @@ var file_spacex_api_device_wifi_util_proto_goTypes = []any{
 	(Protocol)(0),                      // 6: SpaceX.API.Device.Protocol
 	(WifiSoftwareUpdateState)(0),       // 7: SpaceX.API.Device.WifiSoftwareUpdateState
 	(WifiSetupRequirementState)(0),     // 8: SpaceX.API.Device.WifiSetupRequirementState
-	(*InflatedBasicServiceSet)(nil),    // 9: SpaceX.API.Device.InflatedBasicServiceSet
-	(*DhcpLease)(nil),                  // 10: SpaceX.API.Device.DhcpLease
-	(*DhcpServer)(nil),                 // 11: SpaceX.API.Device.DhcpServer
-	(*RadiusStatsMap)(nil),             // 12: SpaceX.API.Device.RadiusStatsMap
-	(*PoeStats)(nil),                   // 13: SpaceX.API.Device.PoeStats
-	(*WifiSoftwareUpdateStats)(nil),    // 14: SpaceX.API.Device.WifiSoftwareUpdateStats
-	(*WifiSetupRequirement)(nil),       // 15: SpaceX.API.Device.WifiSetupRequirement
-	(*RadiusStatsMap_RadiusStats)(nil), // 16: SpaceX.API.Device.RadiusStatsMap.RadiusStats
-	nil,                                // 17: SpaceX.API.Device.RadiusStatsMap.RadiusStatsEntry
+	(CalibrationPartitionsState)(0),    // 9: SpaceX.API.Device.CalibrationPartitionsState
+	(*InflatedBasicServiceSet)(nil),    // 10: SpaceX.API.Device.InflatedBasicServiceSet
+	(*DhcpLease)(nil),                  // 11: SpaceX.API.Device.DhcpLease
+	(*DhcpServer)(nil),                 // 12: SpaceX.API.Device.DhcpServer
+	(*RadiusStatsMap)(nil),             // 13: SpaceX.API.Device.RadiusStatsMap
+	(*PoeStats)(nil),                   // 14: SpaceX.API.Device.PoeStats
+	(*WifiSoftwareUpdateStats)(nil),    // 15: SpaceX.API.Device.WifiSoftwareUpdateStats
+	(*WifiSetupRequirement)(nil),       // 16: SpaceX.API.Device.WifiSetupRequirement
+	(*RadiusStatsMap_RadiusStats)(nil), // 17: SpaceX.API.Device.RadiusStatsMap.RadiusStats
+	nil,                                // 18: SpaceX.API.Device.RadiusStatsMap.RadiusStatsEntry
 }
 var file_spacex_api_device_wifi_util_proto_depIdxs = []int32{
 	0,  // 0: SpaceX.API.Device.InflatedBasicServiceSet.iface_type:type_name -> SpaceX.API.Device.IfaceType
-	10, // 1: SpaceX.API.Device.DhcpServer.leases:type_name -> SpaceX.API.Device.DhcpLease
-	17, // 2: SpaceX.API.Device.RadiusStatsMap.radius_stats:type_name -> SpaceX.API.Device.RadiusStatsMap.RadiusStatsEntry
+	11, // 1: SpaceX.API.Device.DhcpServer.leases:type_name -> SpaceX.API.Device.DhcpLease
+	18, // 2: SpaceX.API.Device.RadiusStatsMap.radius_stats:type_name -> SpaceX.API.Device.RadiusStatsMap.RadiusStatsEntry
 	2,  // 3: SpaceX.API.Device.PoeStats.poe_state:type_name -> SpaceX.API.Device.PoeState
 	7,  // 4: SpaceX.API.Device.WifiSoftwareUpdateStats.state:type_name -> SpaceX.API.Device.WifiSoftwareUpdateState
 	8,  // 5: SpaceX.API.Device.WifiSetupRequirement.state:type_name -> SpaceX.API.Device.WifiSetupRequirementState
-	16, // 6: SpaceX.API.Device.RadiusStatsMap.RadiusStatsEntry.value:type_name -> SpaceX.API.Device.RadiusStatsMap.RadiusStats
+	17, // 6: SpaceX.API.Device.RadiusStatsMap.RadiusStatsEntry.value:type_name -> SpaceX.API.Device.RadiusStatsMap.RadiusStats
 	7,  // [7:7] is the sub-list for method output_type
 	7,  // [7:7] is the sub-list for method input_type
 	7,  // [7:7] is the sub-list for extension type_name
@@ -1600,7 +1674,7 @@ func file_spacex_api_device_wifi_util_proto_init() {
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_spacex_api_device_wifi_util_proto_rawDesc,
-			NumEnums:      9,
+			NumEnums:      10,
 			NumMessages:   9,
 			NumExtensions: 0,
 			NumServices:   0,
