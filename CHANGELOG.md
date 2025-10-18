@@ -1,5 +1,9 @@
 # CHANGELOG
 
++ 2025.10.12.mr65517 / 9ed42b06-1000-4a8a-91e7-b64a48fb8727.uterm_manifest.release
+
+[Dish] `GNC_NO_ACCEL` is renamed to `GNC_GPS`.
+
 + 2025.10.02.mr64889 / f7622e71-ae9f-4da3-a8d8-11578503cfc4.uterm_manifest.release
 
 [Router] New event types:
@@ -77,7 +81,7 @@ var (
 
 [WiFi] New `ConfigNetworksUser`, `CustomDnsDisabled`.
 
-+ 2025.08.20.mr62034 / 0e9ddc8e-632e-4a4f-b401-f9ee99b5886b.uterm_manifest.release 
++ 2025.08.20.mr62034 / 0e9ddc8e-632e-4a4f-b401-f9ee99b5886b.uterm_manifest.release
 
 [Dish] New user type `CLOUD_INDIA`.
 
