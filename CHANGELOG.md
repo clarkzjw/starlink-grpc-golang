@@ -1,5 +1,9 @@
 # CHANGELOG
 
++ 2025.10.20.mr66046 / 9173f179-9196-427d-96b7-9aeb3e2dc177.uterm_manifest.release
+
+[WiFi] `ConfigCustomDnsDisabled`
+
 + 2025.10.12.mr65517 / 9ed42b06-1000-4a8a-91e7-b64a48fb8727.uterm_manifest.release
 
 [Dish] `GNC_NO_ACCEL` is renamed to `GNC_GPS`.
