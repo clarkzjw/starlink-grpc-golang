@@ -1,5 +1,9 @@
 # CHANGELOG
 
++ 2025.10.28.mr66547.1 / 4974dbd9-8356-4e01-8cc6-b9625e7effca.uterm_manifest.release
+
+[Dish] New event `EVENT_REASON_ROUTER_DISH_PING_DROP`
+
 + 2025.10.20.mr66046 / 9173f179-9196-427d-96b7-9aeb3e2dc177.uterm_manifest.release
 
 [WiFi] `ConfigCustomDnsDisabled`
