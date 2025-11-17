@@ -1,0 +1,174 @@
+syntax = "proto3";
+
+package SpaceX.API.Device;
+
+option go_package = "spacex.com/api/device";
+
+message InflatedBasicServiceSet {
+  string bssid = 1;
+  string ssid = 2;
+  string mac_lan = 3;
+  string iface_name = 4;
+  .SpaceX.API.Device.IfaceType iface_type = 5;
+  uint32 channel = 6;
+  uint32 preference = 7;
+  string domain = 8;
+}
+
+message DhcpLease {
+  string ip_address = 1;
+  string mac_address = 2;
+  string hostname = 3;
+  string expires_time = 4;
+  bool active = 5;
+  uint32 client_id = 6;
+}
+
+message DhcpServer {
+  string domain = 1;
+  string subnet = 2;
+  repeated .SpaceX.API.Device.DhcpLease leases = 3;
+  bool ip_exhausted = 4;
+}
+
+message RadiusStatsMap {
+  message RadiusStats {
+    string iface_name = 1;
+    uint32 timeout_count = 2;
+    uint32 access_request_count = 3;
+    uint32 access_accept_count = 4;
+    uint32 access_reject_count = 5;
+    uint32 access_challenge_count = 6;
+    uint32 accounting_request_count = 7;
+    uint32 accounting_response_count = 8;
+  }
+
+  message RadiusStatsEntry {
+    string key = 1;
+    .SpaceX.API.Device.RadiusStatsMap.RadiusStats value = 2;
+  }
+
+  repeated .SpaceX.API.Device.RadiusStatsMap.RadiusStatsEntry radius_stats = 1;
+}
+
+message PoeStats {
+  .SpaceX.API.Device.PoeState poe_state = 1;
+  float poe_power = 2;
+  uint32 poe_faults_fast_overcurrent = 3;
+  uint32 poe_faults_slow_overcurrent = 4;
+  uint32 poe_faults_overvoltage = 5;
+  uint32 poe_faults_undervoltage = 6;
+  float vsns_vin = 7;
+}
+
+message WifiSoftwareUpdateStats {
+  .SpaceX.API.Device.WifiSoftwareUpdateState state = 1;
+  float software_download_progress = 2;
+  float seconds_since_get_target_versions = 3;
+  string running_version = 4;
+  string version_in_progress = 5;
+}
+
+message WifiSetupRequirement {
+  .SpaceX.API.Device.WifiSetupRequirementState state = 1;
+  uint64 pause_countdown_seconds = 2;
+}
+
+enum IfaceType {
+  IFACE_TYPE_UNKNOWN = 0;
+  IFACE_TYPE_ETH = 1;
+  IFACE_TYPE_RF_2GHZ = 2;
+  IFACE_TYPE_RF_5GHZ = 5;
+  IFACE_TYPE_RF_5GHZ_HIGH = 6;
+}
+
+enum TxPowerLevel {
+  TX_POWER_LEVEL_100 = 0;
+  TX_POWER_LEVEL_80 = 1;
+  TX_POWER_LEVEL_50 = 2;
+  TX_POWER_LEVEL_25 = 3;
+  TX_POWER_LEVEL_12 = 4;
+  TX_POWER_LEVEL_6 = 5;
+}
+
+enum PoeState {
+  POE_STATE_DISABLED = 0;
+  POE_STATE_NEGOTIATING = 1;
+  POE_STATE_ON_RAMPUP = 2;
+  POE_STATE_ON = 3;
+  POE_STATE_WATER_DETECT_RAMPUP = 4;
+  POE_STATE_WATER_DETECT = 5;
+}
+
+enum PoeFault {
+  POE_FAULT_FAST_OVERCURRENT = 0;
+  POE_FAULT_SLOW_OVERCURRENT = 1;
+  POE_FAULT_UNDERCURRENT = 2;
+  POE_FAULT_OVERVOLTAGE = 3;
+  POE_FAULT_UNDERVOLTAGE = 4;
+}
+
+enum WifiMode {
+  WIFI_MODE_DEFAULT = 0;
+  A_ONLY = 1;
+  B_ONLY = 2;
+  G_ONLY = 3;
+  N_ONLY = 4;
+  B_G_MIXED = 5;
+  A_N_MIXED = 6;
+  G_N_MIXED = 7;
+  B_G_N_MIXED = 8;
+  A_AN_AC_MIXED = 9;
+  AN_AC_MIXED = 10;
+  B_G_N_AX_MIXED = 11;
+  A_AN_AC_AX_MIXED = 12;
+  A_N_AC_MIXED = 13;
+  A_N_AC_AX_MIXED = 14;
+}
+
+enum WifiSecurity {
+  WIFI_SECURITY_UNKNOWN = 0;
+  OPEN = 1;
+  WPA2 = 2;
+  WPA3 = 3;
+  WPA2WPA3 = 4;
+}
+
+enum Protocol {
+  TCP = 0;
+  UDP = 1;
+  TLS = 2;
+  DTLS = 3;
+}
+
+enum WifiSoftwareUpdateState {
+  NOT_RUN = 0;
+  GETTING_TARGET_VERSION = 1;
+  DOWNLOADING_UPDATE_IMAGE = 2;
+  FLASHING = 3;
+  NO_UPDATE_REQUIRED = 4;
+  REBOOT_PENDING = 5;
+  GETTING_TARGET_VERSION_FAILED = 6;
+  GETTING_TARGET_VERSION_EXHAUSTED = 7;
+  NO_VALID_ARTIFACT = 8;
+  ILLEGAL_ARTIFACT = 9;
+  DOWNLOADING_UPDATE_IMAGE_FAILED = 10;
+  DOWNLOADING_UPDATE_IMAGE_EXHAUSTED = 11;
+  FLASHING_FAILED = 12;
+}
+
+enum WifiSetupRequirementState {
+  NOT_REQUIRED = 0;
+  REQUIRED_COUNTDOWN = 1;
+  REQUIRED_PAUSED = 2;
+  REQUIRED_COMPLETE = 3;
+}
+
+enum CalibrationPartitionsState {
+  CALIBRATION_PARTITIONS_STATE_UNSPECIFIED = 0;
+  CALIBRATION_PARTITIONS_STATE_ABSENT_BOTH_SIDES = 1;
+  CALIBRATION_PARTITIONS_STATE_CONTENTS_EQUAL = 2;
+  CALIBRATION_PARTITIONS_STATE_CONTENTS_NOT_EQUAL = 3;
+  CALIBRATION_PARTITIONS_STATE_COMPARISON_FAILED = 4;
+}
+

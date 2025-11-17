@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+package SpaceX.API.Status;
+
+option go_package = "spacex.com/api/status";
+
+message Status {
+  int32 code = 1;
+  string message = 2;
+}
+

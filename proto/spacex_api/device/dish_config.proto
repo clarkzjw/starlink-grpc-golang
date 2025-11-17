@@ -1,0 +1,43 @@
+syntax = "proto3";
+
+package SpaceX.API.Device;
+
+option go_package = "spacex.com/api/device";
+
+message DishConfig {
+  enum SnowMeltMode {
+    AUTO = 0;
+    ALWAYS_ON = 1;
+    ALWAYS_OFF = 2;
+  }
+
+  enum LocationRequestMode {
+    NONE = 0;
+    LOCAL = 1;
+  }
+
+  enum LevelDishMode {
+    TILT_LIKE_NORMAL = 0;
+    FORCE_LEVEL = 1;
+  }
+
+  .SpaceX.API.Device.DishConfig.SnowMeltMode snow_melt_mode = 1;
+  bool apply_snow_melt_mode = 1001;
+  .SpaceX.API.Device.DishConfig.LocationRequestMode location_request_mode = 2;
+  bool apply_location_request_mode = 2001;
+  .SpaceX.API.Device.DishConfig.LevelDishMode level_dish_mode = 3;
+  bool apply_level_dish_mode = 3001;
+  uint32 power_save_start_minutes = 4;
+  bool apply_power_save_start_minutes = 4001;
+  uint32 power_save_duration_minutes = 5;
+  bool apply_power_save_duration_minutes = 5001;
+  bool power_save_mode = 6;
+  bool apply_power_save_mode = 6001;
+  uint32 swupdate_reboot_hour = 9;
+  bool apply_swupdate_reboot_hour = 9001;
+  bool swupdate_three_day_deferral_enabled = 7;
+  bool apply_swupdate_three_day_deferral_enabled = 7001;
+  uint32 asset_class = 8;
+  bool apply_asset_class = 8001;
+}
+

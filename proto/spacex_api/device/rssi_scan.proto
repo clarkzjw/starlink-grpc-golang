@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+package SpaceX.API.Device;
+
+option go_package = "spacex.com/api/device";
+
+message RssiEntry {
+  double theta_degree = 1;
+  double phi_degree = 2;
+  double rssi_dbf = 3;
+  uint64 scan_timestamp_ms = 4;
+}
+
+message DishActivateRssiScan {
+  uint32 channel = 1;
+}
+
+message DishGetRssiScanResult {
+  bool success = 1;
+  uint32 channel = 2;
+  uint64 request_timestamp = 3;
+  uint32 number_samples = 4;
+  repeated .SpaceX.API.Device.RssiEntry rssi_scan_points = 5;
+}
+

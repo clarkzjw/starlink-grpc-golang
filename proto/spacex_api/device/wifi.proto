@@ -1,0 +1,1240 @@
+syntax = "proto3";
+
+package SpaceX.API.Device;
+
+option go_package = "spacex.com/api/device";
+
+import "google/protobuf/wrappers.proto";
+import "spacex_api/device/common.proto";
+import "spacex_api/device/wifi_config.proto";
+import "spacex_api/device/wifi_util.proto";
+import "spacex_api/telemetron/public/common/time.proto";
+import "spacex_api/satellites/network/ut_disablement_codes.proto";
+
+service Mesh {
+  rpc MeshStream (stream .SpaceX.API.Device.ToController) returns (stream .SpaceX.API.Device.FromController) {}
+}
+
+message WifiClients {
+  repeated .SpaceX.API.Device.WifiClient clients = 1;
+}
+
+message ToController {
+  int32 api_version = 4;
+  int32 api_version_other_side = 7;
+  bool ready_for_multiple_networks = 6;
+  oneof message {
+    .SpaceX.API.Device.WifiClients clients = 1;
+    .SpaceX.API.Device.WifiMeshJoin mesh_join = 2;
+    .SpaceX.API.Device.WifiMeshStatus status = 3;
+    .SpaceX.API.Device.MeshSpeedtest speedtest = 5;
+  }
+}
+
+message WifiMeshJoin {
+  uint64 incarnation = 1;
+  string hardware_version = 2;
+  bool supports_5ghz_high = 3;
+  repeated .SpaceX.API.Device.WifiSiteSurveyResult siteSurveyScan = 4;
+}
+
+message WifiMeshStatus {
+  string software_version = 5;
+  string mac_lan = 6;
+  repeated string source_mac_addresses = 7;
+  repeated .SpaceX.API.Device.WifiClient clients = 2;
+  repeated .SpaceX.API.Device.InflatedBasicServiceSet bss_list = 3;
+  string hardware_version = 4;
+  string backhaul_bssid = 8;
+  uint32 backhaul_est_preference = 9;
+}
+
+message MeshSpeedtestRequest {
+}
+
+message MeshSpeedtest {
+  int64 upload_start_time = 1;
+  int64 download_start_time = 2;
+  float upload_mbps = 3;
+  float download_mbps = 4;
+}
+
+message WifiSiteSurveyResult {
+  float rssi = 1;
+  uint32 channel = 2;
+  string ssid = 3;
+  .SpaceX.API.Device.WifiSecurity security = 4;
+  .SpaceX.API.Device.WifiMode wireless_mode = 5;
+  .SpaceX.API.Device.IfaceType iface = 6;
+  string mac_address = 7;
+  float est_rx_rate = 8;
+}
+
+message WifiGlobalMeshStatus {
+  string hardware_version = 1;
+  string software_version = 2;
+  repeated .SpaceX.API.Device.InflatedBasicServiceSet bss_list = 3;
+  uint32 hops_from_controller = 4;
+}
+
+message BackhaulRequest {
+  bool retry_backhaul = 1;
+  .SpaceX.API.Device.WifiConfig golden_bss = 2;
+}
+
+message FromController {
+  int32 api_version = 3;
+  oneof message {
+    .SpaceX.API.Device.WifiConfig wifi_config = 1;
+    .SpaceX.API.Device.SteerClientRequest steer_client_request = 2;
+    .SpaceX.API.Device.WifiGlobalMeshStatus status = 4;
+    .SpaceX.API.Device.BackhaulRequest backhaul_request = 5;
+    .SpaceX.API.Device.MeshSpeedtestRequest start_speedtest = 6;
+    .SpaceX.API.Device.WifiBtmRequest wifi_btm_request = 7;
+  }
+}
+
+message SteerClientRequest {
+  message SteerTarget {
+    string bssid = 1;
+    int32 channel = 2;
+  }
+
+  string client_mac_addr = 1;
+  repeated .SpaceX.API.Device.SteerClientRequest.SteerTarget targets = 2;
+}
+
+message WifiBtmRequest {
+  reserved "request_mode";
+  reserved "termination_duration";
+  reserved 2;
+  reserved 3;
+  message NeighborReport {
+    string bssid = 1;
+    uint32 channel = 2;
+  }
+
+  uint32 bss_termination_duration_m = 5;
+  string peer_bssid = 1;
+  repeated .SpaceX.API.Device.WifiBtmRequest.NeighborReport neighbor_report = 4;
+}
+
+message WifiSelfTest {
+  message TestResult {
+    string name = 1;
+    bool success = 2;
+    string failure_reason = 3;
+  }
+
+  bool total_success = 1;
+  .SpaceX.API.Device.WifiSelfTest.TestResult fused = 2;
+  repeated .SpaceX.API.Device.WifiSelfTest.TestResult eth_phys = 3;
+  repeated .SpaceX.API.Device.WifiSelfTest.TestResult pcis = 4;
+  .SpaceX.API.Device.WifiSelfTest.TestResult bl2_prod = 5;
+}
+
+message WifiSetConfigRequest {
+  .SpaceX.API.Device.WifiConfig wifi_config = 1;
+}
+
+message WifiSetConfigResponse {
+  .SpaceX.API.Device.WifiConfig updated_wifi_config = 1;
+}
+
+message WifiGetConfigRequest {
+}
+
+message WifiGetConfigResponse {
+  .SpaceX.API.Device.WifiConfig wifi_config = 1;
+}
+
+message WifiSetMeshDeviceTrustRequest {
+  string device_id = 1;
+  .SpaceX.API.Device.MeshAuth auth = 2;
+}
+
+message WifiSetMeshDeviceTrustResponse {
+}
+
+message WifiSetMeshConfigRequest {
+  .SpaceX.API.Device.MeshConfig mesh_config = 1;
+  string device_id = 2;
+}
+
+message WifiSetMeshConfigResponse {
+}
+
+message WifiGetClientsRequest {
+}
+
+message WifiGetClientsResponse {
+  repeated .SpaceX.API.Device.WifiClient clients = 1;
+  bool has_client_index = 2;
+  int32 client_index = 3;
+}
+
+message WifiGetClientHistoryRequest {
+  string mac_address = 1;
+  uint32 client_id = 2;
+}
+
+message WifiGetClientHistoryResponse {
+  enum WifiLimitedReason {
+    LIMIT_UNKNOWN = 0;
+    LIMIT_NONE = 1;
+    LIMIT_UNCLASSIFIED = 2;
+    LIMIT_DROPPED_PACKETS = 3;
+  }
+
+  uint64 current = 1;
+  repeated float tx_throughput_mbps = 2;
+  repeated float rx_throughput_mbps = 3;
+  repeated .SpaceX.API.Device.WifiGetClientHistoryResponse.WifiLimitedReason throughput_limited = 4;
+  repeated float rx_rate_mbps = 5;
+  bytes rssi = 6;
+}
+
+message WifiSetAviationConformedRequest {
+}
+
+message WifiGetHistoryResponse {
+  message DnsResolverHistory {
+    repeated float drop_rate_last_15s = 2;
+  }
+
+  message DnsResolverDropRateEntry {
+    string key = 1;
+    .SpaceX.API.Device.WifiGetHistoryResponse.DnsResolverHistory value = 2;
+  }
+
+  uint64 current = 1;
+  repeated float ping_drop_rate = 1001;
+  repeated float ping_latency_ms = 1002;
+  uint64 current_index_15s = 2;
+  repeated float pop_ipv4_ping_drop_rate_last_15s = 1003;
+  repeated float pop_ipv6_ping_drop_rate_last_15s = 1004;
+  repeated float google_ipv4_ping_drop_rate_last_15s = 1005;
+  repeated float google_ipv6_ping_drop_rate_last_15s = 1006;
+  repeated float cloudflare_ipv4_ping_drop_rate_last_15s = 1007;
+  repeated float cloudflare_ipv6_ping_drop_rate_last_15s = 1008;
+  repeated .SpaceX.API.Device.WifiGetHistoryResponse.DnsResolverDropRateEntry dns_resolver_drop_rate = 1009;
+  .SpaceX.API.Device.EventLog event_log = 1010;
+}
+
+message WifiNewClientConnectedEvent {
+  .SpaceX.API.Device.WifiClient client = 1;
+}
+
+message WifiClient {
+  reserved "authorized";
+  reserved "sandbox_client_id";
+  reserved 50;
+  reserved 51;
+  message RxStats {
+    reserved 4;
+    uint64 bytes = 1;
+    uint64 count_errors = 2;
+    uint32 phy_mode = 13;
+    int32 nss = 3;
+    uint32 rate_mbps = 8;
+    float rate_mbps_last_30s = 14;
+    float rate_mbps_last_15s = 15;
+    float rate_mbps_last_1m_avg = 16;
+    float throughput_mbps_last_1m_avg = 17;
+    uint32 mcs = 5;
+    uint32 bandwidth = 6;
+    uint32 guard_ns = 7;
+    float airtime_fraction_last_1s = 9;
+    uint32 sampled_packets = 10;
+    uint32 sampled_packets_retried = 11;
+    uint32 sampled_packets_dropped = 12;
+  }
+
+  message TxStats {
+    reserved 4;
+    uint64 bytes = 1;
+    uint64 success_bytes = 2;
+    uint32 phy_mode = 10;
+    int32 nss = 3;
+    uint32 rate_mbps = 8;
+    float rate_mbps_last_30s = 11;
+    float rate_mbps_last_15s = 12;
+    uint32 mcs = 5;
+    uint32 bandwidth = 6;
+    uint32 guard_ns = 7;
+    float airtime_fraction_last_1s = 9;
+  }
+
+  message PingMetrics {
+    bool in_unhappy_hour_2s = 1;
+    bool in_unhappy_hour_5s = 2;
+    float drop_rate_5m = 3;
+    float latency_5m = 4;
+  }
+
+  message FqcodelInfo {
+    uint64 enqs_hi_prio = 1;
+    uint64 enqs_fqcodel = 2;
+    uint64 enqs_new = 3;
+    uint64 enqs_old = 4;
+    uint64 enqs_dropped = 5;
+    uint64 deqs_new = 6;
+    uint64 deqs_old = 7;
+    uint64 deqs_flow_new = 8;
+    uint64 deqs_flow_old_deficit = 9;
+    uint64 deqs_flow_old_starvation = 10;
+    uint64 deqs_dropped = 11;
+  }
+
+  message Alerts {
+    bool throughput_limited = 1;
+  }
+
+  enum Interface {
+    UNKNOWN = 0;
+    ETH = 1;
+    RF_2GHZ = 2;
+    RF_5GHZ = 3;
+    RF_5GHZ_HIGH = 4;
+  }
+
+  enum Role {
+    ROLE_UNKNOWN = 0;
+    CLIENT = 1;
+    REPEATER = 2;
+    CONTROLLER = 3;
+  }
+
+  string name = 1;
+  string given_name = 31;
+  string domain = 22;
+  string mac_address = 2;
+  string ip_address = 3;
+  bool dhcp_lease_found = 49;
+  bool dhcp_lease_active = 46;
+  bool dhcp_lease_renewed = 47;
+  float seconds_until_dhcp_lease_expires = 48;
+  repeated string ipv6_addresses = 41;
+  float signal_strength = 4;
+  uint32 channel_width = 12;
+  .SpaceX.API.Device.WifiClient.RxStats rx_stats = 5;
+  bool rx_stats_valid = 60;
+  .SpaceX.API.Device.WifiClient.TxStats tx_stats = 6;
+  bool tx_stats_valid = 61;
+  uint32 associated_time_s = 7;
+  uint32 no_data_idle_s = 45;
+  string mode_str = 8;
+  .SpaceX.API.Device.WifiClient.Interface iface = 9;
+  string iface_name = 26;
+  float snr = 10;
+  int32 psmode = 11;
+  string upstream_mac_address = 13;
+  .SpaceX.API.Device.WifiClient.Role role = 14;
+  string device_id = 15;
+  uint32 swq_checks = 16;
+  uint32 swq_checks_non_empty = 17;
+  uint32 mib_steer_state = 18;
+  uint32 mib_steer_method = 19;
+  uint32 btm_requests = 20;
+  uint32 btm_requests_success = 21;
+  uint32 steer_state = 30;
+  uint32 steer_req_success_last_1h = 27;
+  uint32 steer_req_fail_last_1h = 28;
+  uint32 steer_req_fail_and_dissoc_last_1h = 29;
+  bool dot11v_support = 23;
+  uint32 hops_from_controller = 32;
+  float est_tx_rate_mbps_from_controller = 33;
+  float est_rx_rate_mbps_from_controller = 34;
+  string hardware_version = 37;
+  string software_version = 38;
+  uint32 api_version = 39;
+  .SpaceX.API.Device.WifiClient.PingMetrics ping_metrics = 40;
+  bool blocked = 42;
+  uint32 client_id = 43;
+  string captive_client_id = 53;
+  .SpaceX.API.Device.WifiClient.FqcodelInfo fqcodel_info = 44;
+  .SpaceX.API.Device.WifiClient.Alerts alerts = 52;
+  uint32 upload_mb = 54;
+  uint32 download_mb = 55;
+}
+
+message WifiSetupRequest {
+  bool skip = 1;
+  string network_name = 2;
+  string network_password = 3;
+  bool bypass = 4;
+}
+
+message WifiSetupResponse {
+}
+
+message WifiBandStatus {
+  float chan_busy_time_fraction = 1;
+  float tx_air_time_fraction = 2;
+  float rx_air_time_fraction = 3;
+  float obss_air_time_fraction = 4;
+  float edcca_air_time_fraction = 5;
+}
+
+message WifiAlerts {
+  reserved "inconsistent_2ghz_antennae_performance_15db";
+  reserved "inconsistent_5ghz_antennae_performance_15db";
+  reserved "poor_2ghz_antennae_performance_80db";
+  reserved "poor_5ghz_antennae_performance_80db";
+  reserved 6;
+  reserved 7;
+  reserved 8;
+  reserved 9;
+  bool thermal_throttle = 1;
+  bool install_pending = 2;
+  bool freshly_fused = 3;
+  bool lan_eth_slow_link_10 = 4;
+  bool lan_eth_slow_link_100 = 5;
+  bool high_cable_ping_drop_rate = 21;
+  bool wan_eth_poor_connection = 10;
+  bool mesh_topology_changing_often = 11;
+  bool mesh_unreliable_backhaul = 12;
+  bool radius_missing_process = 13;
+  bool eth_switch_error = 14;
+  bool poe_on_dish_unreachable = 15;
+  bool poe_fuse_blown = 16;
+  bool poe_router_overcurrent = 17;
+  bool poe_off_current_nominal = 18;
+  bool poe_vin_overvoltage = 19;
+  bool poe_vin_undervoltage = 20;
+  bool sandbox_disabled = 22;
+  bool only_overflight_blocked = 23;
+  bool offline_networks_disabled = 24;
+  bool wired_mesh_not_using_wan_iface = 25;
+}
+
+message WifiGetStatusResponse {
+  reserved 2;
+  reserved 5;
+  reserved 6;
+  reserved 7;
+  reserved 1001;
+  reserved 1002;
+  reserved 1006;
+  reserved 1007;
+  .SpaceX.API.Device.DeviceInfo device_info = 3;
+  .SpaceX.API.Device.DeviceState device_state = 4;
+  bool captive_portal_enabled = 1;
+  string ipv4_wan_address = 1003;
+  repeated string ipv6_wan_addresses = 1017;
+  uint32 hops_from_controller = 1034;
+  float ping_drop_rate = 1004;
+  float ping_drop_rate_5m = 1021;
+  float ping_latency_ms = 1005;
+  float dish_ping_drop_rate = 1012;
+  float dish_ping_drop_rate_5m = 1018;
+  float dish_ping_latency_ms = 1013;
+  float pop_ping_drop_rate = 1014;
+  float pop_ping_drop_rate_5m = 1020;
+  float pop_ping_latency_ms = 1015;
+  float pop_ipv6_ping_drop_rate = 1027;
+  float pop_ipv6_ping_drop_rate_5m = 1028;
+  float pop_ipv6_ping_latency_ms = 1029;
+  .SpaceX.API.Device.WifiBandStatus rf_2ghz_status = 1008;
+  .SpaceX.API.Device.WifiBandStatus rf_5ghz_status = 1009;
+  .SpaceX.API.Device.WifiAlerts alerts = 1010;
+  bool is_aviation = 1011;
+  .SpaceX.API.Device.WifiConfig config = 2000;
+  repeated .SpaceX.API.Device.WifiClient clients = 3000;
+  bool has_client_index = 3001;
+  int32 client_index = 3002;
+  bool is_aviation_conformed = 1016;
+  .SpaceX.API.Device.RadiusStatsMap radius_stats = 3003;
+  repeated .SpaceX.API.Device.DhcpServer dhcp_servers = 1019;
+  .SpaceX.API.Device.PoeStats poe_stats = 1022;
+  string dish_id = 1023;
+  .SpaceX.API.Satellites.Network.UtDisablementCode dish_disablement_code = 1031;
+  int64 utc_ns = 1024;
+  .SpaceX.API.Device.WifiSoftwareUpdateStats software_update_stats = 1025;
+  .SpaceX.API.Device.WifiSetupRequirement setup_requirement = 1026;
+  float secs_since_last_public_ipv4_change = 1030;
+  bool using_individualized_calibration = 1032;
+  .SpaceX.API.Device.CalibrationPartitionsState calibration_partitions_state = 1033;
+}
+
+message WifiAuthenticateRequest {
+  .SpaceX.API.Device.SignedData challenge = 1;
+}
+
+message WifiAuthenticateResponse {
+  .SpaceX.API.Device.ChallengeResponse wifi = 1;
+  .SpaceX.API.Device.ChallengeResponse dish = 2;
+}
+
+message WifiAccountBondingEvent {
+  string dish_id = 1;
+  bool is_repeater = 2;
+  string hardware_version = 3;
+}
+
+message WifiNewPeerEvent {
+  string peer_id = 1;
+}
+
+message PingMetrics {
+  float latency_mean_ms = 1;
+  float latency_stddev_ms = 2;
+  float latency_mean_ms_5m = 3;
+  float latency_mean_ms_1h = 4;
+  float latency_mean_ms_1d = 5;
+  float drop_rate = 6;
+  float drop_rate_5m = 7;
+  float drop_rate_1h = 8;
+  float drop_rate_1d = 9;
+  float seconds_since_last_success = 10;
+  float seconds_since_last_1s_outage = 11;
+  float seconds_since_last_2s_outage = 15;
+  float seconds_since_last_5s_outage = 12;
+  float seconds_since_last_15s_outage = 18;
+  float seconds_since_last_60s_outage = 19;
+  float seconds_since_last_300s_outage = 20;
+  float happy_hours_1s_1d = 13;
+  float happy_hours_2s_1d = 16;
+  float happy_hours_5s_1d = 14;
+}
+
+message WifiGetPingMetricsRequest {
+}
+
+message WifiGetPingMetricsResponse {
+  .SpaceX.API.Device.PingMetrics internet = 1;
+}
+
+message WifiNetwork {
+  enum Band {
+    WIFI_UNKNOWN = 0;
+    WIFI_2_4GHZ = 1;
+    WIFI_5GHZ = 2;
+  }
+
+  .SpaceX.API.Device.WifiNetwork.Band band = 1;
+  string ssid = 2;
+  uint32 channel = 3;
+  string encryption_type_str = 4;
+}
+
+message WifiPersistentStats {
+  message Event {
+    uint32 count = 1;
+    int64 last_occurred_timestamp = 2;
+  }
+
+  .SpaceX.API.Device.WifiPersistentStats.Event factory_reset_button = 1;
+  .SpaceX.API.Device.WifiPersistentStats.Event factory_reset_plug_unplug = 2;
+  .SpaceX.API.Device.WifiPersistentStats.Event factory_reset_command = 3;
+  .SpaceX.API.Device.WifiPersistentStats.Event factory_reset_failed_load_wifi_config = 4;
+  .SpaceX.API.Device.WifiPersistentStats.Event reboot_from_software_update = 5;
+}
+
+message WifiGetPersistentStatsResponse {
+  .SpaceX.API.Device.WifiPersistentStats stats = 1;
+}
+
+message RadioStats {
+  message ThermalStatus {
+    uint32 level = 1;
+    uint32 temp = 2;
+    double temp2 = 3;
+    uint32 power_reduction = 4;
+    uint32 duty_cycle = 5;
+  }
+
+  message AntennaStatus {
+    float rssi1 = 1;
+    float rssi2 = 2;
+    float rssi3 = 3;
+    float rssi4 = 4;
+  }
+
+  .SpaceX.API.Device.WifiConfig.Band band = 1;
+  .SpaceX.API.Device.NetworkInterface.RxStats rx_stats = 2;
+  .SpaceX.API.Device.NetworkInterface.TxStats tx_stats = 3;
+  .SpaceX.API.Device.RadioStats.ThermalStatus thermal_status = 4;
+  .SpaceX.API.Device.RadioStats.AntennaStatus antenna_status = 5;
+}
+
+message starlink_routers_hourly_metrics_v2 {
+  .google.protobuf.StringValue id = 1;
+  .google.protobuf.StringValue timestamp_date = 2;
+  .google.protobuf.UInt32Value timestamp_hour = 3;
+  .SpaceX.API.Telemetron.Public.Common.TimestampInfo timestamp = 10000;
+  .google.protobuf.UInt32Value sys_hw_gen = 4;
+  .google.protobuf.StringValue sys_sw = 5;
+  .google.protobuf.StringValue sys_country = 6;
+  .google.protobuf.BoolValue sys_is_dev = 7;
+  .google.protobuf.UInt32Value sys_alloc_fds = 8;
+  .google.protobuf.FloatValue sys_cpu_usage = 9;
+  .google.protobuf.FloatValue sys_mem_free_kb = 10;
+  .google.protobuf.Int32Value sys_bootcount = 11;
+  .google.protobuf.BoolValue sys_partitions_equal = 12;
+  .google.protobuf.UInt32Value sys_uptime_seconds = 13;
+  .google.protobuf.Int32Value sys_anti_rollback_version = 14;
+  .google.protobuf.BoolValue sys_is_witl = 15;
+  .google.protobuf.BoolValue sys_is_aviation_conformed = 16;
+  .google.protobuf.UInt32Value sys_ubi_max_ec = 17;
+  .google.protobuf.UInt32Value sys_ubi_bad_peb = 18;
+  .google.protobuf.UInt32Value sys_board_rev = 19;
+  .google.protobuf.UInt32Value sys_calibration_state = 20;
+  .google.protobuf.UInt32Value sys_calibration_partitions_state = 21;
+  .google.protobuf.UInt32Value radios_2ghz_channel = 100;
+  .google.protobuf.FloatValue radios_2ghz_antenna1_rssi = 101;
+  .google.protobuf.FloatValue radios_2ghz_antenna2_rssi = 102;
+  .google.protobuf.FloatValue radios_2ghz_antenna3_rssi = 103;
+  .google.protobuf.FloatValue radios_2ghz_antenna4_rssi = 197;
+  .google.protobuf.FloatValue radios_2ghz_antenna1_tssi = 157;
+  .google.protobuf.FloatValue radios_2ghz_antenna2_tssi = 158;
+  .google.protobuf.FloatValue radios_2ghz_antenna3_tssi = 159;
+  .google.protobuf.FloatValue radios_2ghz_antenna4_tssi = 160;
+  .google.protobuf.UInt32Value radios_2ghz_iface_count = 104;
+  .google.protobuf.FloatValue radios_2ghz_chan_busy_fraction = 105;
+  .google.protobuf.FloatValue radios_2ghz_edcca_fraction = 106;
+  .google.protobuf.FloatValue radios_2ghz_overlapping_bss_fraction = 107;
+  .google.protobuf.Int64Value radios_2ghz_rx_bytes = 108;
+  .google.protobuf.Int64Value radios_2ghz_rx_packets = 109;
+  .google.protobuf.Int64Value radios_2ghz_rx_errors = 110;
+  .google.protobuf.Int64Value radios_2ghz_rx_frame_errors = 111;
+  .google.protobuf.FloatValue radios_2ghz_rx_packet_error_rate = 112;
+  .google.protobuf.FloatValue radios_2ghz_rx_airtime_fraction = 113;
+  .google.protobuf.Int64Value radios_2ghz_tx_bytes = 114;
+  .google.protobuf.Int64Value radios_2ghz_tx_packets = 115;
+  .google.protobuf.Int64Value radios_2ghz_tx_errors = 116;
+  .google.protobuf.FloatValue radios_2ghz_tx_packet_error_rate = 117;
+  .google.protobuf.FloatValue radios_2ghz_tx_airtime_fraction = 118;
+  .google.protobuf.UInt32Value radios_5ghz_channel = 119;
+  .google.protobuf.FloatValue radios_5ghz_antenna1_rssi = 120;
+  .google.protobuf.FloatValue radios_5ghz_antenna2_rssi = 121;
+  .google.protobuf.FloatValue radios_5ghz_antenna3_rssi = 122;
+  .google.protobuf.FloatValue radios_5ghz_antenna4_rssi = 198;
+  .google.protobuf.FloatValue radios_5ghz_antenna1_tssi = 161;
+  .google.protobuf.FloatValue radios_5ghz_antenna2_tssi = 162;
+  .google.protobuf.FloatValue radios_5ghz_antenna3_tssi = 163;
+  .google.protobuf.FloatValue radios_5ghz_antenna4_tssi = 164;
+  .google.protobuf.UInt32Value radios_5ghz_iface_count = 123;
+  .google.protobuf.FloatValue radios_5ghz_chan_busy_fraction = 124;
+  .google.protobuf.FloatValue radios_5ghz_edcca_fraction = 125;
+  .google.protobuf.FloatValue radios_5ghz_overlapping_bss_fraction = 126;
+  .google.protobuf.Int64Value radios_5ghz_rx_bytes = 127;
+  .google.protobuf.Int64Value radios_5ghz_rx_packets = 128;
+  .google.protobuf.Int64Value radios_5ghz_rx_errors = 129;
+  .google.protobuf.Int64Value radios_5ghz_rx_frame_errors = 130;
+  .google.protobuf.FloatValue radios_5ghz_rx_packet_error_rate = 131;
+  .google.protobuf.FloatValue radios_5ghz_rx_airtime_fraction = 132;
+  .google.protobuf.Int64Value radios_5ghz_tx_bytes = 133;
+  .google.protobuf.Int64Value radios_5ghz_tx_packets = 134;
+  .google.protobuf.Int64Value radios_5ghz_tx_errors = 135;
+  .google.protobuf.FloatValue radios_5ghz_tx_packet_error_rate = 136;
+  .google.protobuf.FloatValue radios_5ghz_tx_airtime_fraction = 137;
+  .google.protobuf.UInt32Value radios_5ghz_high_channel = 138;
+  .google.protobuf.FloatValue radios_5ghz_high_antenna1_rssi = 139;
+  .google.protobuf.FloatValue radios_5ghz_high_antenna2_rssi = 140;
+  .google.protobuf.FloatValue radios_5ghz_high_antenna3_rssi = 141;
+  .google.protobuf.FloatValue radios_5ghz_high_antenna4_rssi = 199;
+  .google.protobuf.FloatValue radios_5ghz_high_antenna1_tssi = 165;
+  .google.protobuf.FloatValue radios_5ghz_high_antenna2_tssi = 166;
+  .google.protobuf.FloatValue radios_5ghz_high_antenna3_tssi = 167;
+  .google.protobuf.FloatValue radios_5ghz_high_antenna4_tssi = 168;
+  .google.protobuf.UInt32Value radios_5ghz_high_iface_count = 142;
+  .google.protobuf.FloatValue radios_5ghz_high_chan_busy_fraction = 143;
+  .google.protobuf.FloatValue radios_5ghz_high_edcca_fraction = 144;
+  .google.protobuf.FloatValue radios_5ghz_high_overlapping_bss_fraction = 145;
+  .google.protobuf.Int64Value radios_5ghz_high_rx_bytes = 146;
+  .google.protobuf.Int64Value radios_5ghz_high_rx_packets = 147;
+  .google.protobuf.Int64Value radios_5ghz_high_rx_errors = 148;
+  .google.protobuf.Int64Value radios_5ghz_high_rx_frame_errors = 149;
+  .google.protobuf.FloatValue radios_5ghz_high_rx_packet_error_rate = 150;
+  .google.protobuf.FloatValue radios_5ghz_high_rx_airtime_fraction = 151;
+  .google.protobuf.Int64Value radios_5ghz_high_tx_bytes = 152;
+  .google.protobuf.Int64Value radios_5ghz_high_tx_packets = 153;
+  .google.protobuf.Int64Value radios_5ghz_high_tx_errors = 154;
+  .google.protobuf.FloatValue radios_5ghz_high_tx_packet_error_rate = 155;
+  .google.protobuf.FloatValue radios_5ghz_high_tx_airtime_fraction = 156;
+  .google.protobuf.FloatValue radios_2ghz_thermal_temp = 200;
+  .google.protobuf.FloatValue radios_5ghz_thermal_temp = 201;
+  .google.protobuf.FloatValue radios_5ghz_high_thermal_temp = 206;
+  .google.protobuf.FloatValue radios_2ghz_thermal_duty_cycle = 202;
+  .google.protobuf.FloatValue radios_5ghz_thermal_duty_cycle = 203;
+  .google.protobuf.FloatValue radios_5ghz_high_thermal_duty_cycle = 207;
+  .google.protobuf.UInt32Value radios_2ghz_thermal_throttled_seconds = 204;
+  .google.protobuf.UInt32Value radios_5ghz_thermal_throttled_seconds = 205;
+  .google.protobuf.UInt32Value radios_5ghz_high_thermal_throttled_seconds = 208;
+  .google.protobuf.FloatValue board_temp = 210;
+  .google.protobuf.FloatValue poe_mcu_die_temp = 211;
+  .google.protobuf.FloatValue poe_percent_water_detect_avg = 212;
+  .google.protobuf.Int64Value ifaces_lan_eth_rx_bytes = 300;
+  .google.protobuf.Int64Value ifaces_lan_eth_rx_packets = 301;
+  .google.protobuf.Int64Value ifaces_lan_eth_rx_errors = 302;
+  .google.protobuf.Int64Value ifaces_lan_eth_rx_frame_errors = 303;
+  .google.protobuf.Int64Value ifaces_lan_eth_tx_bytes = 304;
+  .google.protobuf.Int64Value ifaces_lan_eth_tx_packets = 305;
+  .google.protobuf.Int64Value ifaces_lan_eth_tx_errors = 306;
+  .google.protobuf.Int64Value ifaces_lan1_eth_rx_bytes = 314;
+  .google.protobuf.Int64Value ifaces_lan1_eth_rx_packets = 315;
+  .google.protobuf.Int64Value ifaces_lan1_eth_rx_errors = 316;
+  .google.protobuf.Int64Value ifaces_lan1_eth_rx_frame_errors = 317;
+  .google.protobuf.Int64Value ifaces_lan1_eth_tx_bytes = 318;
+  .google.protobuf.Int64Value ifaces_lan1_eth_tx_packets = 319;
+  .google.protobuf.Int64Value ifaces_lan1_eth_tx_errors = 320;
+  .google.protobuf.Int64Value ifaces_wan_eth_rx_bytes = 307;
+  .google.protobuf.Int64Value ifaces_wan_eth_rx_packets = 308;
+  .google.protobuf.Int64Value ifaces_wan_eth_rx_errors = 309;
+  .google.protobuf.Int64Value ifaces_wan_eth_rx_frame_errors = 310;
+  .google.protobuf.Int64Value ifaces_wan_eth_tx_bytes = 311;
+  .google.protobuf.Int64Value ifaces_wan_eth_tx_packets = 312;
+  .google.protobuf.Int64Value ifaces_wan_eth_tx_errors = 313;
+  .google.protobuf.UInt32Value clients = 400;
+  .google.protobuf.UInt32Value clients_2ghz = 401;
+  .google.protobuf.UInt32Value clients_5ghz = 402;
+  .google.protobuf.UInt32Value clients_5ghz_high = 413;
+  .google.protobuf.UInt32Value clients_eth = 403;
+  .google.protobuf.UInt32Value clients_5ghz_rx_bandwidth_20mhz = 429;
+  .google.protobuf.UInt32Value clients_5ghz_rx_bandwidth_40mhz = 430;
+  .google.protobuf.UInt32Value clients_5ghz_rx_bandwidth_80mhz = 431;
+  .google.protobuf.UInt32Value clients_repeater = 404;
+  .google.protobuf.UInt32Value clients_repeater_2ghz = 405;
+  .google.protobuf.UInt32Value clients_repeater_5ghz = 406;
+  .google.protobuf.UInt32Value clients_repeater_5ghz_high = 416;
+  .google.protobuf.UInt32Value clients_repeater_eth = 407;
+  .google.protobuf.UInt32Value mesh_hops = 408;
+  .google.protobuf.FloatValue mesh_one_hop_rssi_avg_2ghz = 409;
+  .google.protobuf.FloatValue mesh_one_hop_rssi_avg_5ghz = 410;
+  .google.protobuf.FloatValue mesh_one_hop_rssi_avg_5ghz_high = 414;
+  .google.protobuf.FloatValue mesh_two_hop_rssi_avg_2ghz = 411;
+  .google.protobuf.FloatValue mesh_two_hop_rssi_avg_5ghz = 412;
+  .google.protobuf.FloatValue mesh_two_hop_rssi_avg_5ghz_high = 415;
+  .google.protobuf.FloatValue repeater_tx_rate_mbps_min = 418;
+  .google.protobuf.FloatValue repeater_rx_rate_mbps_min = 419;
+  .google.protobuf.FloatValue repeater_tx_rate_mbps_avg = 420;
+  .google.protobuf.FloatValue repeater_rx_rate_mbps_avg = 421;
+  .google.protobuf.FloatValue repeater_seconds_since_2s_outage_min = 422;
+  .google.protobuf.FloatValue repeater_seconds_since_5s_outage_min = 424;
+  .google.protobuf.FloatValue repeater_seconds_since_2s_outage_avg = 423;
+  .google.protobuf.FloatValue repeater_seconds_since_5s_outage_avg = 425;
+  .google.protobuf.FloatValue repeater_latency_ms_1h_max = 426;
+  .google.protobuf.FloatValue repeater_latency_ms_1h_avg = 427;
+  .google.protobuf.UInt32Value mesh_topology_change_count_1d = 428;
+  .google.protobuf.FloatValue ping_seconds_since_last_1s_outage = 600;
+  .google.protobuf.FloatValue ping_seconds_since_last_2s_outage = 601;
+  .google.protobuf.FloatValue ping_seconds_since_last_5s_outage = 602;
+  .google.protobuf.FloatValue ping_seconds_since_last_60s_outage = 603;
+  .google.protobuf.FloatValue ping_seconds_since_last_300s_outage = 604;
+  .google.protobuf.FloatValue ping_drop_rate = 605;
+  .google.protobuf.FloatValue ping_drop_rate_last_1h = 606;
+  .google.protobuf.FloatValue ping_latency = 607;
+  .google.protobuf.FloatValue ping_latency_last_1h = 618;
+  .google.protobuf.FloatValue ping_dish_seconds_since_last_1s_outage = 610;
+  .google.protobuf.FloatValue ping_dish_seconds_since_last_2s_outage = 611;
+  .google.protobuf.FloatValue ping_dish_seconds_since_last_5s_outage = 612;
+  .google.protobuf.FloatValue ping_dish_seconds_since_last_60s_outage = 613;
+  .google.protobuf.FloatValue ping_dish_seconds_since_last_300s_outage = 614;
+  .google.protobuf.FloatValue ping_dish_drop_rate = 615;
+  .google.protobuf.FloatValue ping_dish_drop_rate_last_1h = 616;
+  .google.protobuf.FloatValue ping_dish_latency = 617;
+  .google.protobuf.FloatValue ping_dish_latency_last_1h = 619;
+  .google.protobuf.FloatValue ping_pop_ipv6_drop_rate_last_1h = 621;
+  .google.protobuf.FloatValue ping_pop_ipv6_latency_last_1h = 623;
+  .google.protobuf.FloatValue client_speedtest_router_download_mbps = 700;
+  .google.protobuf.FloatValue client_speedtest_router_upload_mbps = 701;
+  .google.protobuf.FloatValue client_speedtest_router_rssi = 702;
+  .google.protobuf.FloatValue client_speedtest_wifi_download_mbps = 703;
+  .google.protobuf.FloatValue client_speedtest_wifi_upload_mbps = 704;
+  .google.protobuf.FloatValue client_speedtest_client_download_mbps = 705;
+  .google.protobuf.FloatValue client_speedtest_client_upload_mbps = 706;
+  .google.protobuf.FloatValue client_speedtest_client_rssi = 707;
+  .google.protobuf.UInt32Value client_speedtest_client_iface = 708;
+  .google.protobuf.StringValue client_speedtest_client_oui = 709;
+  .google.protobuf.UInt32Value client_speedtest_client_tx_rate = 710;
+  .google.protobuf.UInt32Value client_speedtest_client_rx_rate = 711;
+  .google.protobuf.UInt32Value client_speedtest_client_platform_type = 712;
+  .google.protobuf.FloatValue speedtest_tcp_8_download_mbps_avg = 800;
+  .google.protobuf.FloatValue speedtest_tcp_8_download_mbps_max = 801;
+  .google.protobuf.FloatValue speedtest_tcp_8_upload_mbps_avg = 802;
+  .google.protobuf.FloatValue speedtest_tcp_8_upload_mbps_max = 803;
+  .google.protobuf.FloatValue speedtest_tcp_64_download_mbps_avg = 804;
+  .google.protobuf.FloatValue speedtest_tcp_64_download_mbps_max = 805;
+  .google.protobuf.FloatValue speedtest_tcp_64_upload_mbps_avg = 806;
+  .google.protobuf.FloatValue speedtest_tcp_64_upload_mbps_max = 807;
+  .google.protobuf.FloatValue speedtest_tcp_1_download_mbps_avg = 808;
+  .google.protobuf.FloatValue speedtest_tcp_1_download_mbps_max = 809;
+  .google.protobuf.FloatValue speedtest_tcp_1_upload_mbps_avg = 810;
+  .google.protobuf.FloatValue speedtest_tcp_1_upload_mbps_max = 811;
+  .google.protobuf.UInt32Value dish_cell_id = 900;
+  .google.protobuf.BoolValue config_setup_complete = 1000;
+  .google.protobuf.BoolValue config_bands_split = 1001;
+  .google.protobuf.BoolValue config_is_repeater = 1002;
+  .google.protobuf.BoolValue config_open_network = 1003;
+  .google.protobuf.BoolValue config_is_aviation = 1004;
+  .google.protobuf.BoolValue config_secure_dns = 1005;
+  .google.protobuf.BoolValue config_legacy = 1006;
+  .google.protobuf.BoolValue config_ap_mode = 1007;
+  .google.protobuf.BoolValue config_dfs_enabled = 1008;
+  .google.protobuf.BoolValue config_network_name_is_default = 1009;
+  .google.protobuf.BoolValue config_remote_ssh_enabled = 1010;
+  .google.protobuf.BoolValue config_is_repeater_wired = 1011;
+  .google.protobuf.BoolValue config_is_repeater_wireless = 1012;
+  .google.protobuf.UInt32Value config_block_schedules_set = 1013;
+  .google.protobuf.BoolValue config_custom_nameservers = 1014;
+  .google.protobuf.BoolValue config_disable_mesh_onboarding = 1015;
+  .google.protobuf.BoolValue config_pin_country_code = 1016;
+  .google.protobuf.BoolValue config_disable_update_reboot = 1017;
+  .google.protobuf.BoolValue config_https_content_hosting_enabled = 1031;
+  .google.protobuf.BoolValue config_only_overflight_blocking_enabled = 1032;
+  .google.protobuf.BoolValue config_offline_networks_disablement_enabled = 1033;
+  .google.protobuf.BoolValue config_custom_dns_disabled = 1034;
+  .google.protobuf.BoolValue config_disable_2ghz = 1018;
+  .google.protobuf.BoolValue config_disable_5ghz = 1019;
+  .google.protobuf.BoolValue config_disable_5ghz_high = 1029;
+  .google.protobuf.UInt32Value config_channel_2ghz = 1020;
+  .google.protobuf.UInt32Value config_channel_5ghz = 1021;
+  .google.protobuf.UInt32Value config_channel_5ghz_high = 1022;
+  .google.protobuf.UInt32Value config_networks = 1023;
+  .google.protobuf.UInt32Value config_networks_guest = 1024;
+  .google.protobuf.UInt32Value config_networks_hidden = 1025;
+  .google.protobuf.UInt32Value config_networks_client_isolation = 1026;
+  .google.protobuf.UInt32Value config_networks_bands_split = 1027;
+  .google.protobuf.UInt32Value config_networks_user = 1035;
+  .google.protobuf.UInt32Value wifi_reload_count = 1040;
+  .google.protobuf.UInt32Value radius_reload_count = 1041;
+  .google.protobuf.UInt32Value openssh_reload_count = 1042;
+  .google.protobuf.UInt32Value iptables_reload_count = 1043;
+  .google.protobuf.UInt32Value ebtables_reload_count = 1044;
+  .google.protobuf.UInt32Value traffic_control_reload_count = 1045;
+  .google.protobuf.UInt32Value dhcp_reload_count = 1046;
+  .google.protobuf.UInt32Value dhcpv6_reload_count = 1047;
+  .google.protobuf.UInt32Value system_reload_count = 1048;
+  .google.protobuf.UInt32Value dns_reload_count = 1049;
+  .google.protobuf.UInt32Value https_reload_count = 1050;
+  .google.protobuf.UInt32Value band_steering_reload_count = 1051;
+  .google.protobuf.UInt32Value commit_count = 1052;
+  .google.protobuf.UInt32Value network_reload_count = 1053;
+  .google.protobuf.Int64Value wan_traffic_control_cake_bytes = 1101;
+  .google.protobuf.Int64Value wan_traffic_control_cake_packets = 1102;
+  .google.protobuf.Int64Value wan_traffic_control_cake_drops = 1103;
+  .google.protobuf.Int64Value wan_traffic_control_cake_ack_drops = 1104;
+  .google.protobuf.UInt32Value conntrack_entries = 1100;
+  .google.protobuf.UInt32Value dhcp_secs_eq_0 = 1105;
+  .google.protobuf.UInt32Value dhcp_secs_gt_0 = 1106;
+  .google.protobuf.UInt32Value dhcp_secs_gt_10 = 1107;
+  .google.protobuf.UInt32Value dhcp_secs_gt_30 = 1108;
+  .google.protobuf.UInt32Value dhcp_secs_gt_60 = 1109;
+  .google.protobuf.UInt32Value dns_forwards = 1200;
+  .google.protobuf.UInt32Value dns_forwards_success = 1201;
+  .google.protobuf.UInt32Value dns_forwards_server_failure = 1202;
+  .google.protobuf.UInt32Value dns_forwards_no_server_response = 1203;
+  .google.protobuf.UInt32Value dns_forwards_success_on_default_backup = 1204;
+  .google.protobuf.UInt32Value dns_forwards_dropped = 1205;
+  .google.protobuf.UInt32Value dns_forwards_with_backup = 1206;
+}
+
+message starlink_router_alerts {
+  string name = 1;
+  string source = 2;
+  bool active = 3;
+  .SpaceX.API.Telemetron.Public.Common.TimestampInfo start = 4;
+  .SpaceX.API.Telemetron.Public.Common.TimestampInfo end = 5;
+  string hardware = 6;
+  string software = 7;
+  string details = 8;
+}
+
+message starlink_router_client_speedtests {
+  reserved 14;
+  reserved 15;
+  reserved 21;
+  string id = 1;
+  .SpaceX.API.Telemetron.Public.Common.TimestampInfo data_record = 2;
+  string country = 3;
+  .google.protobuf.StringValue speedtest_id = 30;
+  .google.protobuf.FloatValue client_rssi = 8;
+  .google.protobuf.FloatValue router_rssi = 9;
+  .google.protobuf.UInt32Value client_iface = 10;
+  .google.protobuf.StringValue client_oui = 11;
+  .google.protobuf.UInt32Value client_tx_rate = 12;
+  .google.protobuf.UInt32Value client_rx_rate = 13;
+  .google.protobuf.StringValue client_platform_type = 27;
+  .google.protobuf.StringValue client_app_version = 34;
+  .google.protobuf.UInt32Value client_app_build = 35;
+  .google.protobuf.UInt32Value client_rx_phy_mode = 31;
+  .google.protobuf.UInt32Value client_rx_spatial_streams = 32;
+  .google.protobuf.UInt32Value client_rx_mcs = 33;
+  .SpaceX.API.Telemetron.Public.Common.TimestampInfo client_download_start_time = 4;
+  .SpaceX.API.Telemetron.Public.Common.TimestampInfo client_upload_start_time = 5;
+  .google.protobuf.FloatValue client_download_mbps_avg = 6;
+  .google.protobuf.FloatValue client_upload_mbps_avg = 7;
+  .google.protobuf.StringValue client_target = 28;
+  .google.protobuf.UInt32Value client_tcp_streams = 16;
+  .SpaceX.API.Telemetron.Public.Common.TimestampInfo router_download_start_time = 17;
+  .SpaceX.API.Telemetron.Public.Common.TimestampInfo router_upload_start_time = 18;
+  .google.protobuf.FloatValue router_download_mbps_avg = 19;
+  .google.protobuf.FloatValue router_upload_mbps_avg = 20;
+  .google.protobuf.StringValue router_target = 29;
+  .google.protobuf.UInt32Value router_tcp_streams = 22;
+  .SpaceX.API.Telemetron.Public.Common.TimestampInfo wifi_download_start_time = 23;
+  .SpaceX.API.Telemetron.Public.Common.TimestampInfo wifi_upload_start_time = 24;
+  .google.protobuf.FloatValue wifi_download_mbps_avg = 25;
+  .google.protobuf.FloatValue wifi_upload_mbps_avg = 26;
+}
+
+message StarlinkRouterClients {
+  reserved "authorized";
+  reserved 136;
+  string router_id = 1;
+  .SpaceX.API.Telemetron.Public.Common.TimestampInfo timestamp = 2;
+  uint32 client_id = 3;
+  string client_telem_index = 4;
+  .google.protobuf.StringValue router_hw = 119;
+  .google.protobuf.StringValue router_sw = 120;
+  .google.protobuf.UInt32Value router_uptime_s = 137;
+  .google.protobuf.StringValue client_router_id = 121;
+  .google.protobuf.StringValue client_hw = 122;
+  .google.protobuf.StringValue client_sw = 123;
+  .google.protobuf.StringValue oui = 101;
+  .google.protobuf.StringValue upstream_id = 102;
+  .google.protobuf.BoolValue is_repeater = 103;
+  .google.protobuf.UInt32Value connected_s = 104;
+  .google.protobuf.StringValue interface = 105;
+  .google.protobuf.UInt32Value radio_channel = 106;
+  .google.protobuf.FloatValue rssi = 107;
+  .google.protobuf.UInt32Value rx_mcs = 108;
+  .google.protobuf.UInt32Value tx_mcs = 109;
+  .google.protobuf.UInt32Value rx_rate = 110;
+  .google.protobuf.UInt32Value tx_rate = 111;
+  .google.protobuf.UInt32Value rx_bandwidth = 112;
+  .google.protobuf.UInt32Value rx_spatial_streams = 113;
+  .google.protobuf.UInt32Value rx_phy_mode = 114;
+  .google.protobuf.UInt32Value mesh_hops = 118;
+  .google.protobuf.FloatValue speedtest_upload_mbps = 124;
+  .google.protobuf.FloatValue speedtest_download_mbps = 125;
+  .google.protobuf.FloatValue site_survey_rssi = 127;
+  .google.protobuf.FloatValue site_survey_est_rx_rate = 128;
+  .google.protobuf.UInt32Value est_controller_throughput_mbps = 129;
+  .google.protobuf.FloatValue ping_drop_rate_last_1h = 115;
+  .google.protobuf.FloatValue ping_latency_last_1h = 116;
+  .google.protobuf.StringValue steer_state = 117;
+  .google.protobuf.BoolValue blocked = 126;
+  .SpaceX.API.Telemetron.Public.Common.TimestampInfo throughput_limited_last_fired = 150;
+  .google.protobuf.BoolValue has_dhcp_v4_lease = 130;
+  .google.protobuf.StringValue ipv4_address = 131;
+  .google.protobuf.BoolValue has_hostname = 132;
+  .google.protobuf.BoolValue dhcp_v4_lease_is_active = 133;
+  .google.protobuf.BoolValue dhcp_v4_lease_was_renewed = 134;
+  .google.protobuf.FloatValue seconds_until_dhcp_v4_lease_expires = 135;
+  .google.protobuf.UInt32Value dissociations_under_10s = 138;
+  .google.protobuf.UInt32Value dissociations_under_30s = 139;
+  .google.protobuf.UInt32Value dissociations_under_60s = 140;
+  .google.protobuf.UInt32Value dissociations_under_120s = 141;
+  .google.protobuf.FloatValue seconds_to_conn_tcp_ipv4 = 142;
+  .google.protobuf.FloatValue seconds_to_conn_tcp_ipv6 = 143;
+  .google.protobuf.FloatValue seconds_to_conn_udp_ipv4 = 144;
+  .google.protobuf.FloatValue seconds_to_conn_udp_ipv6 = 145;
+  .google.protobuf.UInt32Value flows_tcp_ipv4 = 146;
+  .google.protobuf.UInt32Value flows_tcp_ipv6 = 147;
+  .google.protobuf.UInt32Value flows_udp_ipv4 = 148;
+  .google.protobuf.UInt32Value flows_udp_ipv6 = 149;
+}
+
+message StarlinkRouterClientTesterRun {
+  string client_tester_router_id = 1;
+  .SpaceX.API.Telemetron.Public.Common.TimestampInfo timestamp = 2;
+  .google.protobuf.StringValue client_iface_name = 3;
+  .google.protobuf.StringValue target_ssid = 4;
+  .google.protobuf.BoolValue target_has_password = 5;
+  .google.protobuf.StringValue target_auth = 6;
+  .google.protobuf.StringValue target_encryption = 7;
+  .google.protobuf.StringValue target_bssid = 8;
+  .google.protobuf.StringValue target_irtt_server = 25;
+  .google.protobuf.UInt32Value iteration = 9;
+  .google.protobuf.StringValue error_code = 10;
+  .google.protobuf.FloatValue seconds_to_associate = 11;
+  .google.protobuf.FloatValue seconds_to_lease = 12;
+  .google.protobuf.FloatValue seconds_to_resolve_router = 13;
+  .google.protobuf.FloatValue seconds_to_resolve_internet = 14;
+  .google.protobuf.FloatValue seconds_to_ping_dish = 15;
+  .google.protobuf.FloatValue v4_irtt_test_duration_s = 16;
+  .google.protobuf.FloatValue v4_irtt_rtt_latency_min_ms = 17;
+  .google.protobuf.FloatValue v4_irtt_rtt_latency_mean_ms = 18;
+  .google.protobuf.FloatValue v4_irtt_rtt_latency_median_ms = 19;
+  .google.protobuf.FloatValue v4_irtt_rtt_latency_max_ms = 20;
+  .google.protobuf.FloatValue v4_irtt_rtt_latency_std_dev_ms = 21;
+  .google.protobuf.UInt32Value v4_irtt_pkts_sent = 22;
+  .google.protobuf.UInt32Value v4_irtt_pkts_recv = 23;
+  .google.protobuf.FloatValue v4_irtt_loss_percent = 24;
+}
+
+message WifiSetClientGivenNameRequest {
+  .SpaceX.API.Device.ClientName client_name = 1;
+  .SpaceX.API.Device.ClientConfig client_config = 2;
+}
+
+message WifiSelfTestRequest {
+}
+
+message WifiSelfTestResponse {
+  .SpaceX.API.Device.WifiSelfTest self_test = 1;
+  string json = 2;
+}
+
+message WifiRunSelfTestRequest {
+}
+
+message WifiRfTestRequest {
+  uint32 num_measurements = 1;
+  uint32 channel_2ghz = 2;
+  uint32 channel_5ghz = 3;
+  uint32 channel_5ghz_high = 4;
+  uint32 mcs_2ghz = 5;
+  uint32 mcs_5ghz = 6;
+  uint32 mcs_5ghz_high = 7;
+  uint32 phy_mode_2ghz = 8;
+  uint32 phy_mode_5ghz = 9;
+  uint32 phy_mode_5ghz_high = 10;
+}
+
+message WifiRfTestResponse {
+  string report = 1;
+}
+
+message WifiGetFirewallRequest {
+}
+
+message WifiGetFirewallResponse {
+  string iptables = 1;
+  string iptables_6 = 2;
+}
+
+message WifiTogglePoeNegotiationRequest {
+  bool enable = 1;
+}
+
+message WifiCalibrationModeRequest {
+}
+
+message starlink_router_hourly_metrics_v2 {
+  .google.protobuf.StringValue id = 1;
+  .google.protobuf.StringValue timestamp_date = 2;
+  .google.protobuf.UInt32Value timestamp_hour = 3;
+  .google.protobuf.UInt32Value sys_hw_gen = 4;
+  .google.protobuf.StringValue sys_sw = 5;
+  .google.protobuf.StringValue sys_country = 6;
+  .google.protobuf.BoolValue sys_is_dev = 7;
+  .google.protobuf.UInt32Value sys_alloc_fds = 8;
+  .google.protobuf.FloatValue sys_cpu_usage = 9;
+  .google.protobuf.FloatValue sys_mem_free_kb = 10;
+  .google.protobuf.Int32Value sys_bootcount = 11;
+  .google.protobuf.BoolValue sys_partitions_equal = 12;
+  .google.protobuf.UInt32Value sys_uptime_seconds = 13;
+  .google.protobuf.Int32Value sys_anti_rollback_version = 14;
+  .google.protobuf.UInt32Value radios_2ghz_channel = 100;
+  .google.protobuf.FloatValue radios_2ghz_antenna1_rssi = 101;
+  .google.protobuf.FloatValue radios_2ghz_antenna2_rssi = 102;
+  .google.protobuf.FloatValue radios_2ghz_antenna3_rssi = 103;
+  .google.protobuf.UInt32Value radios_2ghz_iface_count = 104;
+  .google.protobuf.FloatValue radios_2ghz_chan_busy_fraction = 105;
+  .google.protobuf.FloatValue radios_2ghz_edcca_fraction = 106;
+  .google.protobuf.FloatValue radios_2ghz_overlapping_bss_fraction = 107;
+  .google.protobuf.UInt32Value radios_2ghz_rx_bytes = 108;
+  .google.protobuf.UInt32Value radios_2ghz_rx_packets = 109;
+  .google.protobuf.UInt32Value radios_2ghz_rx_errors = 110;
+  .google.protobuf.UInt32Value radios_2ghz_rx_frame_errors = 111;
+  .google.protobuf.FloatValue radios_2ghz_rx_packet_error_rate = 112;
+  .google.protobuf.FloatValue radios_2ghz_rx_airtime_fraction = 113;
+  .google.protobuf.UInt32Value radios_2ghz_tx_bytes = 114;
+  .google.protobuf.UInt32Value radios_2ghz_tx_packets = 115;
+  .google.protobuf.UInt32Value radios_2ghz_tx_errors = 116;
+  .google.protobuf.FloatValue radios_2ghz_tx_packet_error_rate = 117;
+  .google.protobuf.FloatValue radios_2ghz_tx_airtime_fraction = 118;
+  .google.protobuf.UInt32Value radios_5ghz_channel = 119;
+  .google.protobuf.FloatValue radios_5ghz_antenna1_rssi = 120;
+  .google.protobuf.FloatValue radios_5ghz_antenna2_rssi = 121;
+  .google.protobuf.FloatValue radios_5ghz_antenna3_rssi = 122;
+  .google.protobuf.UInt32Value radios_5ghz_iface_count = 123;
+  .google.protobuf.FloatValue radios_5ghz_chan_busy_fraction = 124;
+  .google.protobuf.FloatValue radios_5ghz_edcca_fraction = 125;
+  .google.protobuf.FloatValue radios_5ghz_overlapping_bss_fraction = 126;
+  .google.protobuf.UInt32Value radios_5ghz_rx_bytes = 127;
+  .google.protobuf.UInt32Value radios_5ghz_rx_packets = 128;
+  .google.protobuf.UInt32Value radios_5ghz_rx_errors = 129;
+  .google.protobuf.UInt32Value radios_5ghz_rx_frame_errors = 130;
+  .google.protobuf.FloatValue radios_5ghz_rx_packet_error_rate = 131;
+  .google.protobuf.FloatValue radios_5ghz_rx_airtime_fraction = 132;
+  .google.protobuf.UInt32Value radios_5ghz_tx_bytes = 133;
+  .google.protobuf.UInt32Value radios_5ghz_tx_packets = 134;
+  .google.protobuf.UInt32Value radios_5ghz_tx_errors = 135;
+  .google.protobuf.FloatValue radios_5ghz_tx_packet_error_rate = 136;
+  .google.protobuf.FloatValue radios_5ghz_tx_airtime_fraction = 137;
+  .google.protobuf.FloatValue radios_2ghz_thermal_temp = 200;
+  .google.protobuf.FloatValue radios_5ghz_thermal_temp = 201;
+  .google.protobuf.FloatValue radios_2ghz_thermal_duty_cycle = 202;
+  .google.protobuf.FloatValue radios_5ghz_thermal_duty_cycle = 203;
+  .google.protobuf.UInt32Value radios_2ghz_thermal_throttled_seconds = 204;
+  .google.protobuf.UInt32Value radios_5ghz_thermal_throttled_seconds = 205;
+  .google.protobuf.UInt32Value ifaces_lan_eth_rx_bytes = 300;
+  .google.protobuf.UInt32Value ifaces_lan_eth_rx_packets = 301;
+  .google.protobuf.UInt32Value ifaces_lan_eth_rx_errors = 302;
+  .google.protobuf.UInt32Value ifaces_lan_eth_rx_frame_errors = 303;
+  .google.protobuf.UInt32Value ifaces_lan_eth_tx_bytes = 304;
+  .google.protobuf.UInt32Value ifaces_lan_eth_tx_packets = 305;
+  .google.protobuf.UInt32Value ifaces_lan_eth_tx_errors = 306;
+  .google.protobuf.UInt32Value ifaces_wan_eth_rx_bytes = 307;
+  .google.protobuf.UInt32Value ifaces_wan_eth_rx_packets = 308;
+  .google.protobuf.UInt32Value ifaces_wan_eth_rx_errors = 309;
+  .google.protobuf.UInt32Value ifaces_wan_eth_rx_frame_errors = 310;
+  .google.protobuf.UInt32Value ifaces_wan_eth_tx_bytes = 311;
+  .google.protobuf.UInt32Value ifaces_wan_eth_tx_packets = 312;
+  .google.protobuf.UInt32Value ifaces_wan_eth_tx_errors = 313;
+  .google.protobuf.UInt32Value clients = 400;
+  .google.protobuf.UInt32Value clients_2ghz = 401;
+  .google.protobuf.UInt32Value clients_5ghz = 402;
+  .google.protobuf.UInt32Value clients_eth = 403;
+  .google.protobuf.UInt32Value clients_repeater = 404;
+  .google.protobuf.UInt32Value clients_repeater_2ghz = 405;
+  .google.protobuf.UInt32Value clients_repeater_5ghz = 406;
+  .google.protobuf.UInt32Value clients_repeater_eth = 407;
+  .google.protobuf.UInt32Value mesh_hops = 408;
+  .google.protobuf.FloatValue mesh_one_hop_rssi_avg_2ghz = 409;
+  .google.protobuf.FloatValue mesh_one_hop_rssi_avg_5ghz = 410;
+  .google.protobuf.FloatValue mesh_two_hop_rssi_avg_2ghz = 411;
+  .google.protobuf.FloatValue mesh_two_hop_rssi_avg_5ghz = 412;
+  .google.protobuf.FloatValue ping_seconds_since_last_1s_outage = 600;
+  .google.protobuf.FloatValue ping_seconds_since_last_2s_outage = 601;
+  .google.protobuf.FloatValue ping_seconds_since_last_5s_outage = 602;
+  .google.protobuf.FloatValue ping_seconds_since_last_60s_outage = 603;
+  .google.protobuf.FloatValue ping_seconds_since_last_300s_outage = 604;
+  .google.protobuf.FloatValue ping_drop_rate = 605;
+  .google.protobuf.FloatValue ping_drop_rate_last_1h = 606;
+  .google.protobuf.FloatValue ping_latency = 607;
+  .google.protobuf.FloatValue ping_dish_seconds_since_last_1s_outage = 610;
+  .google.protobuf.FloatValue ping_dish_seconds_since_last_2s_outage = 611;
+  .google.protobuf.FloatValue ping_dish_seconds_since_last_5s_outage = 612;
+  .google.protobuf.FloatValue ping_dish_seconds_since_last_60s_outage = 613;
+  .google.protobuf.FloatValue ping_dish_seconds_since_last_300s_outage = 614;
+  .google.protobuf.FloatValue ping_dish_drop_rate = 615;
+  .google.protobuf.FloatValue ping_dish_drop_rate_last_1h = 616;
+  .google.protobuf.FloatValue ping_dish_latency = 617;
+  .google.protobuf.FloatValue client_speedtest_router_download_mbps = 700;
+  .google.protobuf.FloatValue client_speedtest_router_upload_mbps = 701;
+  .google.protobuf.FloatValue client_speedtest_router_rssi = 702;
+  .google.protobuf.FloatValue client_speedtest_wifi_download_mbps = 703;
+  .google.protobuf.FloatValue client_speedtest_wifi_upload_mbps = 704;
+  .google.protobuf.FloatValue client_speedtest_client_download_mbps = 705;
+  .google.protobuf.FloatValue client_speedtest_client_upload_mbps = 706;
+  .google.protobuf.FloatValue client_speedtest_client_rssi = 707;
+  .google.protobuf.UInt32Value client_speedtest_client_iface = 708;
+  .google.protobuf.StringValue client_speedtest_client_oui = 709;
+  .google.protobuf.UInt32Value client_speedtest_client_tx_rate = 710;
+  .google.protobuf.UInt32Value client_speedtest_client_rx_rate = 711;
+  .google.protobuf.UInt32Value client_speedtest_client_platform_type = 712;
+  .google.protobuf.FloatValue speedtest_tcp_8_download_mbps_avg = 800;
+  .google.protobuf.FloatValue speedtest_tcp_8_download_mbps_max = 801;
+  .google.protobuf.FloatValue speedtest_tcp_8_upload_mbps_avg = 802;
+  .google.protobuf.FloatValue speedtest_tcp_8_upload_mbps_max = 803;
+  .google.protobuf.FloatValue speedtest_tcp_64_download_mbps_avg = 804;
+  .google.protobuf.FloatValue speedtest_tcp_64_download_mbps_max = 805;
+  .google.protobuf.FloatValue speedtest_tcp_64_upload_mbps_avg = 806;
+  .google.protobuf.FloatValue speedtest_tcp_64_upload_mbps_max = 807;
+  .google.protobuf.UInt32Value dish_cell_id = 900;
+  .google.protobuf.BoolValue config_setup_complete = 1000;
+  .google.protobuf.BoolValue config_bands_split = 1001;
+  .google.protobuf.BoolValue config_is_repeater = 1002;
+  .google.protobuf.BoolValue config_open_network = 1003;
+  .google.protobuf.BoolValue config_is_aviation = 1004;
+  .google.protobuf.BoolValue config_secure_dns = 1005;
+  .google.protobuf.BoolValue config_legacy = 1006;
+  .google.protobuf.BoolValue config_ap_mode = 1007;
+  .google.protobuf.BoolValue config_dfs_enabled = 1008;
+  .google.protobuf.BoolValue config_network_name_is_default = 1009;
+  .google.protobuf.BoolValue config_remote_ssh_enabled = 1010;
+}
+
+message WifiGuestInfoRequest {
+}
+
+message WifiGuestInfoResponse {
+  bool is_guest = 1;
+  bool is_online = 2;
+  string router_hardware_version = 3;
+  string dish_hardware_version = 4;
+  bool is_router_aviation_conformed = 5;
+}
+
+message WifiFactoryTestCommandRequest {
+  oneof command {
+    .SpaceX.API.Device.IwprivCommand iwpriv_command = 1;
+    .SpaceX.API.Device.IpLinkSetCommand ip_link_set_command = 2;
+    .SpaceX.API.Device.IpAddrSetCommand ip_addr_set_command = 3;
+  }
+}
+
+message WifiFactoryTestCommandResponse {
+  string response = 1;
+}
+
+message IwprivCommand {
+  enum Ioctl {
+    IOCTL_SET = 0;
+    IOCTL_E2P = 1;
+    IOCTL_MAC = 3;
+    IOCTL_SX_ALLOW_5GHZ_HIGH = 4;
+  }
+
+  string iface = 1;
+  string arg = 2;
+  .SpaceX.API.Device.IwprivCommand.Ioctl ioctl = 3;
+}
+
+message IpLinkSetCommand {
+  string iface = 1;
+  bool up = 2;
+}
+
+message IpAddrSetCommand {
+  string iface = 1;
+  bool add = 2;
+  string cidr = 3;
+}
+
+message WifiStartLocalTelemProxyRequest {
+  int32 port = 1;
+}
+
+message WifiBackhaulStatsRequest {
+}
+
+message WifiBackhaulStatsResponse {
+  bool success = 1;
+  string bssid = 2;
+  .SpaceX.API.Device.IfaceType iface = 3;
+  uint32 preference = 4;
+  repeated .SpaceX.API.Device.WifiSiteSurveyResult siteSurveyScan = 5;
+}
+
+message WifiToggleUmbilicalModeRequest {
+  bool enable = 1;
+}
+
+message WifiUpdateResponse {
+  .SpaceX.API.Device.WifiSoftwareUpdateStats stats = 1;
+}
+
+message WifiRunDebugNetsysRequest {
+}
+
+message WifiRunDebugNetsysResponse {
+}
+
+message WifiResetEthPhyRequest {
+}
+
+message WifiResetEthPhyResponse {
+}
+
+message WifiFlushHardwareNatRequest {
+}
+
+message WifiFlushHardwareNatResponse {
+}
+

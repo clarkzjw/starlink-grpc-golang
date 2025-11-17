@@ -1,0 +1,38 @@
+syntax = "proto3";
+
+package SpaceX.API.Device.Services.Unlock;
+
+service UnlockService {
+  rpc StartUnlock (.SpaceX.API.Device.Services.Unlock.StartUnlockRequest) returns (.SpaceX.API.Device.Services.Unlock.StartUnlockResponse) {}
+  rpc FinishUnlock (.SpaceX.API.Device.Services.Unlock.FinishUnlockRequest) returns (.SpaceX.API.Device.Services.Unlock.FinishUnlockResponse) {}
+}
+
+message UnlockChallenge {
+  reserved "grant_spki";
+  reserved 3;
+  string device_id = 1;
+  bytes nonce = 2;
+  bytes sign_spki = 4;
+  string grant_keydata = 5;
+  string service_keydata = 6;
+  repeated string authority_grants = 7;
+}
+
+message StartUnlockRequest {
+}
+
+message StartUnlockResponse {
+  string device_id = 1;
+  bytes nonce = 2;
+  bytes sign_spki = 3;
+}
+
+message FinishUnlockRequest {
+  bytes challenge = 1;
+  bytes signature = 2;
+}
+
+message FinishUnlockResponse {
+  uint32 status = 1;
+}
+

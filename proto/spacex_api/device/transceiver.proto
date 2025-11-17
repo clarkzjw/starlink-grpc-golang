@@ -1,0 +1,94 @@
+syntax = "proto3";
+
+package SpaceX.API.Device;
+
+option go_package = "spacex.com/api/device";
+
+import "spacex_api/device/dish.proto";
+
+message TransceiverIFLoopbackTestRequest {
+  bool enable_if_loopback = 1;
+}
+
+message TransceiverIFLoopbackTestResponse {
+  float ber_loopback_test = 1;
+  float snr_loopback_test = 2;
+  float rssi_loopback_test = 3;
+  bool pll_lock = 4;
+}
+
+message TransceiverGetStatusRequest {
+}
+
+message TransceiverGetStatusResponse {
+  .SpaceX.API.Device.TransceiverModulatorState mod_state = 1;
+  .SpaceX.API.Device.TransceiverModulatorState demod_state = 2;
+  .SpaceX.API.Device.TransceiverTxRxState tx_state = 3;
+  .SpaceX.API.Device.TransceiverTxRxState rx_state = 4;
+  .SpaceX.API.Device.DishState state = 1006;
+  .SpaceX.API.Device.TransceiverFaults faults = 1007;
+  .SpaceX.API.Device.TransceiverTransmitBlankingState transmit_blanking_state = 1008;
+  float modem_asic_temp = 1009;
+  float tx_if_temp = 1010;
+}
+
+message TransceiverFaults {
+  bool over_temp_modem_asic_fault = 1;
+  bool over_temp_pcba_fault = 2;
+  bool dc_voltage_fault = 3;
+}
+
+message TransceiverGetTelemetryRequest {
+}
+
+message TransceiverGetTelemetryResponse {
+  uint32 antenna_pointing_mode = 1001;
+  float antenna_pitch = 1002;
+  float antenna_roll = 1003;
+  float antenna_rx_theta = 1004;
+  float antenna_true_heading = 1005;
+  uint32 rx_channel = 1006;
+  uint32 current_cell_id = 1007;
+  float seconds_until_slot_end = 1008;
+  float wb_rssi_peak_mag_db = 1009;
+  float pop_ping_drop_rate = 1010;
+  float snr_db = 1011;
+  float l1_snr_avg_db = 1012;
+  float l1_snr_min_db = 1013;
+  float l1_snr_max_db = 1014;
+  uint32 lmac_satellite_id = 1015;
+  uint32 target_satellite_id = 1016;
+  uint32 grant_mcs = 1017;
+  float grant_symbols_avg = 1018;
+  uint32 ded_grant = 1019;
+  uint32 mobility_proactive_slot_change = 1020;
+  uint32 mobility_reactive_slot_change = 1021;
+  uint32 rfp_total_syn_failed = 1022;
+  uint32 num_out_of_seq = 1023;
+  uint32 num_ulmap_drop = 1024;
+  float current_seconds_of_schedule = 1025;
+  uint32 send_label_switch_to_ground_failed_calls = 1026;
+  double ema_velocity_x = 1027;
+  double ema_velocity_y = 1028;
+  double ema_velocity_z = 1029;
+  float ce_rssi_db = 1030;
+}
+
+enum TransceiverModulatorState {
+  MODSTATE_UNKNOWN = 0;
+  MODSTATE_ENABLED = 1;
+  MODSTATE_DISABLED = 2;
+}
+
+enum TransceiverTxRxState {
+  TXRX_UNKNOWN = 0;
+  TXRX_ENABLED = 1;
+  TXRX_DISABLED = 2;
+}
+
+enum TransceiverTransmitBlankingState {
+  TB_UNKNOWN = 0;
+  TB_ENABLED = 1;
+  TB_DISABLED = 2;
+}
+
