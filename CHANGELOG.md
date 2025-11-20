@@ -1,5 +1,43 @@
 # CHANGELOG
 
++ 2025.11.18.mr68053 / 29376b93-156e-4a37-bea5-94811eca1b3d.uterm_manifest.release
+
+[WiFi] New `hardwareIndex` for router
+
+```proto
+enum HardwareIndex {
+  UNKNOWN_HARDWARE_INDEX = 0;
+  ROUTER_GEN_1 = 1010;
+  ROUTER_GEN_2 = 1020;
+  ROUTER_MINI_COHOUSED_1 = 1021;
+  ROUTER_BLOCK_2_OR_3 = 1022;
+  ROUTER_GEN_3 = 1030;
+  ROUTER_BLOCK_4 = 1031;
+  ROUTER_BLOCK_4P1 = 1032;
+  ROUTER_MINI_1 = 1040;
+}
+```
+
+[Router] New router history metrics
+
+```proto
+  .google.protobuf.FloatValue speedtest_tcp_8_download_mean_tcp_connect_time = 812;
+  .google.protobuf.FloatValue speedtest_tcp_8_upload_mean_tcp_connect_time = 813;
+  repeated string speedtest_tcp_8_download_cf_ray_headers = 814;
+  repeated string speedtest_tcp_8_upload_cf_ray_headers = 815;
+  .google.protobuf.FloatValue speedtest_tcp_1_download_mean_tcp_connect_time = 816;
+  .google.protobuf.FloatValue speedtest_tcp_1_upload_mean_tcp_connect_time = 817;
+  repeated string speedtest_tcp_1_download_cf_ray_headers = 818;
+  repeated string speedtest_tcp_1_upload_cf_ray_headers = 819;
+```
+
+[Router] New event type
+
+```proto
+  EVENT_REASON_ROUTER_UT_CONNECTED_TO_LAN = 41;
+  EVENT_REASON_CLIENT_RECONNECTING_OFTEN = 42;
+```
+
 + 2025.10.28.mr66547.1 / 4974dbd9-8356-4e01-8cc6-b9625e7effca.uterm_manifest.release
 
 [Dish] New event `EVENT_REASON_ROUTER_DISH_PING_DROP`
