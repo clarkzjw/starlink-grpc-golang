@@ -391,6 +391,8 @@ message WifiConfig {
   uint32 tag = 78;
   bool custom_dns_disabled = 1117;
   bool apply_custom_dns_disabled = 1118;
+  bool foreflight_enabled = 1119;
+  bool apply_foreflight_enabled = 1120;
   oneof wan_traffic_control {
     .SpaceX.API.Device.NoTrafficControl wan_no_traffic_control = 4001;
     .SpaceX.API.Device.AckSuppression wan_ack_suppression = 4002;

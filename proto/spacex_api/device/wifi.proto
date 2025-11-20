@@ -564,6 +564,7 @@ message starlink_routers_hourly_metrics_v2 {
   .google.protobuf.UInt32Value timestamp_hour = 3;
   .SpaceX.API.Telemetron.Public.Common.TimestampInfo timestamp = 10000;
   .google.protobuf.UInt32Value sys_hw_gen = 4;
+  .google.protobuf.UInt32Value sys_hw_index = 22;
   .google.protobuf.StringValue sys_sw = 5;
   .google.protobuf.StringValue sys_country = 6;
   .google.protobuf.BoolValue sys_is_dev = 7;
@@ -762,6 +763,14 @@ message starlink_routers_hourly_metrics_v2 {
   .google.protobuf.FloatValue speedtest_tcp_1_download_mbps_max = 809;
   .google.protobuf.FloatValue speedtest_tcp_1_upload_mbps_avg = 810;
   .google.protobuf.FloatValue speedtest_tcp_1_upload_mbps_max = 811;
+  .google.protobuf.FloatValue speedtest_tcp_8_download_mean_tcp_connect_time = 812;
+  .google.protobuf.FloatValue speedtest_tcp_8_upload_mean_tcp_connect_time = 813;
+  repeated string speedtest_tcp_8_download_cf_ray_headers = 814;
+  repeated string speedtest_tcp_8_upload_cf_ray_headers = 815;
+  .google.protobuf.FloatValue speedtest_tcp_1_download_mean_tcp_connect_time = 816;
+  .google.protobuf.FloatValue speedtest_tcp_1_upload_mean_tcp_connect_time = 817;
+  repeated string speedtest_tcp_1_download_cf_ray_headers = 818;
+  repeated string speedtest_tcp_1_upload_cf_ray_headers = 819;
   .google.protobuf.UInt32Value dish_cell_id = 900;
   .google.protobuf.BoolValue config_setup_complete = 1000;
   .google.protobuf.BoolValue config_bands_split = 1001;
@@ -785,6 +794,7 @@ message starlink_routers_hourly_metrics_v2 {
   .google.protobuf.BoolValue config_only_overflight_blocking_enabled = 1032;
   .google.protobuf.BoolValue config_offline_networks_disablement_enabled = 1033;
   .google.protobuf.BoolValue config_custom_dns_disabled = 1034;
+  .google.protobuf.BoolValue config_foreflight_enabled = 1036;
   .google.protobuf.BoolValue config_disable_2ghz = 1018;
   .google.protobuf.BoolValue config_disable_5ghz = 1019;
   .google.protobuf.BoolValue config_disable_5ghz_high = 1029;
@@ -811,6 +821,7 @@ message starlink_routers_hourly_metrics_v2 {
   .google.protobuf.UInt32Value band_steering_reload_count = 1051;
   .google.protobuf.UInt32Value commit_count = 1052;
   .google.protobuf.UInt32Value network_reload_count = 1053;
+  .google.protobuf.UInt32Value foreflight_reload_count = 1054;
   .google.protobuf.Int64Value wan_traffic_control_cake_bytes = 1101;
   .google.protobuf.Int64Value wan_traffic_control_cake_packets = 1102;
   .google.protobuf.Int64Value wan_traffic_control_cake_drops = 1103;

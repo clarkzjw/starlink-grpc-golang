@@ -7,6 +7,7 @@ option go_package = "spacex.com/api/device";
 message DeviceInfo {
   string id = 1;
   string hardware_version = 2;
+  .SpaceX.API.Device.HardwareIndex hardware_index = 16;
   int32 board_rev = 14;
   string software_version = 3;
   string manufactured_version = 11;
@@ -204,6 +205,13 @@ message UXEvent {
   .SpaceX.API.Device.EventReason reason = 2;
   int64 start_timestamp_ns = 3;
   uint64 duration_ns = 4;
+  oneof metadata {
+    .SpaceX.API.Device.ClientReconnectingOftenMetadata client_reconnecting_often_metadata = 5;
+  }
+}
+
+message ClientReconnectingOftenMetadata {
+  uint32 clientId = 1;
 }
 
 enum BootReason {
@@ -274,5 +282,19 @@ enum EventReason {
   EVENT_REASON_ROUTER_MESH_TOPOLOGY_CHANGING_OFTEN = 38;
   EVENT_REASON_ROUTER_CONNTRACK_FULL = 39;
   EVENT_REASON_ROUTER_DISH_PING_DROP = 40;
+  EVENT_REASON_ROUTER_UT_CONNECTED_TO_LAN = 41;
+  EVENT_REASON_CLIENT_RECONNECTING_OFTEN = 42;
+}
+
+enum HardwareIndex {
+  UNKNOWN_HARDWARE_INDEX = 0;
+  ROUTER_GEN_1 = 1010;
+  ROUTER_GEN_2 = 1020;
+  ROUTER_MINI_COHOUSED_1 = 1021;
+  ROUTER_BLOCK_2_OR_3 = 1022;
+  ROUTER_GEN_3 = 1030;
+  ROUTER_BLOCK_4 = 1031;
+  ROUTER_BLOCK_4P1 = 1032;
+  ROUTER_MINI_1 = 1040;
 }
 
