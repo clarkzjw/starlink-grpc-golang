@@ -687,6 +687,7 @@ message starlink_routers_hourly_metrics_v2 {
   .google.protobuf.Int64Value ifaces_wan_eth_tx_bytes = 311;
   .google.protobuf.Int64Value ifaces_wan_eth_tx_packets = 312;
   .google.protobuf.Int64Value ifaces_wan_eth_tx_errors = 313;
+  .google.protobuf.StringValue ifaces_wan_port = 321;
   .google.protobuf.UInt32Value clients = 400;
   .google.protobuf.UInt32Value clients_2ghz = 401;
   .google.protobuf.UInt32Value clients_5ghz = 402;
