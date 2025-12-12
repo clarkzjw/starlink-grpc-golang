@@ -183,7 +183,7 @@ var (
 [Dish] `EventSeverity`, `EventReason`, `EventLog` in `get_history`
 
 ```golang
-const (Add commentMore actions
+const (
 	EventSeverity_EVENT_SEVERITY_UNKNOWN  EventSeverity = 0
 	EventSeverity_EVENT_SEVERITY_WARNING  EventSeverity = 1
 	EventSeverity_EVENT_SEVERITY_CAUTION  EventSeverity = 2
