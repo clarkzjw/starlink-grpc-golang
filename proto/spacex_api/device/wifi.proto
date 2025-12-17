@@ -305,6 +305,22 @@ message WifiClient {
     CONTROLLER = 3;
   }
 
+  enum CaptiveState {
+    CAPTIVE_STATE_NOT_CONFIGURED = 0;
+    CAPTIVE_STATE_UNKNOWN = 1;
+    CAPTIVE_STATE_CAPTIVE = 2;
+    CAPTIVE_STATE_NOT_CAPTIVE = 3;
+    CAPTIVE_STATE_PARTIALLY_CAPTIVE = 4;
+  }
+
+  enum SandboxState {
+    SANDBOX_STATE_NOT_CONFIGURED = 0;
+    SANDBOX_STATE_UNKNOWN = 1;
+    SANDBOX_STATE_SANDBOXED = 2;
+    SANDBOX_STATE_UNSANDBOXED = 3;
+    SANDBOX_STATE_PARTIALLY_SANDBOXED = 4;
+  }
+
   string name = 1;
   string given_name = 31;
   string domain = 22;
@@ -352,6 +368,8 @@ message WifiClient {
   bool blocked = 42;
   uint32 client_id = 43;
   string captive_client_id = 53;
+  .SpaceX.API.Device.WifiClient.CaptiveState captive_state = 56;
+  .SpaceX.API.Device.WifiClient.SandboxState sandbox_state = 57;
   .SpaceX.API.Device.WifiClient.FqcodelInfo fqcodel_info = 44;
   .SpaceX.API.Device.WifiClient.Alerts alerts = 52;
   uint32 upload_mb = 54;

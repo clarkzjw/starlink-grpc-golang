@@ -1,5 +1,9 @@
 # CHANGELOG
 
++ 2025.12.10.cr69536
+
+[WiFi] Added `CaptiveState`
+
 + 2025.11.18.mr68053 / 29376b93-156e-4a37-bea5-94811eca1b3d.uterm_manifest.release
 
 [WiFi] New `hardwareIndex` for router
