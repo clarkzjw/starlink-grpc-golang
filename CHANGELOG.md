@@ -1,5 +1,9 @@
 # CHANGELOG
 
++ 2025.12.16.cr69973.1.36938
+
+[Dish] New rate limit reason `LOW_SPEED_POLICY_LIMIT`
+
 + 2025.12.10.cr69536
 
 [WiFi] Added `CaptiveState`
