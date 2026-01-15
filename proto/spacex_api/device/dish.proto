@@ -165,6 +165,7 @@ message DishGetStatusResponse {
   .SpaceX.API.Device.Quaternion ned2dish_quaternion = 1049;
   repeated .SpaceX.API.Device.DishGetStatusResponse.DownstreamRoutersEntry downstream_routers = 1050;
   .SpaceX.API.Device.AccountShard account_shard = 1051;
+  bool mac_flag = 1052;
 }
 
 message DishGetObstructionMapRequest {

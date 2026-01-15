@@ -473,6 +473,7 @@ message WifiGetStatusResponse {
   float secs_since_last_public_ipv4_change = 1030;
   bool using_individualized_calibration = 1032;
   .SpaceX.API.Device.CalibrationPartitionsState calibration_partitions_state = 1033;
+  bool no_wan_link = 1035;
 }
 
 message WifiAuthenticateRequest {
@@ -737,6 +738,9 @@ message starlink_routers_hourly_metrics_v2 {
   .google.protobuf.FloatValue repeater_latency_ms_1h_max = 426;
   .google.protobuf.FloatValue repeater_latency_ms_1h_avg = 427;
   .google.protobuf.UInt32Value mesh_topology_change_count_1d = 428;
+  .google.protobuf.UInt32Value mac_exports_successful = 432;
+  .google.protobuf.UInt32Value mac_exports_server_connect_errors = 433;
+  .google.protobuf.UInt32Value mac_exports_server_send_errors = 434;
   .google.protobuf.FloatValue ping_seconds_since_last_1s_outage = 600;
   .google.protobuf.FloatValue ping_seconds_since_last_2s_outage = 601;
   .google.protobuf.FloatValue ping_seconds_since_last_5s_outage = 602;
