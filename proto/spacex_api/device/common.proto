@@ -209,6 +209,7 @@ message UXEvent {
     .SpaceX.API.Device.ClientReconnectingOftenMetadata client_reconnecting_often_metadata = 5;
     .SpaceX.API.Device.ClientSwitchingBandMetadata client_switching_band_metadata = 6;
     .SpaceX.API.Device.ClientSwitchingUpstreamMacMetadata client_switching_upstream_mac_metadata = 7;
+    .SpaceX.API.Device.MeshConnectionChangingMetadata mesh_connection_changing_metadata = 8;
   }
 }
 
@@ -224,6 +225,11 @@ message ClientSwitchingBandMetadata {
 
 message ClientSwitchingUpstreamMacMetadata {
   uint32 clientId = 1;
+}
+
+message MeshConnectionChangingMetadata {
+  string repeaterId = 1;
+  .SpaceX.API.Device.MeshConnectionChange change = 2;
 }
 
 enum BootReason {
@@ -298,6 +304,12 @@ enum EventReason {
   EVENT_REASON_CLIENT_RECONNECTING_OFTEN = 42;
   EVENT_REASON_CLIENT_SWITCHING_BAND = 43;
   EVENT_REASON_CLIENT_SWITCHING_UPSTREAM_MAC = 44;
+  EVENT_REASON_ROUTER_MESH_CONNECTION_CHANGING = 45;
+}
+
+enum MeshConnectionChange {
+  REPEATER_CHANGE_UNKNOWN = 0;
+  REPEATER_CHANGE_DISCONNECTED = 1;
 }
 
 enum HardwareIndex {
