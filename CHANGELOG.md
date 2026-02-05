@@ -1,5 +1,9 @@
 # CHANGELOG
 
++ 2026.01.26.mr72609
+
+[WiFi] New event type `EVENT_REASON_MESH_BACKHAUL_LOW_PHY`
+
 + 2026.01.20.mr72187
 
 [WiFi] Add deprecated event type `EventReason_EVENT_REASON_ROUTER_MESH_CONNECTION_CHANGING`
