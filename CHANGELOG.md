@@ -1,5 +1,9 @@
 # CHANGELOG
 
++ 2026.01.27.mr72667
+
+[Dish] Add `get_gnss_measurement`
+
 + 2026.01.26.mr72609
 
 [WiFi] New event type `EVENT_REASON_MESH_BACKHAUL_LOW_PHY`

@@ -8,6 +8,7 @@ import "spacex_api/common/status/status.proto";
 import "spacex_api/device/command.proto";
 import "spacex_api/device/common.proto";
 import "spacex_api/device/dish.proto";
+import "spacex_api/device/gnss.proto";
 import "spacex_api/device/transceiver.proto";
 import "spacex_api/device/wifi.proto";
 import "spacex_api/device/services/unlock/service.proto";
@@ -147,6 +148,7 @@ message Request {
     .SpaceX.API.Device.Services.Unlock.StartUnlockRequest start_unlock = 5000;
     .SpaceX.API.Device.Services.Unlock.FinishUnlockRequest finish_unlock = 5001;
     .SpaceX.API.Device.GetDiagnosticsRequest get_diagnostics = 6000;
+    .SpaceX.API.Device.GetGnssMeasurementRequest get_gnss_measurement = 7000;
   }
 }
 
@@ -244,6 +246,7 @@ message Response {
     .SpaceX.API.Device.Services.Unlock.FinishUnlockResponse finish_unlock = 5001;
     .SpaceX.API.Device.WifiGetDiagnosticsResponse wifi_get_diagnostics = 6000;
     .SpaceX.API.Device.DishGetDiagnosticsResponse dish_get_diagnostics = 6001;
+    .SpaceX.API.Device.GetGnssMeasurementResponse get_gnss_measurement = 7000;
   }
 }
 
@@ -838,6 +841,14 @@ message GetGoroutineStackTracesRequest {
 
 message GetGoroutineStackTracesResponse {
   string stack_traces = 1;
+}
+
+message GetGnssMeasurementRequest {
+}
+
+message GetGnssMeasurementResponse {
+  string device_id = 1;
+  repeated .SpaceX.API.Device.Gnss.Measurement measurements = 2;
 }
 
 enum WifiClientSandboxAlert {

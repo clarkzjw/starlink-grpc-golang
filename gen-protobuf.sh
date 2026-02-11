@@ -84,6 +84,7 @@ protoc --go_out=./pkg/  --go-grpc_out=./pkg/ \
        --descriptor_set_in="$protoset_file" \
        spacex_api/device/wifi.proto
 
+protoc --go_out=./pkg/  --go-grpc_out=./pkg/ --descriptor_set_in="$protoset_file" spacex_api/device/gnss.proto
 protoc --go_out=./pkg/  --go-grpc_out=./pkg/ --descriptor_set_in="$protoset_file" spacex_api/device/wifi_config.proto
 protoc --go_out=./pkg/  --go-grpc_out=./pkg/ --descriptor_set_in="$protoset_file" spacex_api/device/wifi_util.proto
 
