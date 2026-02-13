@@ -1,5 +1,9 @@
 # CHANGELOG
 
++ 2026.02.04.mr73255
+
+[WiFi] New event type `EVENT_REASON_ROUTER_HIGH_OVERLAPPING_BSS`.
+
 + 2026.01.27.mr72667
 
 [Dish] Add `get_gnss_measurement`

@@ -211,6 +211,7 @@ message UXEvent {
     .SpaceX.API.Device.ClientSwitchingUpstreamMacMetadata client_switching_upstream_mac_metadata = 7;
     .SpaceX.API.Device.MeshConnectionChangingMetadata mesh_connection_changing_metadata = 8;
     .SpaceX.API.Device.MeshBackhaulLowPhyMetadata mesh_backhaul_low_phy_metadata = 9;
+    .SpaceX.API.Device.HighOverlappingBssMetadata high_overlapping_bss_metadata = 10;
   }
 }
 
@@ -235,6 +236,15 @@ message MeshConnectionChangingMetadata {
 
 message MeshBackhaulLowPhyMetadata {
   repeated string repeaterIds = 1;
+}
+
+message HighOverlappingBssStats {
+  string iface = 1;
+  uint32 average_overlapping_bss_percentage = 2;
+}
+
+message HighOverlappingBssMetadata {
+  repeated .SpaceX.API.Device.HighOverlappingBssStats high_overlapping_bss_stats = 1;
 }
 
 enum BootReason {
@@ -311,6 +321,7 @@ enum EventReason {
   EVENT_REASON_CLIENT_SWITCHING_UPSTREAM_MAC = 44;
   EVENT_REASON_ROUTER_MESH_CONNECTION_CHANGING = 45;
   EVENT_REASON_MESH_BACKHAUL_LOW_PHY = 46;
+  EVENT_REASON_ROUTER_HIGH_OVERLAPPING_BSS = 47;
 }
 
 enum MeshConnectionChange {
