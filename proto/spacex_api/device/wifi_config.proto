@@ -186,6 +186,7 @@ message WifiConfig {
     uint32 dhcpv4_start = 1012;
     uint32 dhcpv4_end = 1025;
     bool dhcp_disabled = 1015;
+    bool dns_disabled = 1034;
     uint32 dhcpv4_lease_duration_s = 1016;
     string domain = 1011;
     repeated .SpaceX.API.Device.WifiConfig.BasicServiceSet basic_service_sets = 1007;
@@ -207,6 +208,8 @@ message WifiConfig {
     bool disable_when_offline = 1031;
     .SpaceX.API.Device.TlsConfig onboard_radius_tls_config_old = 1032;
     .SpaceX.API.Device.TlsConfig onboard_radius_tls_config = 1033;
+    bool get_lease_dhcp = 1035;
+    bool default_route_disabled = 1036;
   }
 
   message UnbridgedEthPort {
@@ -219,6 +222,7 @@ message WifiConfig {
     string ip = 2;
     string gateway = 3;
     repeated .SpaceX.API.Device.WifiConfig.UnbridgedEthPort.StaticRoute static_routes = 4;
+    uint32 bridged_network_group_override = 7;
     oneof wan {
       .SpaceX.API.Device.WanNone wan_none = 5;
       .SpaceX.API.Device.WanStarlinkRouterPair wan_starlink_router_pair = 6;
