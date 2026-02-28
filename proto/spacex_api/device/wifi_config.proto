@@ -182,6 +182,12 @@ message WifiConfig {
     reserved 1006;
     reserved 1018;
     reserved 1019;
+    enum GeofenceAction {
+      NONE = 0;
+      DISABLE_RADIOS_AND_BLOCK_TRAFFIC = 1;
+      BLOCK_TRAFFIC = 2;
+    }
+
     string ipv4 = 1003;
     uint32 dhcpv4_start = 1012;
     uint32 dhcpv4_end = 1025;
@@ -206,6 +212,7 @@ message WifiConfig {
     bool disable_when_offline_old = 1029;
     repeated .SpaceX.API.Device.WifiConfig.StaticRoute static_routes = 1030;
     bool disable_when_offline = 1031;
+    .SpaceX.API.Device.WifiConfig.Network.GeofenceAction geofence_action = 1038;
     .SpaceX.API.Device.TlsConfig onboard_radius_tls_config_old = 1032;
     .SpaceX.API.Device.TlsConfig onboard_radius_tls_config = 1033;
     bool get_lease_dhcp = 1035;

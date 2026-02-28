@@ -4,6 +4,7 @@ package SpaceX.API.Device;
 
 option go_package = "spacex.com/api/device";
 
+import "google/protobuf/timestamp.proto";
 import "spacex_api/device/account_shard.proto";
 import "spacex_api/device/common.proto";
 import "spacex_api/device/dish_config.proto";
@@ -33,6 +34,14 @@ message DishAviationTestRequest {
 }
 
 message DishAviationTestResponse {
+}
+
+message ZtlmQueryRequest {
+  .google.protobuf.Timestamp query_start_time = 1;
+  .google.protobuf.Timestamp query_end_time = 2;
+}
+
+message ZtlmQueryResponse {
 }
 
 message DishGetContextRequest {
@@ -401,6 +410,13 @@ message ResetButtonRequest {
 }
 
 message ResetButtonResponse {
+}
+
+message DishStartTestModeServerRequest {
+  bool set_enabled = 1;
+}
+
+message DishStartTestModeServerResponse {
 }
 
 message PLCStats {
