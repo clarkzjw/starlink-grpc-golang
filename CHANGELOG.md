@@ -1,5 +1,44 @@
 # CHANGELOG
 
++ 2026.02.23.mr74543
+
+[Dish] New `AccountShard_ACCOUNT_SHARD_STARSHIELD`, `Request_ZtlmQuery`, `Request_DishStartTestModeServer`
+
+```go
+const (
+	AccountShard_ACCOUNT_SHARD_UNKNOWN    AccountShard = 0
+	AccountShard_ACCOUNT_SHARD_DEFAULT    AccountShard = 1
+	AccountShard_ACCOUNT_SHARD_INDIA      AccountShard = 2
+	AccountShard_ACCOUNT_SHARD_STARSHIELD AccountShard = 3
+)
+```
+
+```go
+type Request_DishStartTestModeServer struct {
+	DishStartTestModeServer *DishStartTestModeServerRequest `protobuf:"bytes,2028,opt,name=dish_start_test_mode_server,json=dishStartTestModeServer,proto3,oneof"`
+}
+
+type DishStartTestModeServerRequest struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	SetEnabled bool `protobuf:"varint,1,opt,name=set_enabled,json=setEnabled,proto3" json:"set_enabled,omitempty"`
+}
+```
+
+[WiFi] New `WifiConfig_Network_GeofenceAction`
+
+```go
+type WifiConfig_Network_GeofenceAction int32
+
+const (
+	WifiConfig_Network_NONE                             WifiConfig_Network_GeofenceAction = 0
+	WifiConfig_Network_DISABLE_RADIOS_AND_BLOCK_TRAFFIC WifiConfig_Network_GeofenceAction = 1
+	WifiConfig_Network_BLOCK_TRAFFIC                    WifiConfig_Network_GeofenceAction = 2
+)
+```
+
 + 2026.02.15.mr73994
 
 [WiFi] New event type `EVENT_REASON_CLIENT_EXCESSIVE_NETWORK_CONNECTIONS`.
