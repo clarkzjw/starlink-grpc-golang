@@ -1,5 +1,9 @@
 # CHANGELOG
 
++ 2026.03.03.cr75126
+
+[WiFi] New `EVENT_REASON_ROUTER_LAN_ETH_LOW_SPEED` event type.
+
 + 2026.02.23.mr74543
 
 [Dish] New `AccountShard_ACCOUNT_SHARD_STARSHIELD`, `Request_ZtlmQuery`, `Request_DishStartTestModeServer`
