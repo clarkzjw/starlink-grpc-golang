@@ -90,6 +90,7 @@ message DishOutage {
     CABLE_TEST = 10;
     SLEEPING = 11;
     SKY_SEARCH = 13;
+    INHIBIT_RF = 14;
   }
 
   .SpaceX.API.Device.DishOutage.Cause cause = 1;

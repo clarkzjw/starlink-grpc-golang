@@ -1038,6 +1038,7 @@ message WifiGetFirewallRequest {
 message WifiGetFirewallResponse {
   string iptables = 1;
   string iptables_6 = 2;
+  string ipset = 3;
 }
 
 message WifiTogglePoeNegotiationRequest {

@@ -1,5 +1,9 @@
 # CHANGELOG
 
++ 2026.03.08.mr75503
+
+[Dish] New outage type `INHIBIT_RF`.
+
 + 2026.03.03.cr75126
 
 [WiFi] New `EVENT_REASON_ROUTER_LAN_ETH_LOW_SPEED` event type.
