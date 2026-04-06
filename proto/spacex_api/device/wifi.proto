@@ -47,6 +47,7 @@ message WifiMeshStatus {
   string hardware_version = 4;
   string backhaul_bssid = 8;
   uint32 backhaul_est_preference = 9;
+  repeated .SpaceX.API.Device.UXEvent events = 1;
 }
 
 message MeshSpeedtestRequest {

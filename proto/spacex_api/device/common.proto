@@ -205,6 +205,7 @@ message UXEvent {
   .SpaceX.API.Device.EventReason reason = 2;
   int64 start_timestamp_ns = 3;
   uint64 duration_ns = 4;
+  string device_id = 12;
   oneof metadata {
     .SpaceX.API.Device.ClientReconnectingOftenMetadata client_reconnecting_often_metadata = 5;
     .SpaceX.API.Device.ClientSwitchingBandMetadata client_switching_band_metadata = 6;
