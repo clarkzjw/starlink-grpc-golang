@@ -1,5 +1,9 @@
 # CHANGELOG
 
++ 2026.03.18.mr76237.4
+
+[WiFi] New `Device_Id` in `UXEvent` of `WifiMeshStatus`.
+
 + 2026.03.08.mr75503
 
 [Dish] New outage type `INHIBIT_RF`.
