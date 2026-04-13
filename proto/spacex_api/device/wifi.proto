@@ -684,6 +684,8 @@ message starlink_routers_hourly_metrics_v2 {
   .google.protobuf.UInt32Value radios_5ghz_thermal_throttled_seconds = 205;
   .google.protobuf.UInt32Value radios_5ghz_high_thermal_throttled_seconds = 208;
   .google.protobuf.FloatValue board_temp = 210;
+  .google.protobuf.FloatValue ambient_temp = 213;
+  .google.protobuf.FloatValue cpu_temp = 214;
   .google.protobuf.FloatValue poe_mcu_die_temp = 211;
   .google.protobuf.FloatValue poe_percent_water_detect_avg = 212;
   .google.protobuf.Int64Value ifaces_lan_eth_rx_bytes = 300;
@@ -716,6 +718,7 @@ message starlink_routers_hourly_metrics_v2 {
   .google.protobuf.UInt32Value clients_5ghz_rx_bandwidth_20mhz = 429;
   .google.protobuf.UInt32Value clients_5ghz_rx_bandwidth_40mhz = 430;
   .google.protobuf.UInt32Value clients_5ghz_rx_bandwidth_80mhz = 431;
+  .google.protobuf.UInt32Value clients_5ghz_rx_bandwidth_160mhz = 435;
   .google.protobuf.UInt32Value clients_repeater = 404;
   .google.protobuf.UInt32Value clients_repeater_2ghz = 405;
   .google.protobuf.UInt32Value clients_repeater_5ghz = 406;
@@ -763,7 +766,15 @@ message starlink_routers_hourly_metrics_v2 {
   .google.protobuf.FloatValue ping_pop_ipv6_drop_rate_last_1h = 621;
   .google.protobuf.FloatValue ping_pop_ipv6_latency_last_1h = 623;
   .google.protobuf.FloatValue client_speedtest_router_download_mbps = 700;
+  .google.protobuf.UInt64Value client_speedtest_router_download_total_bytes_transferred = 713;
+  .google.protobuf.UInt32Value client_speedtest_router_download_bytes_transferred_duration_s = 714;
+  .google.protobuf.UInt64Value client_speedtest_router_download_target_ipv6_low = 715;
+  .google.protobuf.UInt64Value client_speedtest_router_download_target_ipv6_high = 716;
   .google.protobuf.FloatValue client_speedtest_router_upload_mbps = 701;
+  .google.protobuf.UInt64Value client_speedtest_router_upload_total_bytes_transferred = 717;
+  .google.protobuf.UInt32Value client_speedtest_router_upload_bytes_transferred_duration_s = 718;
+  .google.protobuf.UInt64Value client_speedtest_router_upload_target_ipv6_low = 719;
+  .google.protobuf.UInt64Value client_speedtest_router_upload_target_ipv6_high = 720;
   .google.protobuf.FloatValue client_speedtest_router_rssi = 702;
   .google.protobuf.FloatValue client_speedtest_wifi_download_mbps = 703;
   .google.protobuf.FloatValue client_speedtest_wifi_upload_mbps = 704;
@@ -908,6 +919,14 @@ message starlink_router_client_speedtests {
   .google.protobuf.FloatValue router_upload_mbps_avg = 20;
   .google.protobuf.StringValue router_target = 29;
   .google.protobuf.UInt32Value router_tcp_streams = 22;
+  .google.protobuf.UInt64Value router_download_total_bytes_transferred = 40;
+  .google.protobuf.UInt32Value router_download_bytes_transferred_duration_s = 41;
+  .google.protobuf.UInt64Value router_download_target_ipv6_low = 42;
+  .google.protobuf.UInt64Value router_download_target_ipv6_high = 43;
+  .google.protobuf.UInt64Value router_upload_total_bytes_transferred = 44;
+  .google.protobuf.UInt32Value router_upload_bytes_transferred_duration_s = 45;
+  .google.protobuf.UInt64Value router_upload_target_ipv6_low = 46;
+  .google.protobuf.UInt64Value router_upload_target_ipv6_high = 47;
   .SpaceX.API.Telemetron.Public.Common.TimestampInfo wifi_download_start_time = 23;
   .SpaceX.API.Telemetron.Public.Common.TimestampInfo wifi_upload_start_time = 24;
   .google.protobuf.FloatValue wifi_download_mbps_avg = 25;

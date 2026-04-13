@@ -386,6 +386,9 @@ message SpeedTestStats {
   float download_mbps = 2;
   .SpaceX.API.Device.SpeedTestStats.Target target = 7;
   uint32 tcp_streams = 8;
+  uint64 upload_bytes_processed = 9;
+  uint64 download_bytes_processed = 10;
+  uint64 duration_s = 11;
 }
 
 message ClientPlatform {
@@ -639,6 +642,8 @@ message GetPersistentStatsRequest {
 }
 
 message StartSpeedtestRequest {
+  int32 duration_s = 1;
+  bool send_telemetry = 2;
 }
 
 message StartSpeedtestResponse {
