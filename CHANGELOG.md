@@ -1,5 +1,11 @@
 # CHANGELOG
 
++ 2026.04.03.mr77363
+
+[Dish] New event reason `EVENT_REASON_OUTAGE_INHIBIT_RF`, `EVENT_REASON_ROUTER_MESH_BACKHAUL_FLAPPING`.
+
+[Router] Speed test stats new members: `UploadBytesProcessed`, `DownloadBytesProcessed`, `DurationS`. https://github.com/clarkzjw/starlink-grpc-golang/blob/813d4d49e8b084e0b2352df122a5743e3ac6a016/pkg/spacex.com/api/device/device.pb.go#L4752
+
 + 2026.03.18.mr76237.4
 
 [WiFi] New `Device_Id` in `UXEvent` of `WifiMeshStatus`.
