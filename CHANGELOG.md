@@ -1,5 +1,9 @@
 # CHANGELOG
 
++ 2026.04.10.mr77882.1
+
+[WiFi] `throughput_mbps_last_15s_avg`
+
 + 2026.04.03.mr77363
 
 [Dish] New event reason `EVENT_REASON_OUTAGE_INHIBIT_RF`, `EVENT_REASON_ROUTER_MESH_BACKHAUL_FLAPPING`.

@@ -242,6 +242,7 @@ message WifiClient {
     float rate_mbps_last_15s = 15;
     float rate_mbps_last_1m_avg = 16;
     float throughput_mbps_last_1m_avg = 17;
+    float throughput_mbps_last_15s_avg = 18;
     uint32 mcs = 5;
     uint32 bandwidth = 6;
     uint32 guard_ns = 7;
@@ -264,6 +265,7 @@ message WifiClient {
     uint32 bandwidth = 6;
     uint32 guard_ns = 7;
     float airtime_fraction_last_1s = 9;
+    float throughput_mbps_last_15s_avg = 13;
   }
 
   message PingMetrics {
