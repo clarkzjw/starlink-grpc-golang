@@ -176,6 +176,8 @@ message DishGetStatusResponse {
   repeated .SpaceX.API.Device.DishGetStatusResponse.DownstreamRoutersEntry downstream_routers = 1050;
   .SpaceX.API.Device.AccountShard account_shard = 1051;
   bool mac_flag = 1052;
+  .SpaceX.API.Device.NatFlag nat_flag = 1053;
+  .SpaceX.API.Device.DishBatteryStats battery_stats = 1054;
 }
 
 message DishGetObstructionMapRequest {
@@ -296,6 +298,12 @@ message DishApsStats {
   bool force_dev_signed_allowed = 7;
   bool debug_port_locked = 8;
   int32 board_rev = 9;
+}
+
+message DishBatteryStats {
+  uint32 state_of_charge = 1;
+  bool is_charging = 2;
+  .SpaceX.API.Device.PowerSource power_source = 3;
 }
 
 message InitializationDurationSeconds {
@@ -538,6 +546,19 @@ enum RouterRole {
   CONTROLLER = 1;
   REPEATER = 2;
   BYPASSED = 3;
+}
+
+enum PowerSource {
+  POWER_SOURCE_UNKNOWN = 0;
+  USBC = 1;
+  BATTERY = 2;
+  USBC_AND_BATTERY = 3;
+}
+
+enum NatFlag {
+  NAT_UNKNOWN = 0;
+  NAT_DISABLED = 1;
+  NAT_ENABLED = 2;
 }
 
 enum DishState {

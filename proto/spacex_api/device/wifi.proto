@@ -832,6 +832,7 @@ message starlink_routers_hourly_metrics_v2 {
   .google.protobuf.BoolValue config_offline_networks_disablement_enabled = 1033;
   .google.protobuf.BoolValue config_custom_dns_disabled = 1034;
   .google.protobuf.BoolValue config_foreflight_enabled = 1036;
+  .google.protobuf.BoolValue config_outdoor_mode = 1037;
   .google.protobuf.BoolValue config_disable_2ghz = 1018;
   .google.protobuf.BoolValue config_disable_5ghz = 1019;
   .google.protobuf.BoolValue config_disable_5ghz_high = 1029;
