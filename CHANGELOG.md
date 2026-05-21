@@ -1,5 +1,34 @@
 # CHANGELOG
 
++ 2026.05.07.mr79787
+
+[Dish] New `DishBatteryStats`, `PowerSource`, `NatFlag`
+
+```
+message DishBatteryStats {
+  uint32 state_of_charge = 1;
+  bool is_charging = 2;
+  .SpaceX.API.Device.PowerSource power_source = 3;
+}
+```
+
+```
+enum PowerSource {
+  POWER_SOURCE_UNKNOWN = 0;
+  USBC = 1;
+  BATTERY = 2;
+  USBC_AND_BATTERY = 3;
+}
+```
+
+```
+enum NatFlag {
+  NAT_UNKNOWN = 0;
+  NAT_DISABLED = 1;
+  NAT_ENABLED = 2;
+}
+```
+
 + 2026.04.10.mr77882.1
 
 [WiFi] `throughput_mbps_last_15s_avg`
