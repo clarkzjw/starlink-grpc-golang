@@ -1,5 +1,9 @@
 # CHANGELOG
 
++ 2026.05.11.mr80032.1
+
+[WiFi] `Active` in `WifiClient`
+
 + 2026.05.07.mr79787
 
 [Dish] New `DishBatteryStats`, `PowerSource`, `NatFlag`

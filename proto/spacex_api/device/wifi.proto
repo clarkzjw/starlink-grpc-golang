@@ -377,6 +377,7 @@ message WifiClient {
   .SpaceX.API.Device.WifiClient.Alerts alerts = 52;
   uint32 upload_mb = 54;
   uint32 download_mb = 55;
+  bool active = 58;
 }
 
 message WifiSetupRequest {
