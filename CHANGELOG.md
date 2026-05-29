@@ -1,5 +1,19 @@
 # CHANGELOG
 
++ 2026.05.13.mr80201.46492
+
+[WiFi] `Link` status
+
+```
+  message Link {
+    string link_address = 1;
+    .SpaceX.API.Device.WifiClient.Interface band = 2;
+    float signal_strength = 3;
+    .SpaceX.API.Device.WifiClient.RxStats rx_stats = 4;
+    .SpaceX.API.Device.WifiClient.TxStats tx_stats = 5;
+  }
+```
+
 + 2026.05.11.mr80032.1
 
 [WiFi] `Active` in `WifiClient`

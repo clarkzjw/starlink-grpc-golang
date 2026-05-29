@@ -268,6 +268,14 @@ message WifiClient {
     float throughput_mbps_last_15s_avg = 13;
   }
 
+  message Link {
+    string link_address = 1;
+    .SpaceX.API.Device.WifiClient.Interface band = 2;
+    float signal_strength = 3;
+    .SpaceX.API.Device.WifiClient.RxStats rx_stats = 4;
+    .SpaceX.API.Device.WifiClient.TxStats tx_stats = 5;
+  }
+
   message PingMetrics {
     bool in_unhappy_hour_2s = 1;
     bool in_unhappy_hour_5s = 2;
@@ -324,6 +332,8 @@ message WifiClient {
     SANDBOX_STATE_PARTIALLY_SANDBOXED = 4;
   }
 
+  repeated .SpaceX.API.Device.WifiClient.Link links = 70;
+  bool using_mlo = 71;
   string name = 1;
   string given_name = 31;
   string domain = 22;
@@ -717,6 +727,8 @@ message starlink_routers_hourly_metrics_v2 {
   .google.protobuf.UInt32Value clients_2ghz = 401;
   .google.protobuf.UInt32Value clients_5ghz = 402;
   .google.protobuf.UInt32Value clients_5ghz_high = 413;
+  .google.protobuf.UInt32Value clients_wireless = 436;
+  .google.protobuf.UInt32Value clients_mlo = 437;
   .google.protobuf.UInt32Value clients_eth = 403;
   .google.protobuf.UInt32Value clients_5ghz_rx_bandwidth_20mhz = 429;
   .google.protobuf.UInt32Value clients_5ghz_rx_bandwidth_40mhz = 430;
@@ -944,6 +956,7 @@ message StarlinkRouterClients {
   .SpaceX.API.Telemetron.Public.Common.TimestampInfo timestamp = 2;
   uint32 client_id = 3;
   string client_telem_index = 4;
+  .google.protobuf.BoolValue using_mlo = 5;
   .google.protobuf.StringValue router_hw = 119;
   .google.protobuf.StringValue router_sw = 120;
   .google.protobuf.UInt32Value router_uptime_s = 137;
@@ -964,6 +977,24 @@ message StarlinkRouterClients {
   .google.protobuf.UInt32Value rx_bandwidth = 112;
   .google.protobuf.UInt32Value rx_spatial_streams = 113;
   .google.protobuf.UInt32Value rx_phy_mode = 114;
+  .google.protobuf.UInt32Value link_2ghz_radio_channel = 160;
+  .google.protobuf.FloatValue link_2ghz_rssi = 161;
+  .google.protobuf.UInt32Value link_2ghz_rx_mcs = 162;
+  .google.protobuf.UInt32Value link_2ghz_tx_mcs = 163;
+  .google.protobuf.UInt32Value link_2ghz_rx_rate = 164;
+  .google.protobuf.UInt32Value link_2ghz_tx_rate = 165;
+  .google.protobuf.UInt32Value link_2ghz_rx_bandwidth = 166;
+  .google.protobuf.UInt32Value link_2ghz_rx_spatial_streams = 167;
+  .google.protobuf.UInt32Value link_2ghz_rx_phy_mode = 168;
+  .google.protobuf.UInt32Value link_5ghz_radio_channel = 170;
+  .google.protobuf.FloatValue link_5ghz_rssi = 171;
+  .google.protobuf.UInt32Value link_5ghz_rx_mcs = 172;
+  .google.protobuf.UInt32Value link_5ghz_tx_mcs = 173;
+  .google.protobuf.UInt32Value link_5ghz_rx_rate = 174;
+  .google.protobuf.UInt32Value link_5ghz_tx_rate = 175;
+  .google.protobuf.UInt32Value link_5ghz_rx_bandwidth = 176;
+  .google.protobuf.UInt32Value link_5ghz_rx_spatial_streams = 177;
+  .google.protobuf.UInt32Value link_5ghz_rx_phy_mode = 178;
   .google.protobuf.UInt32Value mesh_hops = 118;
   .google.protobuf.FloatValue speedtest_upload_mbps = 124;
   .google.protobuf.FloatValue speedtest_download_mbps = 125;
