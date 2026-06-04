@@ -625,6 +625,7 @@ message starlink_routers_hourly_metrics_v2 {
   .google.protobuf.FloatValue radios_2ghz_antenna3_tssi = 159;
   .google.protobuf.FloatValue radios_2ghz_antenna4_tssi = 160;
   .google.protobuf.UInt32Value radios_2ghz_iface_count = 104;
+  .google.protobuf.UInt32Value radios_2ghz_mlo_iface_count = 169;
   .google.protobuf.FloatValue radios_2ghz_chan_busy_fraction = 105;
   .google.protobuf.FloatValue radios_2ghz_edcca_fraction = 106;
   .google.protobuf.FloatValue radios_2ghz_overlapping_bss_fraction = 107;
@@ -649,6 +650,7 @@ message starlink_routers_hourly_metrics_v2 {
   .google.protobuf.FloatValue radios_5ghz_antenna3_tssi = 163;
   .google.protobuf.FloatValue radios_5ghz_antenna4_tssi = 164;
   .google.protobuf.UInt32Value radios_5ghz_iface_count = 123;
+  .google.protobuf.UInt32Value radios_5ghz_mlo_iface_count = 179;
   .google.protobuf.FloatValue radios_5ghz_chan_busy_fraction = 124;
   .google.protobuf.FloatValue radios_5ghz_edcca_fraction = 125;
   .google.protobuf.FloatValue radios_5ghz_overlapping_bss_fraction = 126;

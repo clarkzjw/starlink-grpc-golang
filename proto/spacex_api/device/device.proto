@@ -118,6 +118,7 @@ message Request {
     .SpaceX.API.Device.DishInhibitRfRequest dish_inhibit_rf = 2026;
     .SpaceX.API.Device.ZtlmQueryRequest ztlm_query = 2027;
     .SpaceX.API.Device.DishStartTestModeServerRequest dish_start_test_mode_server = 2028;
+    .SpaceX.API.Device.UserReportedIssueRequest user_reported_issue = 2029;
     .SpaceX.API.Device.WifiGetClientsRequest wifi_get_clients = 3002;
     .SpaceX.API.Device.WifiGetPingMetricsRequest wifi_get_ping_metrics = 3007;
     .SpaceX.API.Device.WifiSetConfigRequest wifi_set_config = 3001;
@@ -220,6 +221,7 @@ message Response {
     .SpaceX.API.Device.DishInhibitRfResponse dish_inhibit_rf = 2026;
     .SpaceX.API.Device.ZtlmQueryResponse ztlm_query = 2027;
     .SpaceX.API.Device.DishStartTestModeServerResponse dish_start_test_mode_server = 2028;
+    .SpaceX.API.Device.UserReportedIssueResponse user_reported_issue = 2029;
     .SpaceX.API.Device.WifiAuthenticateResponse wifi_authenticate = 3005;
     .SpaceX.API.Device.WifiGetClientsResponse wifi_get_clients = 3002;
     .SpaceX.API.Device.WifiGetHistoryResponse wifi_get_history = 3006;

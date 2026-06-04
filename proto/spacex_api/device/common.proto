@@ -144,12 +144,19 @@ message WifiNetworkInterface {
     uint32 invalid_misc = 5;
   }
 
+  message WirelessLink {
+    .SpaceX.API.Device.WirelessBand band = 1;
+    uint32 channel = 2;
+    uint32 bandwidth = 3;
+  }
+
   .SpaceX.API.Device.WifiNetworkInterface.InvalidPacketCounts invalid_packet_counts = 2;
   uint32 channel = 3;
   uint32 missed_beacons = 8;
   double link_quality = 4;
   double signal_level = 5;
   double noise_level = 6;
+  repeated .SpaceX.API.Device.WifiNetworkInterface.WirelessLink links = 10;
 }
 
 message BridgeNetworkInterface {
@@ -272,6 +279,12 @@ enum BootReason {
   REPEATER_UNTRUSTED_FDIR = 16;
 }
 
+enum WirelessBand {
+  RF_UNKNOWN = 0;
+  RF_2GHZ = 1;
+  RF_5GHZ = 2;
+}
+
 enum EventSeverity {
   EVENT_SEVERITY_UNKNOWN = 0;
   EVENT_SEVERITY_WARNING = 1;
@@ -298,6 +311,7 @@ enum EventReason {
   EVENT_REASON_UT_ALERT_ETH_NO_LINK = 23;
   EVENT_REASON_UT_ALERT_ETH_SLOW_LINK = 24;
   EVENT_REASON_UT_ALERT_ETH_SLOW_LINK_100 = 25;
+  EVENT_REASON_UT_ALERT_USER_REPORTED_ISSUE = 52;
   EVENT_REASON_HIGH_DOWNLINK_PACKET_LOSS = 12;
   EVENT_REASON_ROUTER_FACTORY_RESET = 13;
   EVENT_REASON_ROUTER_REBOOT = 14;

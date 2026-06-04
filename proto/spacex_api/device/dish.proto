@@ -44,6 +44,12 @@ message ZtlmQueryRequest {
 message ZtlmQueryResponse {
 }
 
+message UserReportedIssueRequest {
+}
+
+message UserReportedIssueResponse {
+}
+
 message DishGetContextRequest {
 }
 
@@ -178,6 +184,7 @@ message DishGetStatusResponse {
   bool mac_flag = 1052;
   .SpaceX.API.Device.NatFlag nat_flag = 1053;
   .SpaceX.API.Device.DishBatteryStats battery_stats = 1054;
+  bool user_debug_mode_enabled = 1055;
 }
 
 message DishGetObstructionMapRequest {
@@ -235,6 +242,7 @@ message DishGpsStats {
   uint32 gps_sats = 2;
   bool no_sats_after_ttff = 3;
   bool inhibit_gps = 4;
+  .SpaceX.API.Device.AttitudeEstimationState pnt_filter_convergence_state = 5;
 }
 
 message SoftwareUpdateStats {
