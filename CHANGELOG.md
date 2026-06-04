@@ -1,5 +1,70 @@
 # CHANGELOG
 
++ 2026.05.26.mr80668
+
+[WiFi] `WirelessBand`
+
+```go
+type WifiNetworkInterface_WirelessLink struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Band      WirelessBand `protobuf:"varint,1,opt,name=band,proto3,enum=SpaceX.API.Device.WirelessBand" json:"band,omitempty"`
+	Channel   uint32       `protobuf:"varint,2,opt,name=channel,proto3" json:"channel,omitempty"`
+	Bandwidth uint32       `protobuf:"varint,3,opt,name=bandwidth,proto3" json:"bandwidth,omitempty"`
+}
+
+type WirelessBand int32
+
+const (
+	WirelessBand_RF_UNKNOWN WirelessBand = 0
+	WirelessBand_RF_2GHZ    WirelessBand = 1
+	WirelessBand_RF_5GHZ    WirelessBand = 2
+)
+```
+
+It might appear in the `get_network_interfaces` gRPC call for the router
+
+```
+grpcurl -plaintext -d {\"get_network_interfaces\":{}} 192.168.1.1:9000 SpaceX.API.Device.Device/Handle
+```
+
+[Dish] A `UserDebugModeEnabled` flag, although no user-side debug request seems feasible.
+
+[Dish] New `pntFilterConvergenceState` in dish's `get_status` response,
+
+```go
+type AttitudeEstimationState int32
+
+const (
+	AttitudeEstimationState_FILTER_RESET       AttitudeEstimationState = 0
+	AttitudeEstimationState_FILTER_UNCONVERGED AttitudeEstimationState = 1
+	AttitudeEstimationState_FILTER_CONVERGED   AttitudeEstimationState = 2
+	AttitudeEstimationState_FILTER_FAULTED     AttitudeEstimationState = 3
+	AttitudeEstimationState_FILTER_INVALID     AttitudeEstimationState = 4
+)
+```
+
+e.g.,
+
+```json
+    "gpsStats": {
+      "gpsValid": true,
+      "gpsSats": 17,
+      "pntFilterConvergenceState": "FILTER_CONVERGED"
+    },
+```
+
+Even though GPS access is disabled on regular subscriptions except for priority plans.
+
+```
+grpcurl -plaintext -d {\"get_location\":{}} 192.168.100.1:9200 SpaceX.API.Device.Device/Handle
+ERROR:
+  Code: PermissionDenied
+  Message: Failed to get location: Disabled due to policy
+```
+
 + 2026.05.13.mr80201.46492
 
 [WiFi] `Link` status
