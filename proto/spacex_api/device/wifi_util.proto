@@ -4,6 +4,17 @@ package SpaceX.API.Device;
 
 option go_package = "spacex.com/api/device";
 
+message NeighborReportBasicServiceSet {
+  string bssid = 1;
+  string ssid = 2;
+  string iface_name = 3;
+  uint32 bssid_information = 5;
+  uint32 regulatory_class = 6;
+  uint32 channel_number = 7;
+  uint32 phy_type = 8;
+  string self_neighbor_report_element = 4;
+}
+
 message InflatedBasicServiceSet {
   string bssid = 1;
   string ssid = 2;
