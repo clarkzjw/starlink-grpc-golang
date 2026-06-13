@@ -1,5 +1,27 @@
 # CHANGELOG
 
++ 2026.06.02.cr80873
+
+[WiFi] `SelfNeighborReportBssList` with type `[]*NeighborReportBasicServiceSet` in `WifiMeshStatus` 
+
+```go
+type NeighborReportBasicServiceSet struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Bssid            string `protobuf:"bytes,1,opt,name=bssid,proto3" json:"bssid,omitempty"`
+	Ssid             string `protobuf:"bytes,2,opt,name=ssid,proto3" json:"ssid,omitempty"`
+	IfaceName        string `protobuf:"bytes,3,opt,name=iface_name,json=ifaceName,proto3" json:"iface_name,omitempty"`
+	BssidInformation uint32 `protobuf:"varint,5,opt,name=bssid_information,json=bssidInformation,proto3" json:"bssid_information,omitempty"`
+	RegulatoryClass  uint32 `protobuf:"varint,6,opt,name=regulatory_class,json=regulatoryClass,proto3" json:"regulatory_class,omitempty"`
+	ChannelNumber    uint32 `protobuf:"varint,7,opt,name=channel_number,json=channelNumber,proto3" json:"channel_number,omitempty"`
+	PhyType          uint32 `protobuf:"varint,8,opt,name=phy_type,json=phyType,proto3" json:"phy_type,omitempty"`
+	// Deprecated: Marked as deprecated in spacex_api/device/wifi_util.proto.
+	SelfNeighborReportElement string `protobuf:"bytes,4,opt,name=self_neighbor_report_element,json=selfNeighborReportElement,proto3" json:"self_neighbor_report_element,omitempty"`
+}
+```
+
 + 2026.05.26.mr80668
 
 [WiFi] `WirelessBand`
