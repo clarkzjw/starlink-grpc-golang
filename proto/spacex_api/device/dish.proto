@@ -185,6 +185,7 @@ message DishGetStatusResponse {
   .SpaceX.API.Device.NatFlag nat_flag = 1053;
   .SpaceX.API.Device.DishBatteryStats battery_stats = 1054;
   bool user_debug_mode_enabled = 1055;
+  bool treat_as_metered = 1056;
 }
 
 message DishGetObstructionMapRequest {
@@ -431,6 +432,7 @@ message ResetButtonResponse {
 
 message DishStartTestModeServerRequest {
   bool set_enabled = 1;
+  bool use_mtls = 2;
 }
 
 message DishStartTestModeServerResponse {

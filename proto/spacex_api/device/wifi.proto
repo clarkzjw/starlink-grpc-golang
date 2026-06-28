@@ -648,6 +648,7 @@ message starlink_routers_hourly_metrics_v2 {
   .google.protobuf.UInt64Value radios_2ghz_multi_user_beamformer = 220;
   .google.protobuf.UInt64Value radios_2ghz_multi_user_mpdu = 221;
   .google.protobuf.UInt64Value radios_2ghz_multi_user_mpdu_successes = 222;
+  .google.protobuf.UInt32Value radios_2ghz_preamble_puncturing_bitmap = 226;
   .google.protobuf.UInt32Value radios_5ghz_channel = 119;
   .google.protobuf.FloatValue radios_5ghz_antenna1_rssi = 120;
   .google.protobuf.FloatValue radios_5ghz_antenna2_rssi = 121;
@@ -676,6 +677,7 @@ message starlink_routers_hourly_metrics_v2 {
   .google.protobuf.UInt64Value radios_5ghz_multi_user_beamformer = 223;
   .google.protobuf.UInt64Value radios_5ghz_multi_user_mpdu = 224;
   .google.protobuf.UInt64Value radios_5ghz_multi_user_mpdu_successes = 225;
+  .google.protobuf.UInt32Value radios_5ghz_preamble_puncturing_bitmap = 227;
   .google.protobuf.UInt32Value radios_5ghz_high_channel = 138;
   .google.protobuf.FloatValue radios_5ghz_high_antenna1_rssi = 139;
   .google.protobuf.FloatValue radios_5ghz_high_antenna2_rssi = 140;
@@ -903,6 +905,8 @@ message starlink_routers_hourly_metrics_v2 {
   .google.protobuf.UInt32Value dns_forwards_success_on_default_backup = 1204;
   .google.protobuf.UInt32Value dns_forwards_dropped = 1205;
   .google.protobuf.UInt32Value dns_forwards_with_backup = 1206;
+  .google.protobuf.UInt32Value dns_forwards_truncated = 1207;
+  .google.protobuf.UInt32Value dns_forwards_tcp_fallback = 1208;
 }
 
 message starlink_router_alerts {
