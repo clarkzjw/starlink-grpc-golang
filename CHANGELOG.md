@@ -1,8 +1,24 @@
 # CHANGELOG
 
++ 2026.06.12.mr81164
+
+[WiFi] New event type `EventReason_EVENT_REASON_ROUTER_WAN_ETH_DOWN_FDIR`.
+
+[Dish] `TreatAsMetered` option in dish `get_status`
+
+```golang
+TreatAsMetered                     bool                                   `protobuf:"varint,1056,opt,name=treat_as_metered,json=treatAsMetered,proto3" json:"treat_as_metered,omitempty"`
+```
+
+[Dish] `UseMtls` option in `DishStartTestModeServerRequest`.
+
+[WiFi] `Radios_2GhzPreamblePuncturingBitmap`, `Radios_5GhzPreamblePuncturingBitmap` in `StarlinkRoutersHourlyMetricsV2`.
+
+[WiFi] `DnsForwardsTruncated`, `DnsForwardsTcpFallback` in `StarlinkRoutersHourlyMetricsV2`.
+
 + 2026.06.02.cr80873
 
-[WiFi] `SelfNeighborReportBssList` with type `[]*NeighborReportBasicServiceSet` in `WifiMeshStatus` 
+[WiFi] `SelfNeighborReportBssList` with type `[]*NeighborReportBasicServiceSet` in `WifiMeshStatus`
 
 ```go
 type NeighborReportBasicServiceSet struct {
