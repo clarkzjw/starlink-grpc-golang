@@ -318,6 +318,23 @@ message WifiClient {
     CONTROLLER = 3;
   }
 
+  enum PhyMode {
+    PHY_MODE_CCK = 0;
+    PHY_MODE_OFDM = 1;
+    PHY_MODE_HTMIX = 2;
+    PHY_MODE_HTGREENFIELD = 3;
+    PHY_MODE_VHT = 4;
+    PHY_MODE_HE = 5;
+    PHY_MODE_HE_SU = 8;
+    PHY_MODE_HE_24G = 7;
+    PHY_MODE_HE_5G = 6;
+    PHY_MODE_HE_EXT_SU = 9;
+    PHY_MODE_HE_TRIG = 10;
+    PHY_MODE_HE_MU = 11;
+    PHY_MODE_EHT = 12;
+    PHY_MODE_UNKNOWN = 255;
+  }
+
   enum CaptiveState {
     CAPTIVE_STATE_NOT_CONFIGURED = 0;
     CAPTIVE_STATE_UNKNOWN = 1;
