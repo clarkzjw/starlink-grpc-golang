@@ -1,5 +1,50 @@
 # CHANGELOG
 
++ 2026.07.06.mr81950
+
+[Dish] `GetToggleMode` (what is this?)
+
+```golang
+type ToggleModeRequest struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	ModeId uint32 `protobuf:"varint,1,opt,name=mode_id,json=modeId,proto3" json:"mode_id,omitempty"`
+}
+
+type ToggleModeResponse struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	DisplayMsg string `protobuf:"bytes,1,opt,name=display_msg,json=displayMsg,proto3" json:"display_msg,omitempty"`
+}
+```
+
+[WiFi] New `WifiClient_PhyMode` for 802.11 PHY modes
+
+```golang
+type WifiClient_PhyMode int32
+
+const (
+	WifiClient_PHY_MODE_CCK          WifiClient_PhyMode = 0
+	WifiClient_PHY_MODE_OFDM         WifiClient_PhyMode = 1
+	WifiClient_PHY_MODE_HTMIX        WifiClient_PhyMode = 2
+	WifiClient_PHY_MODE_HTGREENFIELD WifiClient_PhyMode = 3
+	WifiClient_PHY_MODE_VHT          WifiClient_PhyMode = 4
+	WifiClient_PHY_MODE_HE           WifiClient_PhyMode = 5
+	WifiClient_PHY_MODE_HE_SU        WifiClient_PhyMode = 8
+	WifiClient_PHY_MODE_HE_24G       WifiClient_PhyMode = 7
+	WifiClient_PHY_MODE_HE_5G        WifiClient_PhyMode = 6
+	WifiClient_PHY_MODE_HE_EXT_SU    WifiClient_PhyMode = 9
+	WifiClient_PHY_MODE_HE_TRIG      WifiClient_PhyMode = 10
+	WifiClient_PHY_MODE_HE_MU        WifiClient_PhyMode = 11
+	WifiClient_PHY_MODE_EHT          WifiClient_PhyMode = 12
+	WifiClient_PHY_MODE_UNKNOWN      WifiClient_PhyMode = 255
+)
+```
+
 + 2026.06.12.mr81164
 
 [WiFi] New event type `EventReason_EVENT_REASON_ROUTER_WAN_ETH_DOWN_FDIR`.
