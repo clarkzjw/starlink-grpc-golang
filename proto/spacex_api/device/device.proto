@@ -145,6 +145,8 @@ message Request {
     .SpaceX.API.Device.WifiResetEthPhyRequest wifi_reset_eth_phy = 3033;
     .SpaceX.API.Device.WifiFlushHardwareNatRequest wifi_flush_hardware_nat = 3034;
     .SpaceX.API.Device.WifiWriteCalibrationRequest wifi_write_calibration = 3035;
+    .SpaceX.API.Device.WifiStartTracerouteRequest wifi_start_traceroute = 3036;
+    .SpaceX.API.Device.WifiGetTracerouteStatusRequest wifi_get_traceroute_status = 3037;
     .SpaceX.API.Device.TransceiverIFLoopbackTestRequest transceiver_if_loopback_test = 4001;
     .SpaceX.API.Device.TransceiverGetStatusRequest transceiver_get_status = 4003;
     .SpaceX.API.Device.TransceiverGetTelemetryRequest transceiver_get_telemetry = 4004;
@@ -246,6 +248,7 @@ message Response {
     .SpaceX.API.Device.WifiRunDebugNetsysResponse wifi_run_debug_netsys = 3029;
     .SpaceX.API.Device.WifiResetEthPhyResponse wifi_reset_eth_phy = 3030;
     .SpaceX.API.Device.WifiFlushHardwareNatResponse wifi_flush_hardware_nat = 3031;
+    .SpaceX.API.Device.WifiGetTracerouteStatusResponse wifi_get_traceroute_status = 3032;
     .SpaceX.API.Device.TransceiverIFLoopbackTestResponse transceiver_if_loopback_test = 4001;
     .SpaceX.API.Device.TransceiverGetStatusResponse transceiver_get_status = 4003;
     .SpaceX.API.Device.TransceiverGetTelemetryResponse transceiver_get_telemetry = 4004;

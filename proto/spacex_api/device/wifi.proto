@@ -252,6 +252,14 @@ message WifiClient {
     uint32 sampled_packets = 10;
     uint32 sampled_packets_retried = 11;
     uint32 sampled_packets_dropped = 12;
+    uint32 wmm_voice_bytes = 20;
+    uint32 wmm_video_bytes = 21;
+    uint32 wmm_best_effort_bytes = 22;
+    uint32 wmm_background_bytes = 23;
+    uint32 wmm_voice_bytes_failed = 24;
+    uint32 wmm_video_bytes_failed = 25;
+    uint32 wmm_best_effort_bytes_failed = 26;
+    uint32 wmm_background_bytes_failed = 27;
   }
 
   message TxStats {
@@ -268,6 +276,10 @@ message WifiClient {
     uint32 guard_ns = 7;
     float airtime_fraction_last_1s = 9;
     float throughput_mbps_last_15s_avg = 13;
+    uint32 wmm_voice_bytes = 20;
+    uint32 wmm_video_bytes = 21;
+    uint32 wmm_best_effort_bytes = 22;
+    uint32 wmm_background_bytes = 23;
   }
 
   message Link {
@@ -1011,6 +1023,18 @@ message StarlinkRouterClients {
   .google.protobuf.UInt32Value rx_bandwidth = 112;
   .google.protobuf.UInt32Value rx_spatial_streams = 113;
   .google.protobuf.UInt32Value rx_phy_mode = 114;
+  .google.protobuf.UInt32Value tx_wmm_voice_bytes = 180;
+  .google.protobuf.UInt32Value tx_wmm_video_bytes = 181;
+  .google.protobuf.UInt32Value tx_wmm_best_effort_bytes = 182;
+  .google.protobuf.UInt32Value tx_wmm_background_bytes = 183;
+  .google.protobuf.UInt32Value rx_wmm_voice_bytes = 184;
+  .google.protobuf.UInt32Value rx_wmm_video_bytes = 185;
+  .google.protobuf.UInt32Value rx_wmm_best_effort_bytes = 186;
+  .google.protobuf.UInt32Value rx_wmm_background_bytes = 187;
+  .google.protobuf.UInt32Value rx_wmm_voice_bytes_failed = 188;
+  .google.protobuf.UInt32Value rx_wmm_video_bytes_failed = 189;
+  .google.protobuf.UInt32Value rx_wmm_best_effort_bytes_failed = 190;
+  .google.protobuf.UInt32Value rx_wmm_background_bytes_failed = 191;
   .google.protobuf.UInt32Value link_2ghz_radio_channel = 160;
   .google.protobuf.FloatValue link_2ghz_rssi = 161;
   .google.protobuf.UInt32Value link_2ghz_rx_mcs = 162;
@@ -1020,6 +1044,18 @@ message StarlinkRouterClients {
   .google.protobuf.UInt32Value link_2ghz_rx_bandwidth = 166;
   .google.protobuf.UInt32Value link_2ghz_rx_spatial_streams = 167;
   .google.protobuf.UInt32Value link_2ghz_rx_phy_mode = 168;
+  .google.protobuf.UInt32Value link_2ghz_tx_wmm_voice_bytes = 192;
+  .google.protobuf.UInt32Value link_2ghz_tx_wmm_video_bytes = 193;
+  .google.protobuf.UInt32Value link_2ghz_tx_wmm_best_effort_bytes = 194;
+  .google.protobuf.UInt32Value link_2ghz_tx_wmm_background_bytes = 195;
+  .google.protobuf.UInt32Value link_2ghz_rx_wmm_voice_bytes = 196;
+  .google.protobuf.UInt32Value link_2ghz_rx_wmm_video_bytes = 197;
+  .google.protobuf.UInt32Value link_2ghz_rx_wmm_best_effort_bytes = 198;
+  .google.protobuf.UInt32Value link_2ghz_rx_wmm_background_bytes = 199;
+  .google.protobuf.UInt32Value link_2ghz_rx_wmm_voice_bytes_failed = 200;
+  .google.protobuf.UInt32Value link_2ghz_rx_wmm_video_bytes_failed = 201;
+  .google.protobuf.UInt32Value link_2ghz_rx_wmm_best_effort_bytes_failed = 202;
+  .google.protobuf.UInt32Value link_2ghz_rx_wmm_background_bytes_failed = 203;
   .google.protobuf.UInt32Value link_5ghz_radio_channel = 170;
   .google.protobuf.FloatValue link_5ghz_rssi = 171;
   .google.protobuf.UInt32Value link_5ghz_rx_mcs = 172;
@@ -1029,6 +1065,18 @@ message StarlinkRouterClients {
   .google.protobuf.UInt32Value link_5ghz_rx_bandwidth = 176;
   .google.protobuf.UInt32Value link_5ghz_rx_spatial_streams = 177;
   .google.protobuf.UInt32Value link_5ghz_rx_phy_mode = 178;
+  .google.protobuf.UInt32Value link_5ghz_tx_wmm_voice_bytes = 204;
+  .google.protobuf.UInt32Value link_5ghz_tx_wmm_video_bytes = 205;
+  .google.protobuf.UInt32Value link_5ghz_tx_wmm_best_effort_bytes = 206;
+  .google.protobuf.UInt32Value link_5ghz_tx_wmm_background_bytes = 207;
+  .google.protobuf.UInt32Value link_5ghz_rx_wmm_voice_bytes = 208;
+  .google.protobuf.UInt32Value link_5ghz_rx_wmm_video_bytes = 209;
+  .google.protobuf.UInt32Value link_5ghz_rx_wmm_best_effort_bytes = 210;
+  .google.protobuf.UInt32Value link_5ghz_rx_wmm_background_bytes = 211;
+  .google.protobuf.UInt32Value link_5ghz_rx_wmm_voice_bytes_failed = 212;
+  .google.protobuf.UInt32Value link_5ghz_rx_wmm_video_bytes_failed = 213;
+  .google.protobuf.UInt32Value link_5ghz_rx_wmm_best_effort_bytes_failed = 214;
+  .google.protobuf.UInt32Value link_5ghz_rx_wmm_background_bytes_failed = 215;
   .google.protobuf.UInt32Value mesh_hops = 118;
   .google.protobuf.FloatValue speedtest_upload_mbps = 124;
   .google.protobuf.FloatValue speedtest_download_mbps = 125;
@@ -1360,5 +1408,52 @@ message WifiFlushHardwareNatRequest {
 }
 
 message WifiFlushHardwareNatResponse {
+}
+
+message WifiStartTracerouteRequest {
+  string target = 1;
+  .SpaceX.API.Device.WifiTracerouteIpFamily ip_family = 2;
+}
+
+message WifiGetTracerouteStatusRequest {
+}
+
+message WifiGetTracerouteStatusResponse {
+  .SpaceX.API.Device.WifiTracerouteStatus status = 1;
+}
+
+message WifiTracerouteHop {
+  uint32 hop_number = 1;
+  string ip_address = 2;
+  string hostname = 3;
+  repeated float rtt_ms = 4;
+  bool timeout = 5;
+}
+
+message WifiTracerouteStatus {
+  .SpaceX.API.Device.WifiTracerouteState state = 1;
+  string target = 2;
+  string target_ip = 3;
+  repeated .SpaceX.API.Device.WifiTracerouteHop hops = 4;
+  float duration_s = 5;
+  .SpaceX.API.Device.WifiTracerouteIpFamily resolved_ip_family = 6;
+}
+
+enum WifiTracerouteIpFamily {
+  WIFI_TRACEROUTE_IP_FAMILY_UNKNOWN = 0;
+  WIFI_TRACEROUTE_IP_FAMILY_IPV4 = 1;
+  WIFI_TRACEROUTE_IP_FAMILY_IPV6 = 2;
+}
+
+enum WifiTracerouteState {
+  WIFI_TRACEROUTE_STATE_IDLE = 0;
+  WIFI_TRACEROUTE_STATE_RUNNING = 1;
+  WIFI_TRACEROUTE_STATE_COMPLETED_TARGET_REACHED = 2;
+  WIFI_TRACEROUTE_STATE_COMPLETED_TARGET_NOT_REACHED = 3;
+  WIFI_TRACEROUTE_STATE_EXEC_FAILED = 4;
+  WIFI_TRACEROUTE_STATE_TIMED_OUT = 5;
+  WIFI_TRACEROUTE_STATE_OUTPUT_TOO_LARGE = 6;
+  WIFI_TRACEROUTE_STATE_INTERNAL_ERROR = 7;
+  WIFI_TRACEROUTE_STATE_INTERRUPTED = 8;
 }
 
