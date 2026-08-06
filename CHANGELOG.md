@@ -1,5 +1,161 @@
 # CHANGELOG
 
++ 2026.07.24.mr83021
+
+[WiFi] `Request_WifiStartTraceroute`
+
+```go
+type WifiStartTracerouteRequest struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Target   string                 `protobuf:"bytes,1,opt,name=target,proto3" json:"target,omitempty"`
+	IpFamily WifiTracerouteIpFamily `protobuf:"varint,2,opt,name=ip_family,json=ipFamily,proto3,enum=SpaceX.API.Device.WifiTracerouteIpFamily" json:"ip_family,omitempty"`
+}
+
+
+type WifiTracerouteStatus struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	State            WifiTracerouteState    `protobuf:"varint,1,opt,name=state,proto3,enum=SpaceX.API.Device.WifiTracerouteState" json:"state,omitempty"`
+	Target           string                 `protobuf:"bytes,2,opt,name=target,proto3" json:"target,omitempty"`
+	TargetIp         string                 `protobuf:"bytes,3,opt,name=target_ip,json=targetIp,proto3" json:"target_ip,omitempty"`
+	Hops             []*WifiTracerouteHop   `protobuf:"bytes,4,rep,name=hops,proto3" json:"hops,omitempty"`
+	DurationS        float32                `protobuf:"fixed32,5,opt,name=duration_s,json=durationS,proto3" json:"duration_s,omitempty"`
+	ResolvedIpFamily WifiTracerouteIpFamily `protobuf:"varint,6,opt,name=resolved_ip_family,json=resolvedIpFamily,proto3,enum=SpaceX.API.Device.WifiTracerouteIpFamily" json:"resolved_ip_family,omitempty"`
+}
+
+
+type WifiTracerouteState int32
+
+const (
+	WifiTracerouteState_WIFI_TRACEROUTE_STATE_IDLE                         WifiTracerouteState = 0
+	WifiTracerouteState_WIFI_TRACEROUTE_STATE_RUNNING                      WifiTracerouteState = 1
+	WifiTracerouteState_WIFI_TRACEROUTE_STATE_COMPLETED_TARGET_REACHED     WifiTracerouteState = 2
+	WifiTracerouteState_WIFI_TRACEROUTE_STATE_COMPLETED_TARGET_NOT_REACHED WifiTracerouteState = 3
+	WifiTracerouteState_WIFI_TRACEROUTE_STATE_EXEC_FAILED                  WifiTracerouteState = 4
+	WifiTracerouteState_WIFI_TRACEROUTE_STATE_TIMED_OUT                    WifiTracerouteState = 5
+	WifiTracerouteState_WIFI_TRACEROUTE_STATE_OUTPUT_TOO_LARGE             WifiTracerouteState = 6
+	WifiTracerouteState_WIFI_TRACEROUTE_STATE_INTERNAL_ERROR               WifiTracerouteState = 7
+	WifiTracerouteState_WIFI_TRACEROUTE_STATE_INTERRUPTED                  WifiTracerouteState = 8
+)
+```
+
+But it seems it returns permission denied 
+
+```
+$ grpcurl -plaintext -d "{\"wifi_start_traceroute\":{\"target\": \"1.1.1.1\"}}" 192.168.1.1:9000 SpaceX.API.Device.Device/Handle
+ERROR:
+  Code: PermissionDenied
+  Message: Permission denied
+```
+
+[WiFi] Diffsrv support? New members in `StarlinkRouterClients`
+
+```protobuf
+  .google.protobuf.UInt32Value tx_wmm_voice_bytes = 180;
+  .google.protobuf.UInt32Value tx_wmm_video_bytes = 181;
+  .google.protobuf.UInt32Value tx_wmm_best_effort_bytes = 182;
+  .google.protobuf.UInt32Value tx_wmm_background_bytes = 183;
+  .google.protobuf.UInt32Value rx_wmm_voice_bytes = 184;
+  .google.protobuf.UInt32Value rx_wmm_video_bytes = 185;
+  .google.protobuf.UInt32Value rx_wmm_best_effort_bytes = 186;
+  .google.protobuf.UInt32Value rx_wmm_background_bytes = 187;
+  .google.protobuf.UInt32Value rx_wmm_voice_bytes_failed = 188;
+  .google.protobuf.UInt32Value rx_wmm_video_bytes_failed = 189;
+  .google.protobuf.UInt32Value rx_wmm_best_effort_bytes_failed = 190;
+  .google.protobuf.UInt32Value rx_wmm_background_bytes_failed = 191;
+ 
+ ...
+
+  .google.protobuf.UInt32Value link_2ghz_tx_wmm_voice_bytes = 192;
+  .google.protobuf.UInt32Value link_2ghz_tx_wmm_video_bytes = 193;
+  .google.protobuf.UInt32Value link_2ghz_tx_wmm_best_effort_bytes = 194;
+  .google.protobuf.UInt32Value link_2ghz_tx_wmm_background_bytes = 195;
+  .google.protobuf.UInt32Value link_2ghz_rx_wmm_voice_bytes = 196;
+  .google.protobuf.UInt32Value link_2ghz_rx_wmm_video_bytes = 197;
+  .google.protobuf.UInt32Value link_2ghz_rx_wmm_best_effort_bytes = 198;
+  .google.protobuf.UInt32Value link_2ghz_rx_wmm_background_bytes = 199;
+  .google.protobuf.UInt32Value link_2ghz_rx_wmm_voice_bytes_failed = 200;
+  .google.protobuf.UInt32Value link_2ghz_rx_wmm_video_bytes_failed = 201;
+  .google.protobuf.UInt32Value link_2ghz_rx_wmm_best_effort_bytes_failed = 202;
+  .google.protobuf.UInt32Value link_2ghz_rx_wmm_background_bytes_failed = 203;
+
+...
+
+  .google.protobuf.UInt32Value link_5ghz_tx_wmm_voice_bytes = 204;
+  .google.protobuf.UInt32Value link_5ghz_tx_wmm_video_bytes = 205;
+  .google.protobuf.UInt32Value link_5ghz_tx_wmm_best_effort_bytes = 206;
+  .google.protobuf.UInt32Value link_5ghz_tx_wmm_background_bytes = 207;
+  .google.protobuf.UInt32Value link_5ghz_rx_wmm_voice_bytes = 208;
+  .google.protobuf.UInt32Value link_5ghz_rx_wmm_video_bytes = 209;
+  .google.protobuf.UInt32Value link_5ghz_rx_wmm_best_effort_bytes = 210;
+  .google.protobuf.UInt32Value link_5ghz_rx_wmm_background_bytes = 211;
+  .google.protobuf.UInt32Value link_5ghz_rx_wmm_voice_bytes_failed = 212;
+  .google.protobuf.UInt32Value link_5ghz_rx_wmm_video_bytes_failed = 213;
+  .google.protobuf.UInt32Value link_5ghz_rx_wmm_best_effort_bytes_failed = 214;
+  .google.protobuf.UInt32Value link_5ghz_rx_wmm_background_bytes_failed = 215;
+```
+
+`StarlinkRouterClients` likely is for remote telemetry to starlink.com, local status can be obtained with `wifi_get_clients` or `get_status`, e.g.,
+
+```
+grpcurl -emit-defaults -plaintext -d {\"get_status\":{}} 192.168.1.1:9000 SpaceX.API.Device.Device/Handle
+```
+
+but on router version `2026.07.23.mr82306` it seems these values are not properly populated yet, e.g.,
+
+```
+        "rxStats": {
+          "bytes": "725869",
+          "countErrors": "0",
+          "nss": 2,
+          "mcs": 5,
+          "bandwidth": 20,
+          "guardNs": 800,
+          "rateMbps": 137,
+          "airtimeFractionLast1s": 0,
+          "sampledPackets": 0,
+          "sampledPacketsRetried": 0,
+          "sampledPacketsDropped": 0,
+          "phyMode": 8,
+          "rateMbpsLast30s": 0,
+          "rateMbpsLast15s": 137,
+          "rateMbpsLast1mAvg": 60.72,
+          "throughputMbpsLast1mAvg": 0.06,
+          "throughputMbpsLast15sAvg": 0.599611,
+          "wmmVoiceBytes": 0,
+          "wmmVideoBytes": 0,
+          "wmmBestEffortBytes": 0,
+          "wmmBackgroundBytes": 0,
+          "wmmVoiceBytesFailed": 0,
+          "wmmVideoBytesFailed": 0,
+          "wmmBestEffortBytesFailed": 0,
+          "wmmBackgroundBytesFailed": 0
+        },
+        "txStats": {
+          "bytes": "92978",
+          "successBytes": "0",
+          "nss": 1,
+          "mcs": 8,
+          "bandwidth": 20,
+          "guardNs": 400,
+          "rateMbps": 175,
+          "airtimeFractionLast1s": 0,
+          "phyMode": 8,
+          "rateMbpsLast30s": 103.72727,
+          "rateMbpsLast15s": 157.11111,
+          "throughputMbpsLast15sAvg": 0.059575185,
+          "wmmVoiceBytes": 0,
+          "wmmVideoBytes": 0,
+          "wmmBestEffortBytes": 0,
+          "wmmBackgroundBytes": 0
+        },
+```
+
 + 2026.07.06.mr81950
 
 [Dish] `GetToggleMode` (what is this?)
