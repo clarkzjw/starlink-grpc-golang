@@ -1,5 +1,9 @@
 # CHANGELOG
 
++ 2026.08.17.mr84795
+
+[Router] Public IPv4 address in Router `get_status` output.
+
 + 2026.08.05.cr83926
 
 [Dish] New reason for reboot

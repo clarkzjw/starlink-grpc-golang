@@ -522,6 +522,7 @@ message WifiGetStatusResponse {
   bool using_individualized_calibration = 1032;
   .SpaceX.API.Device.CalibrationPartitionsState calibration_partitions_state = 1033;
   bool no_wan_link = 1035;
+  string public_ipv4 = 1036;
 }
 
 message WifiAuthenticateRequest {
