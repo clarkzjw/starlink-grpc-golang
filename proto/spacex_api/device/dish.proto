@@ -186,6 +186,7 @@ message DishGetStatusResponse {
   .SpaceX.API.Device.DishBatteryStats battery_stats = 1054;
   bool user_debug_mode_enabled = 1055;
   bool treat_as_metered = 1056;
+  float signal_quality = 1057;
 }
 
 message DishGetObstructionMapRequest {
