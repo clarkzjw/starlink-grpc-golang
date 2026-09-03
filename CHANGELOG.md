@@ -1,5 +1,9 @@
 # CHANGELOG
 
++ 2026.08.26.cr85524
+
+[Dish] New `signalQuality` field in dish `get_status`.
+
 + 2026.08.17.mr84795
 
 [Router] Public IPv4 address in Router `get_status` output.
