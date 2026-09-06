@@ -202,9 +202,11 @@ message DishGetObstructionMapResponse {
 }
 
 message DishAlerts {
+  reserved "roaming";
   reserved "moving_fast_while_not_aviation";
   reserved "moving_while_not_mobile";
   reserved "moving_too_fast_for_policy";
+  reserved 7;
   reserved 12;
   reserved 13;
   reserved 15;
@@ -215,7 +217,6 @@ message DishAlerts {
   bool unexpected_location = 4;
   bool slow_ethernet_speeds = 6;
   bool slow_ethernet_speeds_100 = 18;
-  bool roaming = 7;
   bool install_pending = 8;
   bool is_heating = 9;
   bool power_supply_thermal_throttle = 10;

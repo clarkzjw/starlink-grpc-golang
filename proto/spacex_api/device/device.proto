@@ -800,6 +800,7 @@ message DishGetDiagnosticsResponse {
     MOVING_TOO_FAST_FOR_POLICY = 14;
     UNDER_AVIATION_FLYOVER_LIMITS = 15;
     BLOCKED_AREA = 16;
+    OUTSIDE_HOME_REGION = 17;
   }
 
   string id = 1;
