@@ -1,5 +1,9 @@
 # CHANGELOG
 
++ 2026.08.26.mr85524
+
+[Dish] New disablement code: `OUTSIDE_HOME_REGION`
+
 + 2026.08.26.cr85524
 
 [Dish] New `signalQuality` field in dish `get_status`.
