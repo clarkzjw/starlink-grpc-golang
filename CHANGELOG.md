@@ -1,5 +1,9 @@
 # CHANGELOG
 
++ 2026.08.31.cr85832.51577
+
+[Dish] New reboot reason `REBOOT_REASON_MINI2_AUTO_OFF`
+
 + 2026.08.26.mr85524
 
 [Dish] New disablement code: `OUTSIDE_HOME_REGION`
