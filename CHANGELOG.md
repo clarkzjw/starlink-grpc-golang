@@ -1,5 +1,11 @@
 # CHANGELOG
 
++ 2026.09.18.mr87170.1
+
+[Dish] New reboot reason `REBOOT_REASON_BATTERY_AUTO_OFF` for the upcoming new mini dish with internal battery.
+
+[WiFi] New `snr` field for WiFi clients.
+
 + 2026.08.31.cr85832.51577
 
 [Dish] New reboot reason `REBOOT_REASON_MINI2_AUTO_OFF`
