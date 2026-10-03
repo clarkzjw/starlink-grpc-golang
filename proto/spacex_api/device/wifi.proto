@@ -288,6 +288,7 @@ message WifiClient {
     float signal_strength = 3;
     .SpaceX.API.Device.WifiClient.RxStats rx_stats = 4;
     .SpaceX.API.Device.WifiClient.TxStats tx_stats = 5;
+    float snr = 6;
   }
 
   message PingMetrics {
