@@ -1,5 +1,28 @@
 # CHANGELOG
 
++ 2026.09.24.mr87636.5
+
+[Dish] New ToggleMode
+
+```go
+type GetToggleModeResponse struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	CurrentNetwork uint32 `protobuf:"varint,1,opt,name=current_network,json=currentNetwork,proto3" json:"current_network,omitempty"`
+	AllowedNetwork uint32 `protobuf:"varint,2,opt,name=allowed_network,json=allowedNetwork,proto3" json:"allowed_network,omitempty"`
+}
+```
+
+```proto
+message GetToggleModeResponse {
+  uint32 current_network = 1;
+  uint32 allowed_network = 2;
+}
+
+```
+
 + 2026.09.18.mr87170.1
 
 [Dish] New reboot reason `REBOOT_REASON_BATTERY_AUTO_OFF` for the upcoming new mini dish with internal battery.
