@@ -155,6 +155,7 @@ message Request {
     .SpaceX.API.Device.GetDiagnosticsRequest get_diagnostics = 6000;
     .SpaceX.API.Device.GetGnssMeasurementRequest get_gnss_measurement = 7000;
     .SpaceX.API.Device.ToggleModeRequest toggle_mode = 7001;
+    .SpaceX.API.Device.GetToggleModeRequest toggle_mode_status = 7002;
   }
 }
 
@@ -258,6 +259,7 @@ message Response {
     .SpaceX.API.Device.DishGetDiagnosticsResponse dish_get_diagnostics = 6001;
     .SpaceX.API.Device.GetGnssMeasurementResponse get_gnss_measurement = 7000;
     .SpaceX.API.Device.ToggleModeResponse toggle_mode = 7001;
+    .SpaceX.API.Device.GetToggleModeResponse toggle_mode_status = 7002;
   }
 }
 
@@ -874,6 +876,14 @@ message ToggleModeRequest {
 
 message ToggleModeResponse {
   string display_msg = 1;
+}
+
+message GetToggleModeRequest {
+}
+
+message GetToggleModeResponse {
+  uint32 current_network = 1;
+  uint32 allowed_network = 2;
 }
 
 enum WifiClientSandboxAlert {
