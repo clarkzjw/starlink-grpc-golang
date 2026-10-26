@@ -1,5 +1,80 @@
 # CHANGELOG
 
++ 2026.10.09.mr88722.2
+
+[Dish] New protobuf definitions for battery powered mini dish
+
+```
+"EVENT_REASON_UT_ALERT_BATTERY_NEAR_TEMP_SHUTDOWN",
+"EVENT_REASON_UT_ALERT_BATTERY_TEMP_CHARGING_DISABLED",
+"EVENT_REASON_UT_ALERT_BATTERY_TEMP_CHARGING_CAPPED",
+```
+
+```
+"REBOOT_REASON_BATTERY_LOSS_OF_EXT_POWER_AUTO_OFF",
+"REBOOT_REASON_BATTERY_NO_BURST_AUTO_OFF",
+```
+
+`USBC_AND_BATTERY` is removed from power source definition, only the following are kept:
+
+```
+"POWER_SOURCE_UNKNOWN",
+"USBC",
+"BATTERY",
+```
+
+`DishBatteryStats`
+
+```
+	StateOfCharge       uint32  `protobuf:"varint,1,opt,name=state_of_charge,json=stateOfCharge,proto3" json:"state_of_charge,omitempty"`
+	IsCharging          bool    `protobuf:"varint,2,opt,name=is_charging,json=isCharging,proto3" json:"is_charging,omitempty"`
+	BatteryAttached     bool    `protobuf:"varint,4,opt,name=battery_attached,json=batteryAttached,proto3" json:"battery_attached,omitempty"`
+	PowerW              float32 `protobuf:"fixed32,5,opt,name=power_w,json=powerW,proto3" json:"power_w,omitempty"`
+	TimeToChargeMinutes uint32  `protobuf:"varint,6,opt,name=time_to_charge_minutes,json=timeToChargeMinutes,proto3" json:"time_to_charge_minutes,omitempty"`
+	TimeToEmptyMinutes  uint32  `protobuf:"varint,7,opt,name=time_to_empty_minutes,json=timeToEmptyMinutes,proto3" json:"time_to_empty_minutes,omitempty"`
+```
+
+`PowerSourceStats`
+
+
+```
+	PowerSources []PowerSource     `protobuf:"varint,1,rep,packed,name=power_sources,json=powerSources,proto3,enum=SpaceX.API.Device.PowerSource" json:"power_sources,omitempty"`
+	BatteryStats *DishBatteryStats `protobuf:"bytes,2,opt,name=battery_stats,json=batteryStats,proto3" json:"battery_stats,omitempty"`
+	UsbcStats    *DishUsbcStats    `protobuf:"bytes,3,opt,name=usbc_stats,json=usbcStats,proto3" json:"usbc_stats,omitempty"`
+```
+
+
+`DishUsbcStats`
+
+```
+	PowerW         float32 `protobuf:"fixed32,1,opt,name=power_w,json=powerW,proto3" json:"power_w,omitempty"`
+	MaxPowerW      float32 `protobuf:"fixed32,2,opt,name=max_power_w,json=maxPowerW,proto3" json:"max_power_w,omitempty"`
+	SourceDetected bool    `protobuf:"varint,3,opt,name=source_detected,json=sourceDetected,proto3" json:"source_detected,omitempty"`
+	SinkDetected   bool    `protobuf:"varint,4,opt,name=sink_detected,json=sinkDetected,proto3" json:"sink_detected,omitempty"`
+```
+
+`UsbDevice`
+
+```
+Bus          uint32 `protobuf:"varint,1,opt,name=bus,proto3" json:"bus,omitempty"`
+Parent       uint32 `protobuf:"varint,2,opt,name=parent,proto3" json:"parent,omitempty"`
+Port         uint32 `protobuf:"varint,3,opt,name=port,proto3" json:"port,omitempty"`
+DevNum       uint32 `protobuf:"varint,4,opt,name=dev_num,json=devNum,proto3" json:"dev_num,omitempty"`
+Speed        uint32 `protobuf:"varint,5,opt,name=speed,proto3" json:"speed,omitempty"`
+Vendor       string `protobuf:"bytes,6,opt,name=vendor,proto3" json:"vendor,omitempty"`
+ProdId       string `protobuf:"bytes,7,opt,name=prod_id,json=prodId,proto3" json:"prod_id,omitempty"`
+Rev          string `protobuf:"bytes,8,opt,name=rev,proto3" json:"rev,omitempty"`
+Manufacturer string `protobuf:"bytes,9,opt,name=manufacturer,proto3" json:"manufacturer,omitempty"`
+Product      string `protobuf:"bytes,10,opt,name=product,proto3" json:"product,omitempty"`
+Serial       string `protobuf:"bytes,11,opt,name=serial,proto3" json:"serial,omitempty"`
+MaxPower     string `protobuf:"bytes,12,opt,name=max_power,json=maxPower,proto3" json:"max_power,omitempty"`
+Active       bool   `protobuf:"varint,13,opt,name=active,proto3" json:"active,omitempty"`
+```
+
+[Dish] `DishGetDiagnosticsResponse_PERIPHERAL`
+
+[Dish] `InactiveAntiRollbackVersion`
+
 + 2026.09.24.mr87636.5
 
 [Dish] New ToggleMode
