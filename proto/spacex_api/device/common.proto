@@ -18,6 +18,7 @@ message DeviceInfo {
   bool is_dev = 7;
   int32 bootcount = 8;
   int32 anti_rollback_version = 9;
+  int32 inactive_anti_rollback_version = 17;
   bool is_hitl = 10;
   .SpaceX.API.Device.BootInfo boot = 1001;
   bool dish_cohoused = 13;
@@ -312,6 +313,9 @@ enum EventReason {
   EVENT_REASON_UT_ALERT_ETH_SLOW_LINK = 24;
   EVENT_REASON_UT_ALERT_ETH_SLOW_LINK_100 = 25;
   EVENT_REASON_UT_ALERT_USER_REPORTED_ISSUE = 52;
+  EVENT_REASON_UT_ALERT_BATTERY_NEAR_TEMP_SHUTDOWN = 54;
+  EVENT_REASON_UT_ALERT_BATTERY_TEMP_CHARGING_DISABLED = 55;
+  EVENT_REASON_UT_ALERT_BATTERY_TEMP_CHARGING_CAPPED = 56;
   EVENT_REASON_HIGH_DOWNLINK_PACKET_LOSS = 12;
   EVENT_REASON_ROUTER_FACTORY_RESET = 13;
   EVENT_REASON_ROUTER_REBOOT = 14;

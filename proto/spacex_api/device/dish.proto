@@ -128,11 +128,15 @@ message RouterInfo {
 message DishGetStatusResponse {
   reserved "phy_rx_beam_snr_avg";
   reserved "t_center";
+  reserved "battery_stats";
+  reserved "usbc_stats";
   reserved 1001;
   reserved 1006;
   reserved 1013;
   reserved 1046;
   reserved 1047;
+  reserved 1054;
+  reserved 1058;
   message DownstreamRoutersEntry {
     string key = 1;
     .SpaceX.API.Device.RouterInfo value = 2;
@@ -183,10 +187,10 @@ message DishGetStatusResponse {
   .SpaceX.API.Device.AccountShard account_shard = 1051;
   bool mac_flag = 1052;
   .SpaceX.API.Device.NatFlag nat_flag = 1053;
-  .SpaceX.API.Device.DishBatteryStats battery_stats = 1054;
   bool user_debug_mode_enabled = 1055;
   bool treat_as_metered = 1056;
   float signal_quality = 1057;
+  .SpaceX.API.Device.PowerSourceStats power_source_stats = 1059;
 }
 
 message DishGetObstructionMapRequest {
@@ -312,9 +316,27 @@ message DishApsStats {
 }
 
 message DishBatteryStats {
+  reserved "power_source";
+  reserved 3;
   uint32 state_of_charge = 1;
   bool is_charging = 2;
-  .SpaceX.API.Device.PowerSource power_source = 3;
+  bool battery_attached = 4;
+  float power_w = 5;
+  uint32 time_to_charge_minutes = 6;
+  uint32 time_to_empty_minutes = 7;
+}
+
+message PowerSourceStats {
+  repeated .SpaceX.API.Device.PowerSource power_sources = 1;
+  .SpaceX.API.Device.DishBatteryStats battery_stats = 2;
+  .SpaceX.API.Device.DishUsbcStats usbc_stats = 3;
+}
+
+message DishUsbcStats {
+  float power_w = 1;
+  float max_power_w = 2;
+  bool source_detected = 3;
+  bool sink_detected = 4;
 }
 
 message InitializationDurationSeconds {
@@ -553,6 +575,8 @@ enum RebootReason {
   REBOOT_REASON_KERNEL_TAINTED = 17;
   REBOOT_REASON_MINI2_AUTO_OFF = 18;
   REBOOT_REASON_BATTERY_AUTO_OFF = 19;
+  REBOOT_REASON_BATTERY_LOSS_OF_EXT_POWER_AUTO_OFF = 20;
+  REBOOT_REASON_BATTERY_NO_BURST_AUTO_OFF = 21;
   REBOOT_REASON_HARD_POWER_DOWN = 100;
   REBOOT_REASON_ERROR_FILE_MISSING = 200;
   REBOOT_REASON_ERROR_CRC_MISMATCH = 201;
@@ -572,7 +596,6 @@ enum PowerSource {
   POWER_SOURCE_UNKNOWN = 0;
   USBC = 1;
   BATTERY = 2;
-  USBC_AND_BATTERY = 3;
 }
 
 enum NatFlag {

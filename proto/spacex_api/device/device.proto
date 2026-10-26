@@ -784,6 +784,7 @@ message DishGetDiagnosticsResponse {
     SCP_ERROR = 17;
     TEMPERATURE = 18;
     VTSENS = 19;
+    PERIPHERAL = 20;
   }
 
   enum DisablementCode {
