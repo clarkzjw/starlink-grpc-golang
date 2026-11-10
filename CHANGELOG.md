@@ -1,5 +1,51 @@
 # CHANGELOG
 
++ 2026.10.29.mr90217.1
+
+[Dish] A lot of update related to the new Mini 2 dish with built-in battery.
+
+New reboot reason `REBOOT_REASON_BUTTON_POWER_OFF`, `REBOOT_REASON_MCU_BUTTON_POWER_OFF`.
+
+`power_consumption_w` in `get_history` in addition to `power_in`.
+
+`temperature_c` in `DishBatteryStats`.
+
+New dish config:
+
+```
+  bool loss_of_ext_power_auto_off_enabled = 10;
+  bool apply_loss_of_ext_power_auto_off_enabled = 10001;
+  bool no_burst_auto_off_enabled = 11;
+  bool apply_no_burst_auto_off_enabled = 11001;
+  uint32 loss_of_ext_power_auto_off_timeout_seconds = 12;
+  bool apply_loss_of_ext_power_auto_off_timeout_seconds = 12001;
+  uint32 no_burst_auto_off_timeout_seconds = 13;
+  bool apply_no_burst_auto_off_timeout_seconds = 13001;
+```
+
+```
+enum PowerSource {
+  POWER_SOURCE_UNKNOWN = 0;
+  USBC = 1;
+  BATTERY = 2;
+}
+```
+
+[Dish] Tenant role related to the "community host" program? https://starlink.com/community-host
+
+```
+  enum MultiTenantRole {
+    MULTI_TENANT_ROLE_NONE = 0;
+    MULTI_TENANT_ROLE_HOST = 1;
+    MULTI_TENANT_ROLE_TENANT = 2;
+  }
+
+  .SpaceX.API.Device.WifiConfig.MultiTenantRole multi_tenant_role = 1121;
+  bool apply_multi_tenant_role = 1122;
+  repeated string tenant_router_ids = 1123;
+  bool apply_tenant_router_ids = 1124;
+```
+
 + 2026.10.09.mr88722.2
 
 [Dish] New protobuf definitions for battery powered mini dish
