@@ -87,5 +87,6 @@ protoc --go_out=./pkg/  --go-grpc_out=./pkg/ \
 protoc --go_out=./pkg/  --go-grpc_out=./pkg/ --descriptor_set_in="$protoset_file" spacex_api/device/gnss.proto
 protoc --go_out=./pkg/  --go-grpc_out=./pkg/ --descriptor_set_in="$protoset_file" spacex_api/device/wifi_config.proto
 protoc --go_out=./pkg/  --go-grpc_out=./pkg/ --descriptor_set_in="$protoset_file" spacex_api/device/wifi_util.proto
+protoc --go_out=./pkg/  --go-grpc_out=./pkg/ --descriptor_set_in="$protoset_file" spacex_api/device/dish_power_source.proto
 
 find ./pkg/spacex.com -name "*.go" -print0 | xargs -0 sed -i 's|spacex.com/api|github.com/clarkzjw/starlink-grpc-golang/pkg/spacex.com/api|g'
