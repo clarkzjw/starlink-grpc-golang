@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+package SpaceX.API.Device;
+
+option go_package = "spacex.com/api/device/dish_power_source";
+
+enum PowerSource {
+  POWER_SOURCE_UNKNOWN = 0;
+  USBC = 1;
+  BATTERY = 2;
+}
+

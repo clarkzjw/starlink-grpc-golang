@@ -1465,6 +1465,55 @@ message WifiTracerouteStatus {
   .SpaceX.API.Device.WifiTracerouteIpFamily resolved_ip_family = 6;
 }
 
+message WifiDfsNopInfo {
+  uint32 remaining_seconds = 1;
+  uint32 total_seconds = 2;
+}
+
+message WifiDfsCacInfo {
+  uint32 remaining_seconds = 1;
+  uint32 total_seconds = 2;
+}
+
+message WifiChannelLists {
+  message DfsNopInfoEntry {
+    uint32 key = 1;
+    .SpaceX.API.Device.WifiDfsNopInfo value = 2;
+  }
+
+  message DfsCacInfoEntry {
+    uint32 key = 1;
+    .SpaceX.API.Device.WifiDfsCacInfo value = 2;
+  }
+
+  repeated uint32 all_regulatory = 1;
+  repeated uint32 dfs_required = 2;
+  repeated uint32 dfs_radar_detected = 3;
+  repeated .SpaceX.API.Device.WifiChannelLists.DfsNopInfoEntry dfs_nop_info = 4;
+  repeated uint32 allowed_channel_list = 5;
+  .google.protobuf.UInt32Value acs_selected = 6;
+  repeated uint32 manually_skipped = 7;
+  repeated .SpaceX.API.Device.WifiChannelLists.DfsCacInfoEntry dfs_cac_info = 8;
+}
+
+message WifiRadioChannels {
+  string band = 1;
+  string country_code = 2;
+  string regulatory_domain = 3;
+  uint32 current_channel = 4;
+  string current_bandwidth = 5;
+  .SpaceX.API.Device.WifiChannelLists channels = 6;
+}
+
+message WifiGetChannelsRequest {
+}
+
+message WifiGetChannelsResponse {
+  .SpaceX.API.Device.WifiRadioChannels channels_2ghz = 1;
+  .SpaceX.API.Device.WifiRadioChannels channels_5ghz = 2;
+  .SpaceX.API.Device.WifiRadioChannels channels_5ghz_high = 3;
+}
+
 enum WifiTracerouteIpFamily {
   WIFI_TRACEROUTE_IP_FAMILY_UNKNOWN = 0;
   WIFI_TRACEROUTE_IP_FAMILY_IPV4 = 1;

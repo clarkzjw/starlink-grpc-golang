@@ -7,6 +7,7 @@ option go_package = "spacex.com/api/device";
 import "google/protobuf/timestamp.proto";
 import "spacex_api/device/account_shard.proto";
 import "spacex_api/device/common.proto";
+import "spacex_api/device/dish_power_source.proto";
 import "spacex_api/device/dish_config.proto";
 import "spacex_api/device/rssi_scan.proto";
 import "spacex_api/satellites/network/ut_disablement_codes.proto";
@@ -117,6 +118,7 @@ message DishGetHistoryResponse {
   repeated float uplink_throughput_bps = 1004;
   repeated .SpaceX.API.Device.DishOutage outages = 1009;
   repeated float power_in = 1010;
+  repeated float power_consumption_w = 1012;
   .SpaceX.API.Device.EventLog event_log = 1011;
 }
 
@@ -191,6 +193,7 @@ message DishGetStatusResponse {
   bool treat_as_metered = 1056;
   float signal_quality = 1057;
   .SpaceX.API.Device.PowerSourceStats power_source_stats = 1059;
+  bool battery_ut_power_off_rf_idle_active = 1060;
 }
 
 message DishGetObstructionMapRequest {
@@ -324,6 +327,7 @@ message DishBatteryStats {
   float power_w = 5;
   uint32 time_to_charge_minutes = 6;
   uint32 time_to_empty_minutes = 7;
+  float temperature_c = 8;
 }
 
 message PowerSourceStats {
@@ -577,6 +581,8 @@ enum RebootReason {
   REBOOT_REASON_BATTERY_AUTO_OFF = 19;
   REBOOT_REASON_BATTERY_LOSS_OF_EXT_POWER_AUTO_OFF = 20;
   REBOOT_REASON_BATTERY_NO_BURST_AUTO_OFF = 21;
+  REBOOT_REASON_BUTTON_POWER_OFF = 22;
+  REBOOT_REASON_MCU_BUTTON_POWER_OFF = 23;
   REBOOT_REASON_HARD_POWER_DOWN = 100;
   REBOOT_REASON_ERROR_FILE_MISSING = 200;
   REBOOT_REASON_ERROR_CRC_MISMATCH = 201;
@@ -590,12 +596,6 @@ enum RouterRole {
   CONTROLLER = 1;
   REPEATER = 2;
   BYPASSED = 3;
-}
-
-enum PowerSource {
-  POWER_SOURCE_UNKNOWN = 0;
-  USBC = 1;
-  BATTERY = 2;
 }
 
 enum NatFlag {

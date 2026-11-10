@@ -39,5 +39,13 @@ message DishConfig {
   bool apply_swupdate_three_day_deferral_enabled = 7001;
   uint32 asset_class = 8;
   bool apply_asset_class = 8001;
+  bool loss_of_ext_power_auto_off_enabled = 10;
+  bool apply_loss_of_ext_power_auto_off_enabled = 10001;
+  bool no_burst_auto_off_enabled = 11;
+  bool apply_no_burst_auto_off_enabled = 11001;
+  uint32 loss_of_ext_power_auto_off_timeout_seconds = 12;
+  bool apply_loss_of_ext_power_auto_off_timeout_seconds = 12001;
+  uint32 no_burst_auto_off_timeout_seconds = 13;
+  bool apply_no_burst_auto_off_timeout_seconds = 13001;
 }
 

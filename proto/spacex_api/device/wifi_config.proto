@@ -61,6 +61,8 @@ message WifiConfig {
   reserved "apply_local_landing_domain";
   reserved "local_landing";
   reserved "apply_local_landing";
+  reserved "use_public_services";
+  reserved "apply_use_public_services";
   reserved 1;
   reserved 2;
   reserved 4;
@@ -88,6 +90,7 @@ message WifiConfig {
   reserved 38;
   reserved 40;
   reserved 41;
+  reserved 55;
   reserved 1001;
   reserved 1002;
   reserved 1003;
@@ -107,6 +110,7 @@ message WifiConfig {
   reserved 1053;
   reserved 1056;
   reserved 1057;
+  reserved 1068;
   reserved 1102;
   reserved 1103;
   reserved 1104;
@@ -280,6 +284,12 @@ message WifiConfig {
     VHT_BANDWIDTH_80_PLUS_80_MHZ = 4;
   }
 
+  enum MultiTenantRole {
+    MULTI_TENANT_ROLE_NONE = 0;
+    MULTI_TENANT_ROLE_HOST = 1;
+    MULTI_TENANT_ROLE_TENANT = 2;
+  }
+
   string country_code = 3;
   bool apply_country_code = 1085;
   bool pin_country_code = 53;
@@ -343,8 +353,6 @@ message WifiConfig {
   bool apply_vht_bandwidth = 1063;
   .SpaceX.API.Device.WifiConfig.VHTBandwidth vht_bandwidth_5ghz_high = 60;
   bool apply_vht_bandwidth_5ghz_high = 1072;
-  bool use_public_services = 55;
-  bool apply_use_public_services = 1068;
   bool disable_automated_speedtests = 56;
   bool apply_disable_automated_speedtests = 1069;
   bool enable_umbilical_vlan = 61;
@@ -404,6 +412,10 @@ message WifiConfig {
   bool apply_custom_dns_disabled = 1118;
   bool foreflight_enabled = 1119;
   bool apply_foreflight_enabled = 1120;
+  .SpaceX.API.Device.WifiConfig.MultiTenantRole multi_tenant_role = 1121;
+  bool apply_multi_tenant_role = 1122;
+  repeated string tenant_router_ids = 1123;
+  bool apply_tenant_router_ids = 1124;
   oneof wan_traffic_control {
     .SpaceX.API.Device.NoTrafficControl wan_no_traffic_control = 4001;
     .SpaceX.API.Device.AckSuppression wan_ack_suppression = 4002;
