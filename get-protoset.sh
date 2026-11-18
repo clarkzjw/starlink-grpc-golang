@@ -15,4 +15,6 @@ grpcurl -plaintext -protoset-out protoset/"$dish_version"/dish.protoset $grpc_en
 
 protoc --decode_raw < protoset/"$dish_version"/dish.protoset | grep "proto\"$" | awk '{print $2}' | awk -F\" '{print $2}' | grep spacex | sort | uniq > protoset/"$dish_version"/VERSION
 
+rm -rf proto/
+
 protodump -file protoset/"$dish_version"/dish.protoset -output "proto/"
